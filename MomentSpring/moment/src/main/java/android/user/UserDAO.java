@@ -157,6 +157,6 @@ public class UserDAO implements UserService{
 		System.out.println(nickckResult);
 		return nickckResult;
 	}
-	
+	//수정커밋테스트
 	
 }

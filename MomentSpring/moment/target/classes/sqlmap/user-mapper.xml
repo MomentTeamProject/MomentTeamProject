@@ -21,7 +21,15 @@
 </insert>
 
 <select id="userIdDuplicateCheck" resultType="integer">
-	
+	SELECT count(*)
+	FROM m_user 
+	WHERE u_userid = #{u_userid} 
+</select>
+
+<select id="userNickDuplicateCheck" resultType="integer">
+	SELECT count(*)
+	FROM m_user 
+	WHERE u_nick = #{u_nick}
 </select>
 
 </mapper>

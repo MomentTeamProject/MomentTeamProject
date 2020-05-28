@@ -89,8 +89,11 @@ public class UserController {
 	
 	//유저 닉네임 중복확인
 	@ResponseBody @RequestMapping(value = "/userNickDuplicateCheck.mo", produces = "application/json; charset=UTF-8")
-	public JSONObject userNickDuplicateCheck() {
+	public JSONObject userNickDuplicateCheck(HttpServletRequest request) {
 		System.out.println("Controller ============= > /userNickDuplicateCheck.mo");
-		return null;
+		String u_nick = request.getParameter("u_nick");
+		
+		JSONObject result = service.userNickDuplicateCheck(u_nick);
+		return result;
 	}
 }

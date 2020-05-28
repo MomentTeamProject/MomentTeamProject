@@ -127,7 +127,7 @@ public class UserDAO implements UserService{
 	@Override
 	public JSONObject userIdDuplicateCheck(String u_userid) {
 		
-		int result = sql.selectOne("user.mapper.userIdDuplicateCheck", u_userid);
+		int result = (Integer) sql.selectOne("user.mapper.userIdDuplicateCheck", u_userid);
 		JSONObject idckResult = new JSONObject();
 		
 		if( result > 0 ) {
@@ -143,7 +143,19 @@ public class UserDAO implements UserService{
 
 	@Override
 	public JSONObject userNickDuplicateCheck(String u_nick) {
-		return null;
+		
+		int result = (Integer) sql.selectOne("user.mapper.userNickDuplicateCheck", u_nick);
+		JSONObject nickckResult = new JSONObject();
+		
+		if( result > 0 ) {
+			nickckResult.put("result", "fail");
+		} else {
+			nickckResult.put("result", "success");
+		}
+		
+		System.out.println("================ User Nick Duplicate Check Result ================");
+		System.out.println(nickckResult);
+		return nickckResult;
 	}
 	
 	

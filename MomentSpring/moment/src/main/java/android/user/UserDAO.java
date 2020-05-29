@@ -158,6 +158,6 @@ public class UserDAO implements UserService{
 		return nickckResult;
 	}
 	//수정커밋테스트
-	//엿먹어라ㅋㅋ
+	//엿먹어라ㅋㅋㅋㅋ
 	
 }

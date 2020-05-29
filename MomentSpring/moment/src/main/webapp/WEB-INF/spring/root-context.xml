@@ -8,6 +8,6 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<import resource="classpath:data/*.xml" />		
-	<context:component-scan base-package="android"></context:component-scan>
+	<context:component-scan base-package="android, web"></context:component-scan>
 	
 </beans>

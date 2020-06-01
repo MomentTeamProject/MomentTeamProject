@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 /* 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
@@ -42,3 +43,39 @@ a.btn-fill, a.btn-empty {
 }
 a.btn-fill { color: #000; background-color: #94f2ff; }
 a.btn-empty { color: #000; background-color: #fff; }
+=======
+@charset "UTF-8";
+/* 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+/* 바디부분 기본적인 사항 적용 */
+body{
+	margin: 0 auto; text-align: center;
+	font-family: 'Jua', sans-serif;
+	background-color: black; color: white;
+	height: 100%;
+}
+
+/* 왼쪽, 오른쪽 정렬 클래스 적용.  */
+.left{ text-align: left; }
+.right{ text-align: right; }
+
+/* 넓이 조절 클래스 ( 퍼센트  )  */
+.w-pct80 { width: 80%; }
+.w-pct70 { width: 70%; }
+.w-pct60 { width: 60%; }
+
+/* 넓이 조절 클래스 ( 픽셀  )  */
+.w-px40 { width: 40px; }
+.w-px60 { width: 60px; }
+.w-px80 { width: 80px; }
+.w-px100 { width: 100px; }
+.w-px120 { width: 120px; }
+.w-px140 { width: 140px; }
+.w-px180 { width: 180px; }
+.w-px200 { width: 200px; }
+.w-px300 { width: 300px; }
+
+li{ list-style: none; }
+a { text-decoration: none; } 
+>>>>>>> branch 'master' of https://github.com/MomentTeamProject/MomentTeamProject.git

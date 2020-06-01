@@ -1,5 +1,6 @@
 package web.util;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -74,32 +75,65 @@ public class FileUpload {
 		return fileUploadMap;
 	}
 	
+	//이미지 합성
 	public static void imageMerge(String imagePath, String imageName1, String imageName2) {
 		try {
 			BufferedImage bimage1 = ImageIO.read(new File(imagePath+"\\"+imageName1));
-		   BufferedImage bimage2 = ImageIO.read(new File(imagePath+"\\"+imageName2));
+			BufferedImage bimage2 = ImageIO.read(new File(imagePath+"\\"+imageName2));
 		   
-		   Image img1 = bimage1.getScaledInstance(bimage1.getWidth(), bimage1.getHeight(), Image.SCALE_SMOOTH);
-		   Image img2 = bimage2.getScaledInstance(bimage2.getWidth(), bimage2.getHeight(), Image.SCALE_SMOOTH);
+//			Image img1 = bimage1.getScaledInstance(bimage1.getWidth(), bimage1.getHeight(), Image.SCALE_SMOOTH);
+//			Image img2 = bimage2.getScaledInstance(bimage2.getWidth(), bimage2.getHeight(), Image.SCALE_SMOOTH);
+			
+			int width = bimage1.getWidth()+ bimage2.getWidth();
+			int height = Math.max(bimage1.getHeight() , bimage2.getHeight());
 
-		   int width = bimage1.getWidth()+ bimage2.getWidth();
-		   int height = Math.max(bimage1.getHeight() , bimage2.getHeight());
+			BufferedImage mergedImage = new BufferedImage(width-100, height+1000, BufferedImage.TYPE_INT_RGB);
+			Graphics2D graphics = (Graphics2D) mergedImage.getGraphics();
 
-		   BufferedImage mergedImage = new BufferedImage(width, height+1000, BufferedImage.TYPE_INT_RGB);
-		   Graphics2D graphics = (Graphics2D) mergedImage.getGraphics();
-
-		   graphics.setBackground(Color.WHITE);
-		   graphics.drawImage(img1, 0, 500, null);
-		   graphics.drawImage(img2, bimage1.getWidth(), 500, null);
+			graphics.setBackground(Color.WHITE);
+			graphics.drawImage(image_crop(bimage1, imagePath, imageName1), 0, 500, null);
+			graphics.drawImage(bimage2, bimage1.getWidth()-100, 500, null);
+			graphics.dispose();
 		   
-		   ImageIO.write(mergedImage, "jpg", new File(imagePath+"\\"+imageName1.replace("_1.jpg", "_rev.jpg")));
-		   // ImageIO.write(mergedImage, "jpg", new File("c:\\mergedImage.jpg"));
-		   // ImageIO.write(mergedImage, "png", new File("c:\\mergedImage.png"));
+			ImageIO.write(mergedImage, "jpg", new File(imagePath+"\\"+imageName1.replace("_1.jpg", "_rev.jpg")));
+			// ImageIO.write(mergedImage, "jpg", new File("c:\\mergedImage.jpg"));
+			// ImageIO.write(mergedImage, "png", new File("c:\\mergedImage.png"));
 		  } catch (IOException ioe) {
-		   ioe.printStackTrace();
+			ioe.printStackTrace();
 		  }
-
-		  System.out.println("이미지 합성이 완료되었습니다... 에헤라 디야~~");
-		 }
+		
+		  	System.out.println("이미지 합성 완료");
+	}
+	
+	//이미지 끝 부분 투명도 조정
+	private static BufferedImage image_crop(BufferedImage img, String imagePath, String imageName1) throws IOException {
+		int width = img.getWidth();
+		int height = img.getHeight();
+		float opacity = 0.7f;
+		
+		//원본 이미지 100만큼 자르기
+		BufferedImage image = new BufferedImage(width-100, height, BufferedImage.TYPE_INT_RGB);
+		Graphics2D cropImage = (Graphics2D) image.getGraphics();
+		cropImage.drawImage(img, 0, 0, null);
+		cropImage.dispose();
+		
+		//이미지 투명도 조절
+		BufferedImage cropSize_opacity = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D opacityImage = (Graphics2D) cropSize_opacity.getGraphics();
+		opacityImage.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+		opacityImage.drawImage(img, 0, 0, null);
+		opacityImage.dispose();
+		ImageIO.write(cropSize_opacity, "png", new File(imagePath+"\\"+imageName1.replace("_1.jpg", "_opa.png")));
+		
+		//두 이미지 합치기
+		BufferedImage result = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D resultImage = (Graphics2D) result.getGraphics();
+		resultImage.drawImage(image, 0, 0, null);
+		resultImage.drawImage(cropSize_opacity, 0, 0, null);
+		resultImage.dispose();
+		
+		return result;
+		
+	}
 		
 }

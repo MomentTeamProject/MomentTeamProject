@@ -16,13 +16,46 @@
 	width: 500px; height: 100%; background-color: #1b1b1b;
 	display: none;
 }
-.bar-menu { float: left; margin: 30px 0 0 20px; }
+.bar-menu { float: left; margin: 30px 0 0 30px; }
 .bar-menu li { font-size: 22px; margin-top: 10px; text-align: left; }
 .bar-menu li a { color: white; } 
+.bar-user { margin: 20px 0 20px 20px; width: 480px; height: 100px; }
+.bar-profile { 
+	width: 100px; height: 100px; border: 2px solid #2f2f2f;
+	border-radius: 50px; float: left;
+	background-color: white; 
+}
+.bar-close{
+	height: 40px;
+	font-size: 40px;
+	margin-bottom: 30px;
+	text-align: left;
+}
+.bar-login { float: left; margin: 40px 0 0 20px; } 
+.fa-caret-square-left:hover{ color: yellow; }
+
 
 </style>
 <div id="bar-wrap"></div>
 	<div id="bar-content">
+		<div class="bar-close">
+			<a class="bar-close-btn">
+				&nbsp;<i class="fas fa-caret-square-left"></i>
+			</a>
+		</div>
+		<div class="bar-user">
+			<div class="bar-profile">
+				<c:if test="${empty login_info }">
+					<p style="color: black; text-align: center; margin-top: 40px; ">회원정보 없음</p>
+				</c:if>
+			</div>
+			<div class="bar-login">
+				<c:if test="${empty login_info }">
+					<a class="btn-fill">로그인</a>
+					<a class="btn-empty">회원가입</a>
+				</c:if>
+			</div>
+		</div>
 		<ul class="bar-menu">
 			<li><a href='<c:url value="/" />' >HOME</a></li>
 			<li><a>사진</a></li>
@@ -44,12 +77,11 @@
 		$('body').css('overflow-x','hidden');
 	});
 	
-	$('#bar-wrap').on('click', function(){
+	$('#bar-wrap, .bar-close-btn').on('click', function(){
 		$('#bar-content').show().animate({right: -500}, "fast", function(){
 			$(this).css('display','none');
 		});
 		$('#bar-wrap').css('display','none');
-		
 		//스크롤바 생성
 		$('body').css('overflow-y','scroll');
 	});

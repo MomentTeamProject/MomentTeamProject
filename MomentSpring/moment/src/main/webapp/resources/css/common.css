@@ -32,3 +32,13 @@ body{
 
 li{ list-style: none; }
 a { text-decoration: none; } 
+
+/* 채워진 버튼, 안채워진 버튼 */
+a.btn-fill, a.btn-empty {
+	text-align: center; border: 1px solid #94f2ff; 
+	vertical-align: middle;
+	padding: 8px 15px 8px; line-height: 38px;
+	
+}
+a.btn-fill { color: #000; background-color: #94f2ff; }
+a.btn-empty { color: #000; background-color: #fff; }

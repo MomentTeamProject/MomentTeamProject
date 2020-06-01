@@ -24,7 +24,7 @@ public class BoardController {
 	@Autowired private BoardVO vo;
 	
 	//최신글 목록조회
-	@ResponseBody @RequestMapping (value = "/LatelyListAction.mo", produces = "application/json; charset=UTF-8")
+	@ResponseBody @RequestMapping (value = "/LatelyListAction.mo")
 	public JSONArray LatelyList() {
 		System.out.println("Controller ============= > /LatelyList.mo");
 		

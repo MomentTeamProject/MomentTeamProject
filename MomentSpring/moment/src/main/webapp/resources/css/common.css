@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 @charset "UTF-8";
 /* 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
@@ -32,3 +34,55 @@ body{
 
 li{ list-style: none; }
 a { text-decoration: none; } 
+
+/* 채워진 버튼, 안채워진 버튼 */
+a.btn-fill, a.btn-empty {
+	text-align: center; border: 1px solid #94f2ff; 
+	vertical-align: middle;
+	padding: 8px 15px 8px; line-height: 38px;
+	
+}
+a.btn-fill { color: #000; background-color: #94f2ff; }
+a.btn-empty { color: #000; background-color: #fff; }
+=======
+=======
+>>>>>>> 498b899385dd1950acc853d00ff24d478856ec16
+@charset "UTF-8";
+/* 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+/* 바디부분 기본적인 사항 적용 */
+body{
+	margin: 0 auto; text-align: center;
+	font-family: 'Jua', sans-serif;
+	background-color: black; color: white;
+	height: 100%;
+}
+
+/* 왼쪽, 오른쪽 정렬 클래스 적용.  */
+.left{ text-align: left; }
+.right{ text-align: right; }
+
+/* 넓이 조절 클래스 ( 퍼센트  )  */
+.w-pct80 { width: 80%; }
+.w-pct70 { width: 70%; }
+.w-pct60 { width: 60%; }
+
+/* 넓이 조절 클래스 ( 픽셀  )  */
+.w-px40 { width: 40px; }
+.w-px60 { width: 60px; }
+.w-px80 { width: 80px; }
+.w-px100 { width: 100px; }
+.w-px120 { width: 120px; }
+.w-px140 { width: 140px; }
+.w-px180 { width: 180px; }
+.w-px200 { width: 200px; }
+.w-px300 { width: 300px; }
+
+li{ list-style: none; }
+<<<<<<< HEAD
+a { text-decoration: none; } 
+>>>>>>> branch 'master' of https://github.com/MomentTeamProject/MomentTeamProject.git
+=======
+a { text-decoration: none; } 
+>>>>>>> 498b899385dd1950acc853d00ff24d478856ec16

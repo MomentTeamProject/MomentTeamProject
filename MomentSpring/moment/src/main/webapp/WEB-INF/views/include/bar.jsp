@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -88,6 +89,8 @@
 	});
 
 =======
+=======
+>>>>>>> 498b899385dd1950acc853d00ff24d478856ec16
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -144,5 +147,8 @@
 		$('body').css('overflow-y','scroll');
 	});
 
+<<<<<<< HEAD
 >>>>>>> branch 'master' of https://github.com/MomentTeamProject/MomentTeamProject.git
+=======
+>>>>>>> 498b899385dd1950acc853d00ff24d478856ec16
 </script>

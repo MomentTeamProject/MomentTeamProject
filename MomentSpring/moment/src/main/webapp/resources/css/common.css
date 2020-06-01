@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 @charset "UTF-8";
 /* 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
@@ -44,6 +45,8 @@ a.btn-fill, a.btn-empty {
 a.btn-fill { color: #000; background-color: #94f2ff; }
 a.btn-empty { color: #000; background-color: #fff; }
 =======
+=======
+>>>>>>> 498b899385dd1950acc853d00ff24d478856ec16
 @charset "UTF-8";
 /* 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
@@ -77,5 +80,9 @@ body{
 .w-px300 { width: 300px; }
 
 li{ list-style: none; }
+<<<<<<< HEAD
 a { text-decoration: none; } 
 >>>>>>> branch 'master' of https://github.com/MomentTeamProject/MomentTeamProject.git
+=======
+a { text-decoration: none; } 
+>>>>>>> 498b899385dd1950acc853d00ff24d478856ec16

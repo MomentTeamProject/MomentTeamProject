@@ -1,7 +1,7 @@
 package web.common;
 
 public class PageVO {
-	private int pageList=10;			//페이지당 보여질 목록 수
+	private int pageList=12;			//페이지당 보여질 목록 수
 	private int blockPage=10;			//블럭당 보여질 페이지 수
 	private int totalList;				//총 목록 수
 	private int totalPage;				//총 페이지 수
@@ -11,11 +11,21 @@ public class PageVO {
 	private int curBlock;				//현재 블럭번호
 	private int beginPage, endPage;		//시작&끝 페이지 번호
 	private String search, keyword;		//검색유형
+	private String userid; //
 	private String viewType="list"; 	//목록이 보여질 형태 (디폴트 값은 리스트형태)
 	
 	private String myInfo;				//qna에서 내아이디전송위한 필드
 	private int root;					//qna에서 root값 비교위한 필드
 	
+	
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
 	public String getViewType() {
 		return viewType;
 	}

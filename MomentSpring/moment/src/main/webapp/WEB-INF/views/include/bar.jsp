@@ -58,7 +58,7 @@
 		</div>
 		<ul class="bar-menu">
 			<li><a href='<c:url value="/" />' >HOME</a></li>
-			<li><a>사진</a></li>
+			<li><a href="mypostlist.moment">사진</a></li>
 			<li><a>파노라마 사진</a></li>
 			<li><a>VR</a></li>
 			<li><a>문의하기</a></li>

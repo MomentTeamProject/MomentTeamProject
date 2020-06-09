@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 <title>Home</title>
@@ -134,7 +133,7 @@
 <script type="text/javascript">
 var viewer = new PhotoSphereViewer.Viewer({
   container: document.querySelector('#panorama-image'),
-  panorama: 'upload/capture_1590656191.3796015_rev.jpg'
+  panorama: 'upload/capture_1591253769.5138812_rev.jpg'
 });
 
 

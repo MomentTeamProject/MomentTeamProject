@@ -54,7 +54,7 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		//파일 저장 위치
-		String savePath = "D:\\TeamProjectFile\\teamProject_Spring\\moment_web\\src\\main\\webapp\\resources\\uploadFile";
+		String savePath = "C:\\Users\\SEC\\Desktop\\TeamProject\\MomentTeamProject\\MomentSpring\\moment\\src\\main\\webapp\\resources\\uploadFile";
 		String file_1 = fileMap.get("file_2").replace("_2.jpg", "_1.jpg");
 		String file_2 = fileMap.get("file_2");
 		

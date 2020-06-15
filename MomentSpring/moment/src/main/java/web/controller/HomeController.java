@@ -30,36 +30,15 @@ public class HomeController {
 		return "home";
 	}
 	
-	@ResponseBody @RequestMapping("/file1")
+	@ResponseBody @RequestMapping("/iotData")
 	public String file_upload1(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("라즈베리 파이 첫번째 파일 전송");
+		System.out.println("라즈베리 파이  사진파일 전송 완료");
 		try {
 			FileUpload.upload(request, response);
 			System.out.println("파일 전송 완료");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return "ok";
-	}
-	
-	@ResponseBody @RequestMapping("/file2")
-	public String file_upload2(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("라즈베리 파이 두번째 파일 전송");
-		Map<String, String> fileMap = null;
-		try {
-			fileMap = FileUpload.upload(request, response);
-			System.out.println("파일 전송 완료");
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		//파일 저장 위치
-		String savePath = "C:\\Users\\SEC\\Desktop\\TeamProject\\MomentTeamProject\\MomentSpring\\moment\\src\\main\\webapp\\resources\\uploadFile";
-		String file_1 = fileMap.get("file_2").replace("_2.jpg", "_1.jpg");
-		String file_2 = fileMap.get("file_2");
-		
-		FileUpload.imageMerge(savePath, file_1, file_2);
-		
 		
 		return "ok";
 	}

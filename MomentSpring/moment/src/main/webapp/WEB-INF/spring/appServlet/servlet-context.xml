@@ -16,6 +16,7 @@
 	<resources location="/resources/uploadFile/" mapping="/upload/**"/>
 	<resources location="/resources/css/" mapping="/css/**"/>
 	<resources location="/resources/image/" mapping="/img/**"/>
+	<resources location="/resources/image/background/" mapping="/background/**"/>
 	<resources location="/resources/js/" mapping="/js/**"/>
 	<resources mapping="/resources/**" location="/resources/" />
 

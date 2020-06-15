@@ -88,7 +88,6 @@ public class UserDAO implements UserService{
 				}
 			}
 			
-			System.out.println(fileUploadParamsMap.toString());
 			String includeImg = URLDecoder.decode(fileUploadParamsMap.get("includeImg"), CHARACTER_SET);
 			System.out.println(includeImg);
 			
@@ -110,7 +109,7 @@ public class UserDAO implements UserService{
 			e.getStackTrace();
 		}
 		
-		int result = new UserDAO().sql.update("user.mapper.modify",dto);
+		int result = sql.update("user.mapper.modify",dto);
 		JSONObject ModResult = new JSONObject();
 		
 		if( result > 0 ) {

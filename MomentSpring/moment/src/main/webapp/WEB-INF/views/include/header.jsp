@@ -20,7 +20,7 @@
 </style>
 <div id="wrap">
 	<div id="header-top" class="category">
-		<div id="header-home-image"><a href='<c:url value="/" />'><img src="img/logo1.jpg" alt="홈으로" /></a></div>
+		<div id="header-home-image"><a href='<c:url value="/" />'><img src="background/logo1.jpg" alt="홈으로" /></a></div>
 		<ul id="header-menu">
 			<li><a href='<c:url value="/" />' class="${category eq 'home' ? 'active' : '' }">HOME</a>│</li>
 			<li><a href="list.bo" class="${category eq 'bo' ? 'active' : '' }">사진</a>│</li>

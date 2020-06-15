@@ -13,7 +13,7 @@
 		}
 		.container{
 			width: 500px;
-			margin: 0 auto;
+			margin: 80px auto;
 			padding: 25px
 		}
 		.container h1{
@@ -34,13 +34,13 @@
 		}
 		.roomList th{
 			border: 1px solid #FFBB00;
-			background-color: #fff;
+			background-color: black;
 			color: #FFBB00;
 		}
 		.roomList td{
 			border: 1px solid #FFBB00;
 			background-color: #fff;
-			text-align: left;
+			text-align: center;
 			color: #FFBB00;
 		}
 		.roomList .num{
@@ -55,6 +55,12 @@
 			width: 350px;
 		}
 		.roomList .go{
+			
+						background-color: black;
+			width: 71px;
+			text-align: center;
+		}
+		.roomList .de{
 			
 						background-color: black;
 			width: 71px;

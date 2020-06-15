@@ -13,7 +13,7 @@
 		}
 		.container{
 			width: 500px;
-			margin: 0 auto;
+			margin: 100px auto;
 			padding: 25px
 		}
 		.container h1{

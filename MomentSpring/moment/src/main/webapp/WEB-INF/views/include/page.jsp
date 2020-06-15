@@ -17,7 +17,6 @@
 
 
 <div class="page_list">
-	
 	<c:if test="${page.curBlock gt 1}">
 		  <a class = "page_first" onclick = "go_page(1)">처음</a>
 		  <a class = "page_prev" onclick="go_page(${page.beginPage - page.blockPage})">이전</a>
@@ -39,7 +38,7 @@
 
 	<c:if test="${page.curBlock lt page.totalBlock}">
 		<a class="page_next" onclick="go_page(${page.endPage+1})">다음</a>
-		<a class="page_last" onclick="go_page(${page.totalPage})">마지막</a>
+		<a class="page_last"  onclick="go_page(${page.totalPage})">마지막</a>
 	</c:if>
 
 

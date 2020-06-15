@@ -7,7 +7,7 @@ public interface MyPageService {
 
 	
 	//내가 쓴글 리스트 
-	Page myList(Page page);
+	MyPagePage myList(MyPagePage page);
 	
 	//내가 쓴글 상세보기 
 	MyPageVO myList_detail(int id);	
@@ -16,10 +16,12 @@ public interface MyPageService {
 	void myList_delete(int id);
 		
 	//즐겨 찾기 리스트 	
-	List<MyPageVO> myFavorite(String userid);
+	MyPagePage myFavorite(MyPagePage page);
 	
 	//좋아요한 리스트
-	Page myDdabong(Page page);
+	MyPagePage myDdabong(MyPagePage page);
 		
+	
+	MyPagePage memberpostlist (MyPagePage page);
 	
 }

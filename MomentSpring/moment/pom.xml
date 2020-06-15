@@ -210,6 +210,36 @@
       <artifactId>opencv</artifactId>
       <version>3.4.2-1</version>
  		</dependency>
+ 		<!-- 		채탱 -->
+		<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-websocket</artifactId>
+        <version>${org.springframework-version}</version>
+    </dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+
+		     <!-- 이메일 보내기 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>6.7.0</version>
+		</dependency>
 	</dependencies>
 	<repositories>
 		<!-- OJDBC 저장소 추가 -->
@@ -218,6 +248,8 @@
 			<url>https://repo.spring.io/plugins-release/</url>
 		</repository>
 	</repositories>
+	
+	
 
     <build>
         <plugins>

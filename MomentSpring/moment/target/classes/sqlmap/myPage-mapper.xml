@@ -26,13 +26,13 @@
 
 
 	<select id="total" resultType="Integer">
-		select count(*) from m_board where b_userid =#{userid}
+		select count(*) from m_board where b_userid =#{userid} <if test="keyword != null "><include refid="search_where"/></if>
 	</select>
 
 	<select id="mylist" resultType="web.myPage.MyPageVO">
 		SELECT b.*
-		FROM (select rownum no, b.* from (select * from m_board where b_userid =
-		#{userid}) b order by no desc) b
+		FROM (select rownum no, b.* from (select * from m_board where b_userid = #{userid} 
+		<if test="keyword != null "><include refid="search_where"/></if> ) b order by no desc) b
 		where no between #{beginList} and #{endList}
 	</select>
 
@@ -46,11 +46,11 @@
 	<select id="myddabong" resultType="web.myPage.MyPageVO">
 		select * 
 		from ( select * 
-		         from   (select rownum no, f.* , b.*
-		                        from ( select * from m_favorite where f_userid =#{userid}  and f_ddabong ='Y') F,  m_board B 
-		                        where F.f_bno = b.b_no) M, m_user U
-		            where m.b_userid = u.u_userid <if test="keyword != null "><include refid="search_where"/></if>) 
-		where no between #{beginList} and #{endList}
+		       from (select rownum no, f.* , b.*
+		             from ( select * from m_favorite where f_userid =#{userid}  and f_ddabong ='Y') F,  m_board B 
+		             where F.f_bno = b.b_no) M, m_user U
+		       where m.b_userid = u.u_userid <if test="keyword != null "><include refid="search_where"/></if> ) 
+		where no between #{beginList} and #{endList} order by b_no desc
 	</select>
 	
 
@@ -71,7 +71,7 @@
 		                        from ( select * from m_favorite where f_userid =#{userid}  and f_favorites ='Y') F,  m_board B 
 		                        where F.f_bno = b.b_no) M, m_user U
 		            where m.b_userid = u.u_userid <if test="keyword != null "><include refid="search_where"/></if>) 
-		where no between #{beginList} and #{endList}
+		where no between #{beginList} and #{endList} order by b_no desc
 	</select>
 
 

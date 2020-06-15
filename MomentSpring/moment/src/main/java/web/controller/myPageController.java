@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import web.myPage.MyPageServiceImpl;
+import web.user.WebUserVO;
 import web.myPage.MyPagePage;
 
 @Controller
@@ -25,12 +26,15 @@ public class myPageController {
 
 	//내가 쓴 게시물 리스트  
 	@RequestMapping("/mypostlist.moment")
-	public String mylist(@RequestParam(defaultValue = "1") int curPage,	String userid,  Model model,HttpSession session) {
+	public String mylist(@RequestParam(defaultValue = "1") int curPage,	String userid, String search, String keyword,
+															Model model, HttpSession session) {
 
-		userid ="zxc@naver.com";
-		//session.getAttribute(userid);
+		userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
 		page.setUserid(userid);
 		page.setCurPage(curPage);		
+		page.setSearch(search);
+		page.setKeyword(keyword);
+		
 		model.addAttribute("page",service.myList(page));		
 		return "/myPage/mypostlist";
 		
@@ -42,8 +46,7 @@ public class myPageController {
 	public String myDdabong(@RequestParam(defaultValue="1") int curPage, String userid, Model model, 
 												HttpSession session, String search, String keyword) {
 		
-		userid = "zxc@gmail.com";
-		//session.getAttribute(userid);
+		userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
 		page.setUserid(userid);
 		page.setCurPage(curPage);	
 
@@ -60,9 +63,10 @@ public class myPageController {
 	
 	//즐겨찾기 게시판 리스트 화면
 	@RequestMapping("/myfavorite.moment")
-	public String myFavorite(@RequestParam(defaultValue="1") int curPage, String userid, Model model, HttpSession session, String search, String keyword) {
-		userid = "zxc@gmail.com";
-		//session.getAttribute(userid);
+	public String myFavorite(@RequestParam(defaultValue="1") int curPage, String userid, Model model, 
+												HttpSession session, String search, String keyword) {
+		
+		userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
 		page.setUserid(userid);
 		page.setCurPage(curPage);
 		page.setSearch(search);

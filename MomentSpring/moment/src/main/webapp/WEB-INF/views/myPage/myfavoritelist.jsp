@@ -67,7 +67,7 @@ ul.grid { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 10
 		<input type="hidden" name="curPage" value="1"/>
 	  	<div class="top" style="padding-top: 30px">
 			<select name="search" class="w-px80">
-				<option value="all" ${page.search eq 'all' ? 'selected' : ''} >전체</option>
+				<option value="all" ${page.search eq 'all' ? 'selected' : ''} >제목+내용</option>
 				<option value="title" ${page.search eq 'title' ? 'selected' : ''}>제목</option>
 				<option value="content" ${page.search eq 'content' ? 'selected' : ''}>내용</option>
 				<option value="writer" ${page.search eq 'writer' ? 'selected' : ''}>작성자</option>

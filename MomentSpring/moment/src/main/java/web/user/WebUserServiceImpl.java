@@ -20,15 +20,15 @@ public class WebUserServiceImpl implements WebUserService {
 		return dao.user_login(map);
 	}
 	@Override
-	public boolean user_nick_check(String usernick) {
+	public boolean user_nick_check(String u_nick) {
 		// TODO Auto-generated method stub
-		return dao.user_nick_check(usernick);
+		return dao.user_nick_check(u_nick);
 	}
 
 	@Override
-	public boolean user_id_check(String userid) {
+	public boolean user_id_check(String u_userid) {
 		// TODO Auto-generated method stub
-		return dao.user_id_check(userid);
+		return dao.user_id_check(u_userid);
 	}
 
 	@Override
@@ -38,21 +38,21 @@ public class WebUserServiceImpl implements WebUserService {
 	}
 
 	@Override
-	public boolean user_delete(String userid) {
+	public boolean user_delete(String u_userid) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void createAuthKey(String userid, String authKey) throws Exception {
+	public void createAuthKey(String u_userid, String u_authkey) throws Exception {
 		// TODO Auto-generated method stub
-		dao.createAuthKey(userid, authKey);
+		dao.createAuthKey(u_userid, u_authkey);
 	}
 
 	@Override
-	public void userAuth(String userid, String authKey) throws Exception {
+	public void userAuth(String u_userid, String u_authkey) throws Exception {
 		// TODO Auto-generated method stub
-		dao.userAuth(userid, authKey);
+		dao.userAuth(u_userid, u_authkey);
 	}
 
 }

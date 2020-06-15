@@ -16,10 +16,9 @@ public class WebUserDAO implements WebUserService {
 	@Override
 	public boolean user_insert(WebUserVO vo) {
 		// TODO Auto-generated method stub
-			System.out.println(vo.getU_username()+"getUsername");
-			System.out.println(vo.getU_userid()+"getUserid");
-			System.out.println(vo.getU_usernick()+"getUsernick");
-			System.out.println(vo.getU_userpw()+"getUserpw");
+			System.out.println(vo.getU_userid()+"getU_userid");
+			System.out.println(vo.getU_userpw()+"getU_userpw");
+			System.out.println(vo.getU_profileimg()+"getU_profileimg");
 		
 		return sql.insert("web.user.mapper.insert",vo) > 0 ? true:false;
 	}
@@ -31,15 +30,15 @@ public class WebUserDAO implements WebUserService {
 		return sql.selectOne("web.user.mapper.login", map);
 	}
 	@Override
-	public boolean user_nick_check(String usernick) {
+	public boolean user_nick_check(String u_nick) {
 		// TODO Auto-generated method stub
-		return (Integer)sql.selectOne("web.user.mapper.nick_check", usernick)==0 ? true: false;
+		return (Integer)sql.selectOne("web.user.mapper.nick_check", u_nick)==0 ? true: false;
 	}
 
 	@Override
-	public boolean user_id_check(String userid) {
+	public boolean user_id_check(String u_userid) {
 		// TODO Auto-generated method stub
-		return (Integer)sql.selectOne("web.user.mapper.idcheck", userid)==0 ? true : false;
+		return (Integer)sql.selectOne("web.user.mapper.idcheck", u_userid)==0 ? true : false;
 	}
 
 	@Override
@@ -49,29 +48,29 @@ public class WebUserDAO implements WebUserService {
 	}
 
 	@Override
-	public boolean user_delete(String userid) {
+	public boolean user_delete(String u_userid) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void createAuthKey(String userid, String authKey) throws Exception {
+	public void createAuthKey(String u_userid, String u_authkey) throws Exception {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		map.put("userid", userid);
-		map.put("authKey", authKey);
+		map.put("u_userid", u_userid);
+		map.put("u_authkey", u_authkey);
 
 		sql.selectOne("web.user.mapper.createAuthKey", map);	
 	}
 
 	@Override
-	public void userAuth(String userid, String authkey) throws Exception {
+	public void userAuth(String u_userid, String u_authkey) throws Exception {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		map.put("userid", userid);
-		map.put("authKey", authkey);
+		map.put("u_userid", u_userid);
+		map.put("u_authkey", u_authkey);
 		
 		sql.update("web.user.mapper.userAuth", map);
 	}

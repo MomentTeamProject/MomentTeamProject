@@ -26,6 +26,13 @@
 		<beans:property name="order" value="1" />
 	</beans:bean>
 	
+	<beans:bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <beans:property name="maxUploadSize" value="10000000" />
+</beans:bean>
+
+
+	
 		<!-- Tiles 를 먼저 사용하도록 순서를 바꿔줌. -->
 	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" >
 		<beans:property name="order" value="0" />

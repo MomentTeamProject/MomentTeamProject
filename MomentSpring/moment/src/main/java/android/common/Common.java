@@ -8,10 +8,10 @@ import org.json.simple.JSONObject;
 import android.board.BoardVO;
 
 public class Common {
-	public static final String IMAGE_FILE_SAVE_PATH = "D:\\Study_Android\\androidServlet\\moment\\WebContent\\images\\background";
-	public static final String IMAGE_FILE_PATH = "http://192.168.0.130:8081/moment/images/background/";
+	public static final String IMAGE_FILE_SAVE_PATH = "C:\\Users\\SEC\\Desktop\\TeamProject\\MomentTeamProject\\MomentSpring\\moment\\src\\main\\webapp\\resources\\uploadFile";
+	public static final String IMAGE_FILE_PATH = "http://192.168.0.128:80/moment/img/background/";
 	public static final String PROFILE_IMG_SAVE_PATH = "D:\\Study_Android\\androidServlet\\moment\\WebContent\\images\\profileimg";
-	public static final String PROFILE_IMG_PATH = "http://192.168.0.130:8081/moment/images/profileimg/";
+	public static final String PROFILE_IMG_PATH = "http://192.168.0.128:80/moment/img/profileimg/";
 	
 	
 	//쿼리조회 후 list 반환값을 jsonArray로 파싱

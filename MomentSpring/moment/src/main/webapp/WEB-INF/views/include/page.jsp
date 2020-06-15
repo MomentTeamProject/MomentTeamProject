@@ -5,9 +5,11 @@
 
 <style>
 .page_on, .page_off, .page_prev, .page_first, .page_next, .page_last { display: inline-block; line-height: 30px; margin: 0 !important; }
+
 .page_on { color: #fff; font-weight: bold; background-color: gray; border:1px solid gray; } 
 .page_off, .page_on { background-color: black; border: 1px solid white; min-width:22px; padding: 0 5px 2px; cursor: pointer; }
 .page_prev, .page_first, .page_next, .page_last {width: 30px; border:1px solid #d0d0d0; text-indent: -999999px; }
+
 .page_prev {background: url("img/page_next.jpg") center no-repeat;}
 .page_first {background: url("img/page_first.jpg") center no-repeat;}
 .page_next {background: url("img/page_next.jpg") center no-repeat;}

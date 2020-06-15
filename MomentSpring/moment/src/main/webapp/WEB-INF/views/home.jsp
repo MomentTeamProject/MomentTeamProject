@@ -99,11 +99,11 @@
 	<div id="main-image-view">
 		<div class="slider">
 		  <ul class="slider__wrapper">
-		    <li class="slider__item" ><div class="box" ><img src="img/test1.png" /></div></li>
-		    <li class="slider__item" ><div class="box" ><img src="img/test2.png" /></div></li>
-		    <li class="slider__item" ><div class="box" ><img src="img/test3.png" /></div></li>
-		    <li class="slider__item" ><div class="box" ><img src="img/test4.png" /></div></li>
-		    <li class="slider__item" ><div class="box" ><img src="img/test5.png" /></div></li>
+		    <li class="slider__item" ><div class="box" ><img src="background/test1.png" /></div></li>
+		    <li class="slider__item" ><div class="box" ><img src="background/test2.png" /></div></li>
+		    <li class="slider__item" ><div class="box" ><img src="background/test3.png" /></div></li>
+		    <li class="slider__item" ><div class="box" ><img src="background/test4.png" /></div></li>
+		    <li class="slider__item" ><div class="box" ><img src="background/test5.png" /></div></li>
 		  </ul>
 		</div> 
 	</div>
@@ -113,11 +113,11 @@
 	</div>
 	<h3 class="left" style="margin-top: 50px">최신 글</h3>
 	<div id="card-view">
-		<div class="card-view-img"><img src="img/test1.png" /></div>
-		<div class="card-view-img"><img src="img/test2.png" /></div>
-		<div class="card-view-img"><img src="img/test3.png" /></div>
-		<div class="card-view-img"><img src="img/test4.png" /></div>
-		<div class="card-view-img"><img src="img/test5.png" /></div>
+		<div class="card-view-img"><img src="background/test1.png" /></div>
+		<div class="card-view-img"><img src="background/test2.png" /></div>
+		<div class="card-view-img"><img src="background/test3.png" /></div>
+		<div class="card-view-img"><img src="background/test4.png" /></div>
+		<div class="card-view-img"><img src="background/test5.png" /></div>
 	</div>
 </div>
 
@@ -131,9 +131,10 @@
 <script type="text/javascript" src="js/banner.js"></script>
 <script type="text/javascript" src="js/glidejs.js"></script>
 <script type="text/javascript">
+
 var viewer = new PhotoSphereViewer.Viewer({
   container: document.querySelector('#panorama-image'),
-  panorama: 'upload/capture_1591253769.5138812_rev.jpg'
+  panorama: 'upload/1591952911.3873103_result.jpg'
 });
 
 

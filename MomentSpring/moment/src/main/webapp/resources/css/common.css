@@ -1,4 +1,3 @@
-
 @charset "UTF-8";
 /* 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
@@ -7,7 +6,7 @@
 body{
 	margin: 0 auto; text-align: center;
 	font-family: 'Jua', sans-serif;
-	background-color: black; color: white;
+	background-color: black; color: #ffffff;
 	height: 100%;
 }
 
@@ -34,25 +33,21 @@ body{
 li{ list-style: none; }
 a { text-decoration: none; } 
 
-/* 채워진 버튼, 안채워진 버튼 */
-a.btn-fill, a.btn-empty {
-	text-align: center; border: 1px solid #94f2ff; 
-	vertical-align: middle;
-	padding: 8px 15px 8px; line-height: 38px;
-	
-}
-a.btn-fill { color: #000; background-color: #94f2ff; }
-a.btn-empty { color: #000; background-color: #fff; }
-
+/* 마이페이지 css  */
 
 /* 마이페이지 grid 설정 */
-ul.grid { width:65%; margin:0 auto; padding: 0;}
+
+ul.grid { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 900px; min-height: 900px;}
+.contentbody { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 1300px; }
 .grid li { float:left; width:299px; border:1px solid gray; box-sizing:border-box;  }
+.top {width: 98%; margin:0 auto; }
+.btnSet {margin-top: 20px;}
+
+.btnSet > a:not(:first-child) {margin-left: 20px;} /* 체크박스 */
 .grid li div { padding:3%;  width:95%; height:200px; }	
-.grid li:not(:last-child) { margin:0 10px 10px 0 }
-.grid li div:nth-child(3) { padding: 0; height:15px;}	
+.grid li:not(:last-child) { margin:0 10px 10px 0;  }
 .grid li div:nth-child(1) { height:5px;}	
-.grid li div:nth-child(4) { font-size:80%; height:20px; }	
+.grid li div:nth-child(3) { padding: 0; height:15px;}	
 
 /* 버튼 설정 */
 a.btn-fill, a.btn-empty {
@@ -63,9 +58,12 @@ a.btn-fill, a.btn-empty {
 	color:#ffffff;
 }
 
+
+
 ul {list-style: none; padding:0;}
 img { vertical-align:middle; }
 a:link, a:visited { text-decoration:none; color:white;}
+
 
 
 

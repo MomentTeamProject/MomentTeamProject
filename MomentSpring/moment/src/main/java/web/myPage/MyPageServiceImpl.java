@@ -1,7 +1,5 @@
 package web.myPage;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +9,7 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired private MyPageDAO dao;
 	
 	@Override
-	public Page myList(Page page) {
+	public MyPagePage myList(MyPagePage page) {
 		// TODO Auto-generated method stub
 		return dao.myList(page);
 	}
@@ -30,19 +28,29 @@ public class MyPageServiceImpl implements MyPageService {
 		
 	}
 
+	
 	@Override
-	public List<MyPageVO> myFavorite(String userid) {
-		// TODO Auto-generated method stub
-		return dao.myFavorite(userid);
+	public MyPagePage myFavorite(MyPagePage page) {
+		return dao.myFavorite(page);
 	}
 
 
 
 	@Override
-	public Page myDdabong(Page page) {
+	public MyPagePage myDdabong(MyPagePage page) {
 		// TODO Auto-generated method stub
 		return dao.myDdabong(page);
 	}
+
+
+
+	@Override
+	public MyPagePage memberpostlist(MyPagePage page) {
+		// TODO Auto-generated method stub
+		return dao.memberpostlist(page);
+	}
+
+
 
 
 

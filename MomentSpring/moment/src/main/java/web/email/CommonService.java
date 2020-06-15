@@ -108,7 +108,7 @@ public class CommonService {
 	public String upload(String category, MultipartFile file, HttpSession session) {
 		//프로젝트의 물리적인 위치에 선택한 파일을 업로드한다.
 		String resources = session.getServletContext().getRealPath("resources");
-		String upload = resources + "/upload";
+		String upload = resources + "/profile";
 		String folder = upload + "/" + category +"/" 
 				+  new SimpleDateFormat("yyyy/MM/dd").format(new Date());
 		File f = new File(folder);
@@ -146,16 +146,16 @@ public void sendHtml(WebUserVO vo, HttpSession session) throws Exception {
 		mailservice.createAuthKey(vo.getU_userid(),key);
 		
 		try {
-			mail.setFrom("kjn02131@naver.com", "한울관리자"); //송신인
-			mail.addTo(vo.getU_userid(), vo.getU_username()); //수신인
+			mail.setFrom("kjn02131@naver.com", "Moment관리자"); //송신인
+			mail.addTo(vo.getU_userid(), vo.getU_name()); //수신인
 			
-			mail.setSubject("한울 IoT 가입");
+			mail.setSubject("Moment 가입");
 			
 			StringBuffer msg = new StringBuffer();
 			msg.append("<html>");
 			msg.append("<body>");
 //			msg.append("<a href='http://hanuledu.co.kr'><img src='http://hanuledu.co.kr/data/menu/LOGO_YOlQQBRgVrzJC2PUyqB31583994097.jpg'/></a>");
-			msg.append("<h3>한울 IoT 과정</h3>");
+			msg.append("<h3>Moment</h3>");
 			msg.append("<p>가입을 축하합니다.</p>");
 			msg.append( // 메일내용
 					"<h1>메일인증</h1>" +
@@ -167,14 +167,9 @@ public void sendHtml(WebUserVO vo, HttpSession session) throws Exception {
 			msg.append("</html>");
 			mail.setHtmlMsg(msg.toString());
 
-			EmailAttachment file = new EmailAttachment();
-			file.setPath( session.getServletContext().getRealPath("resources")
-							+ "/css/common.css");
-			mail.attach(file);
 			
 //			file = new EmailAttachment();
 //			file.setURL(new URL("http://hanuledu.co.kr/data/menu/LOGO_YOlQQBRgVrzJC2PUyqB31583994097.jpg"));
-			mail.attach(file);
 
 			mail.send(); //메일 보내기
 			

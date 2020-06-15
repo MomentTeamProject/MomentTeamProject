@@ -5,10 +5,21 @@ import java.sql.Date;
 public class MyPageVO {
 
 	
-	String b_title, b_content, b_coment, b_imgpath, b_local, f_favorite, u_userid, u_name, u_nick, u_profileimg;
+	String b_title, b_content, b_coment, b_imgpath, b_local, f_favorite, u_userid, u_name, u_nick, u_profileimg,b_userid;
 	int b_readcnt, b_ddabong, b_latitude, b_longitude, b_no;
 	Date b_writedate;
 	
+	
+	
+	
+	
+	
+	public String getB_userid() {
+		return b_userid;
+	}
+	public void setB_userid(String b_userid) {
+		this.b_userid = b_userid;
+	}
 	public String getB_title() {
 		return b_title;
 	}

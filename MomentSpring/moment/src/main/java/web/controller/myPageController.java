@@ -13,23 +13,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import web.myPage.MyPageServiceImpl;
-import web.myPage.Page;
+import web.myPage.MyPagePage;
 
 @Controller
 public class myPageController {
 	
 	@Autowired private MyPageServiceImpl service;
-	@Autowired private Page page;
+	@Autowired private MyPagePage page;
 	
-		
+	
 
 	//내가 쓴 게시물 리스트  
 	@RequestMapping("/mypostlist.moment")
 	public String mylist(@RequestParam(defaultValue = "1") int curPage,	String userid,  Model model,HttpSession session) {
 
-		String userid1 = "zxc@naver.com";
+		userid ="zxc@naver.com";
 		//session.getAttribute(userid);
-		page.setUserid(userid1);
+		page.setUserid(userid);
 		page.setCurPage(curPage);		
 		model.addAttribute("page",service.myList(page));		
 		return "/myPage/mypostlist";
@@ -37,27 +37,54 @@ public class myPageController {
 	}
 
 	
-	//좋아요 게시판
+	//좋아요 게시판 조회 
 	@RequestMapping("/myddabong.moment")
-	public String myDdabong(@RequestParam(defaultValue="1") int curPage, String userid, Model model, HttpSession session) {
+	public String myDdabong(@RequestParam(defaultValue="1") int curPage, String userid, Model model, 
+												HttpSession session, String search, String keyword) {
 		
-		userid = "admin@gmail.com";
+		userid = "zxc@gmail.com";
 		//session.getAttribute(userid);
 		page.setUserid(userid);
-		page.setCurPage(curPage);		
+		page.setCurPage(curPage);	
+
+		System.out.println("컨트롤 : " + userid + ",  curPage: " + curPage + ", keyword: " +keyword);
+		page.setSearch(search);
+		page.setKeyword(keyword);
+		
 		model.addAttribute("page", service.myDdabong(page));	
 	
 		return "/myPage/myddabonglist";		
 	}
 	
+
+	
+	//즐겨찾기 게시판 리스트 화면
+	@RequestMapping("/myfavorite.moment")
+	public String myFavorite(@RequestParam(defaultValue="1") int curPage, String userid, Model model, HttpSession session, String search, String keyword) {
+		userid = "zxc@gmail.com";
+		//session.getAttribute(userid);
+		page.setUserid(userid);
+		page.setCurPage(curPage);
+		page.setSearch(search);
+		page.setKeyword(keyword);
+		model.addAttribute("page", service.myFavorite(page));	
+	
+		return "/myPage/myfavoritelist";		
+	} 
 	
 	
 	
+	//닉네임 클릭시 닉네임 주인이 쓴 글 보이기
+	@RequestMapping("/memberpostlist.moment")
+	public String memberpostlist(@RequestParam(defaultValue="1") int curPage, String userid, Model model, HttpSession session) {
+		
+		session.getAttribute(userid);
+		page.setUserid(userid);
+		page.setCurPage(curPage);
+		model.addAttribute("page", service.memberpostlist(page));	
 	
-	
-	
-	
-	
+		return "redirect:mypostlist.moment?userid=" + userid;		
+	}
 	
 	
 	
@@ -76,33 +103,12 @@ public class myPageController {
 	
 	
 	
-	
-	
 	//내가 쓴 게시물 상세화면 연결
 	@RequestMapping("/mylist_detail.moment")
 	public String myliSst_detail(@RequestParam int id) {
 	
 		return "/myList/detail";
 	}
-	
-	
-	//즐겨찾기 게시판 리스트 화면
-	@RequestMapping("/myfavorite.moment")
-	public String myFavorite(String userid, Model model, HttpSession session) {
-		userid = "admin@gmail.com";
-		session.getAttribute(userid);
-		model.addAttribute("list", service.myFavorite(userid));	
-	
-		return "/myPage/myfavoritelist";		
-	}
-	
-	
-
-	
-	
-	
-	
-	
 	
 	
 }

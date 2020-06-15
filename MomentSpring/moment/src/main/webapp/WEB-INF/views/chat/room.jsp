@@ -129,7 +129,7 @@
 							"<td class='num'>"+(idx+1)+"</td>"+
 							"<td class='room'>"+ rn +"</td>"+
 							"<td class='go'><button type='button' onclick='goRoom(\""+roomNumber+"\", \""+rn+"\")'>참여</button></td>" +
-							"<td class='de'><button type='button' id='deleteRoom'  onclick='deleteRoom(\""+roomNumber+"\")'>삭제</button></td>" +
+							"<td class='de'><button type='button' id='deleteRoom'  onclick='deleteRoom(\""+idx+"\")'>삭제</button></td>" +
 						"</tr>";	
 			});
 			$("#roomList").empty().append(tag);

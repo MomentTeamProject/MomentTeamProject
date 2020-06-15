@@ -1,78 +1,182 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>        
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Marker Clustering</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
+ <head>
+    <title>Place Searches</title>
+<!-- 구글 api  -->
+<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk&libraries=places&callback=initAutocomplete" 
+async defer></script>
+
+
+
+
+<style>
+	#map_ma {margin: 0 auto; width:1000px; height:500px; clear:both; border:solid 1px black;}
+	#autocomplete {width:500px; height: 40px;  border-radius : 5px; box-shadow: 1px 1px 2px yellow; padding:0 15px; }
+	#locationField {padding: 10px;}
+
+</style>
+</head>
+<body>
+
+<div style="padding-top:100px;">
+	 <!-- 주소검색  -->
+	<div id="locationField">
+	  <input id="autocomplete" placeholder="찾고 싶은 지역을 검색하세요" type="text">
+	</div>
+	 
+	<input type="hidden" class="field" id="lat" />
+	<input type="hidden" class="field"  id="lng" />
+	
+	
+	<!-- 지도  -->
+	<div id="map_ma" style="color:black;"></div> 
+</div>
+
+<script type="text/javascript">
+
+
+
+//처음 페이지 실행시 현재 위치 
+$(document).ready(function() { 
+
+	function getLocation() {
+		  if (navigator.geolocation) { // GPS를 지원하면
+		    navigator.geolocation.getCurrentPosition(function(position) {		   
+				var lat = parseFloat(position.coords.latitude);
+				var lng = parseFloat(position.coords.longitude);
+				initMap(lat, lng);		   
+				
+			}, function(error) {
+		      console.error(error);
+		    }, {
+		      enableHighAccuracy: false,
+		      maximumAge: 0,
+		      timeout: Infinity
+		    });
+		  } else {
+		    alert('GPS를 지원하지 않습니다');
+		  }
+		}
+		getLocation();
+
+});
+
+
+// 마커 표시 
+function initMap(lat,lng){
+ 
+	//alert("함수"+lat + ' ' +lng);
+
+	var map = new google.maps.Map(document.getElementById('map_ma'), {
+	    
+	    center: {
+	        lat: lat,
+	        lng: lng
+	    },
+	    
+	    //처음 줌 값. 숫자가 작을수록 낮은 배율
+	    zoom: 15
+	});
+
+	var marker = new google.maps.Marker({
+		position: {lat:lat, lng: lng},
+		map: map
+		
+	});
+	
+}
+
+
+// 지도 검색시, 자동완성 및 DB에서 주변 정보 가져오기 
+var placeSearch, autocomplete;
+
+function initAutocomplete() {
+	
+  // Create the autocomplete object, restricting the search to geographical 
+  autocomplete = new google.maps.places.Autocomplete(
+    (document.getElementById('autocomplete')), {
+      types: ['geocode']
     
-    <!-- 구글맵 api -->
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk"></script>
-    <script>
-      function initMap() {
+    });
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 3,
-          center: {lat: -28.024, lng: 140.887}
-        });
+  autocomplete.addListener('place_changed', fillInAddress); //주소 선택시 검색창 채움
+}
 
-        // Create an array of alphabetical characters used to label the markers.
-        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-        var markers = locations.map(function(location, i) {
-          return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length]
-          });
-        });
+function fillInAddress() {  //좌표 얻어와서 창에 띄움. 
+  
+  var place = autocomplete.getPlace();
+  document.getElementById("lat").value = place.geometry.location.lat();
+  document.getElementById("lng").value = place.geometry.location.lng();
 
-        var markerCluster = new MarkerClusterer(map, markers,
-                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-      }
-      var locations = [
-        {lat: -31.563910, lng: 147.154312},
-        {lat: -33.718234, lng: 150.363181},
-        {lat: -33.727111, lng: 150.371124},
-        {lat: -33.848588, lng: 151.209834},
-        {lat: -33.851702, lng: 151.216968},
-        {lat: -34.671264, lng: 150.863657},
-        {lat: -35.304724, lng: 148.662905},
-        {lat: -36.817685, lng: 175.699196},
-        {lat: -36.828611, lng: 175.790222},
-        {lat: -37.750000, lng: 145.116667},
-        {lat: -37.759859, lng: 145.128708},
-        {lat: -37.765015, lng: 145.133858},
-        {lat: -37.770104, lng: 145.143299},
-        {lat: -37.773700, lng: 145.145187},
-        {lat: -37.774785, lng: 145.137978},
-        {lat: -37.819616, lng: 144.968119},
-        {lat: -38.330766, lng: 144.695692},
-        {lat: -39.927193, lng: 175.053218},
-        {lat: -41.330162, lng: 174.865694},
-        {lat: -42.734358, lng: 147.439506},
-        {lat: -42.734358, lng: 147.501315},
-        {lat: -42.735258, lng: 147.438000},
-        {lat: -43.999792, lng: 170.463352}
-      ];
-      initMap();
-    </script>
-    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-  </body>
+  var lat = parseFloat(document.getElementById("lat").value);
+  var lng = parseFloat(document.getElementById("lng").value);
+  var locationname = document.getElementById("autocomplete").value;	
+  //var marker, i;
+
+
+  
+	$.ajax({
+		type : 'post',
+		url : 'nearMarker.moment', 
+		data : {
+			b_latitude : lat,
+			b_longitude : lng
+		},
+		success : function(data) {
+		 alert('주변 정보 전달 성공');
+		 
+			var map = new google.maps.Map(document.getElementById('map_ma'), {
+        	    
+        	    
+        	    center: {
+        	        lat: lat,
+        	        lng: lng
+        	    },
+        	    
+        	   zoom: 15
+        	});        	
+
+          
+	            for (var i = 0; i < data.length; i++) {
+	            
+	                var marker = new google.maps.Marker({
+	                    position: {lat: parseFloat( data[i].b_latitude ), lng: parseFloat(data[i].b_longitude)},
+	                    map: map,
+	                    
+	                });	                
+
+	                var img = "<div style='width:80px;'><div><img style='width:70px; height:50px;' src='img/"+data[i].b_imgpath+"'></div><div style='font-size:85%'>"+data[i].b_title+"</div></div>"; 
+	              	
+	                //alert(parseFloat(data[i].b_latitude)+'----'+parseFloat(data[i].b_longitude));	                
+	                
+		            var infowindow = new google.maps.InfoWindow({ content: img });
+	        		
+		            infowindow.open(map,marker);
+		          
+		        	 
+		            google.maps.event.addListener(marker, "click", function() {
+		        		marker.setMap(null);
+		            });  
+	                				
+	            }
+	                    
+		},
+		error : function(req, text) {
+			alert(text + ":" + req.status);
+
+		}
+	});
+
+
+	 
+}
+
+
+</script>
+</body>
 </html>
+

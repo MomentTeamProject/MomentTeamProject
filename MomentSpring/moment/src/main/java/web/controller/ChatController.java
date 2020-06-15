@@ -57,9 +57,10 @@ public class ChatController {
 	@RequestMapping("/deleteRoom")
 	public @ResponseBody List<Room> removeRoom(@RequestParam HashMap<Object, Object> params){
 		String roomNumber = (String) params.get("rNumber");
-		System.out.println("채팅방 삭제"+ roomNumber);
+		int roomNo = Integer.parseInt(roomNumber);
+		System.out.println("채팅방 삭제 - "+ roomNumber);
 		
-		roomList.remove(roomNumber);
+		roomList.remove(roomNo);
 		return roomList;
 		
 	}

@@ -205,8 +205,12 @@
 			<artifactId>commons-email</artifactId>
 			<version>1.5</version>
 		</dependency>
+		<dependency>
+      <groupId>org.openpnp</groupId>
+      <artifactId>opencv</artifactId>
+      <version>3.4.2-1</version>
+ 		</dependency>
 	</dependencies>
-	
 	<repositories>
 		<!-- OJDBC 저장소 추가 -->
 		<repository>
@@ -214,8 +218,7 @@
 			<url>https://repo.spring.io/plugins-release/</url>
 		</repository>
 	</repositories>
-	
-	
+
     <build>
         <plugins>
             <plugin>

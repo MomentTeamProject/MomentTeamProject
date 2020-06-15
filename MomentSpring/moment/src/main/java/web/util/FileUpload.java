@@ -24,7 +24,7 @@ public class FileUpload {
 			throws ServletException, IOException{
 		
 		//�뵒�젆�넗由ш꼍濡� 吏��젙
-		String savePath = "D:\\TeamProjectFile\\teamProject_Spring\\moment_web\\src\\main\\webapp\\resources\\uploadFile";
+		String savePath = "C:\\Users\\SEC\\Desktop\\TeamProject\\MomentTeamProject\\MomentSpring\\moment\\src\\main\\webapp\\resources\\uploadFile";
 		
 		//Map�삎�떇�쓽 String �궎媛�, String 踰⑤쪟媛믪쑝濡� 吏��젙
 		Map<String, String> fileUploadMap = new HashMap<>();
@@ -85,12 +85,15 @@ public class FileUpload {
 		   int width = bimage1.getWidth()+ bimage2.getWidth();
 		   int height = Math.max(bimage1.getHeight() , bimage2.getHeight());
 
-		   BufferedImage mergedImage = new BufferedImage(width, height+1000, BufferedImage.TYPE_INT_RGB);
+		   BufferedImage mergedImage = new BufferedImage(width+160, height+1000, BufferedImage.TYPE_INT_RGB);
+//		   BufferedImage mergedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		   Graphics2D graphics = (Graphics2D) mergedImage.getGraphics();
 
 		   graphics.setBackground(Color.WHITE);
 		   graphics.drawImage(img1, 0, 500, null);
-		   graphics.drawImage(img2, bimage1.getWidth(), 500, null);
+		   graphics.drawImage(img2, bimage1.getWidth()+80, 500, null);
+//		   graphics.drawImage(img1, 0, 0, null);
+//		   graphics.drawImage(img2, bimage1.getWidth(), 0, null);
 		   
 		   ImageIO.write(mergedImage, "jpg", new File(imagePath+"\\"+imageName1.replace("_1.jpg", "_rev.jpg")));
 		   // ImageIO.write(mergedImage, "jpg", new File("c:\\mergedImage.jpg"));
@@ -99,7 +102,7 @@ public class FileUpload {
 		   ioe.printStackTrace();
 		  }
 
-		  System.out.println("�씠誘몄� �빀�꽦�씠 �셿猷뚮릺�뿀�뒿�땲�떎... �뿉�뿤�씪 �뵒�빞~~");
+		  System.out.println("사진 합성 완료");
 		 }
 		
 }

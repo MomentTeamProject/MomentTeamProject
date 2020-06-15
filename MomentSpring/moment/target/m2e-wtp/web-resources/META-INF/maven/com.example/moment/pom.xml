@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>moment</artifactId>
+	<artifactId>moment</artifactId> 
 	<name>moment</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -206,11 +206,11 @@
 			<version>1.5</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google.firebase</groupId>
-			<artifactId>firebase-admin</artifactId>
-			<version>6.7.0</version>
-		</dependency>
-<!-- 		채탱 -->
+      <groupId>org.openpnp</groupId>
+      <artifactId>opencv</artifactId>
+      <version>3.4.2-1</version>
+ 		</dependency>
+ 		<!-- 		채탱 -->
 		<dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-websocket</artifactId>
@@ -228,8 +228,18 @@
 			<artifactId>json</artifactId>
 			<version>20160810</version>
 		</dependency>
-		
-		
+
+		     <!-- 이메일 보내기 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>6.7.0</version>
+		</dependency>
 	</dependencies>
 	<repositories>
 		<!-- OJDBC 저장소 추가 -->
@@ -240,6 +250,7 @@
 	</repositories>
 	
 	
+
     <build>
         <plugins>
             <plugin>

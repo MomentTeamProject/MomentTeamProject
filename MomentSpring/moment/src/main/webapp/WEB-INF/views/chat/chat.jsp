@@ -11,26 +11,37 @@
 			margin:0;
 			padding:0;
 		}
+		body{
+			background-color: white;
+		}
 		.container{
 			width: 500px;
 			margin: 100px auto;
-			padding: 25px
+			padding: 25px;
+			color: black;
+			border-radius: 45px;
+			border: 1px solid black;
 		}
 		.container h1{
 			text-align: left;
 			padding: 5px 5px 5px 15px;
-			color: #FFBB00;
-			border-left: 3px solid #FFBB00;
+			color: black;
+			border-left: 3px solid  #ffdb00;
 			margin-bottom: 20px;
 		}
 		.chating{
-			background-color: #000;
-			width: 500px;
-			height: 500px;
+			background-color: #fff;
+			width: 457px;
+			height: 495px;
 			overflow: auto;
+			color: black;
+			margin-bottom: 26px;
+			padding: 20px;
+			border: 1px solid black;
+			border-radius: 30px;
 		}
 		.chating p{
-			color: #fff;
+			color: black;
 			text-align: left;
 		}
 		input{
@@ -91,7 +102,7 @@
 </script>
 <body>
 	<div id="container" class="container">
-		<h1>채팅</h1>
+		<h1>Chat</h1>
 		<div id="chating" class="chating">
 		</div>
 		

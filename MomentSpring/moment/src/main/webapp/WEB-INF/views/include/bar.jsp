@@ -51,8 +51,8 @@
 			</div>
 			<div class="bar-login">
 				<c:if test="${empty login_info }">
-					<a class="btn-fill">로그인</a>
-					<a class="btn-empty">회원가입</a>
+					<a class="btn-fill" href='loginuser'>로그인</a>
+					<a class="btn-empty" href='joinuser'>회원가입</a>
 				</c:if>
 			</div>
 		</div>
@@ -60,9 +60,9 @@
 			<li><a href='<c:url value="/" />' >HOME</a></li>
 			<li><a>사진</a></li>
 			<li><a>파노라마 사진</a></li>
-			<li><a>VR</a></li>
 			<li><a>문의하기</a></li>
 			<li><a>지도로 보기</a></li>
+			<li><a href='room'>채팅</a></li>
 		</ul>
 	</div>
 <script>

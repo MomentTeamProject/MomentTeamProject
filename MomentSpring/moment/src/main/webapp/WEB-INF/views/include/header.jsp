@@ -25,9 +25,9 @@
 			<li><a href='<c:url value="/" />' class="${category eq 'home' ? 'active' : '' }">HOME</a>│</li>
 			<li><a href="list.bo" class="${category eq 'bo' ? 'active' : '' }">사진</a>│</li>
 			<li><a href="list.pa" class="${category eq 'pa' ? 'active' : '' }">파노라마 사진</a>│</li>
-			<li><a href="list.vr" class="${category eq 'vr' ? 'active' : '' }">VR</a>│</li>
 			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">문의하기</a>│</li>
 			<li><a href="list.map" class="${category eq 'qa' ? 'active' : '' }">지도로 보기</a>│</li>
+			<li><a href="room" class="${category eq 'vr' ? 'active' : '' }">채팅</a>│</li>
 			<li><a id="bar-button" style="font-size: 25px; color: yellow;"><i class="fas fa-bars"></i></a></li>
 		</ul>
 	</div>

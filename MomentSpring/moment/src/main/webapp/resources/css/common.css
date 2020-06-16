@@ -1,8 +1,10 @@
 @charset "UTF-8";
 /* 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
 /* 바디부분 기본적인 사항 적용 */
+html, body { height: 100%; }
 body{
 	margin: 0 auto; text-align: center;
 	font-family: 'Jua', sans-serif;
@@ -55,9 +57,10 @@ a.btn-fill, a.btn-empty {
 	background-color:#000000;
 	border: 2px solid #ffffff;	border-radius:3px;
 	box-shadow: 1px 1px 2px #c0c0c0; 
-	color:#ffffff;
+	color:#ffffff; font-family: 'Sriracha', cursive;
 }
 
+a.btn-fill:hover { background: #fc7703; cursor: pointer; }
 
 
 ul {list-style: none; padding:0;}

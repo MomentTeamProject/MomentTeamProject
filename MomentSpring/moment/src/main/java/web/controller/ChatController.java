@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +31,8 @@ public class ChatController {
 	 * @return
 	 */
 	@RequestMapping("/room")
-	public ModelAndView room() {
+	public ModelAndView room(HttpSession session) {
+		session.setAttribute("category", "ch");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/chat/room");
 		return mv;

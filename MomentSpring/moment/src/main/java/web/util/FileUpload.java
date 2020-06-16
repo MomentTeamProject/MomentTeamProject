@@ -19,13 +19,15 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import android.common.Common;
+
 public class FileUpload {
 	public static Map<String, String> upload(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException{
 		
 		//�뵒�젆�넗由ш꼍濡� 吏��젙
-		String savePath = "C:\\Users\\SEC\\Desktop\\TeamProject\\MomentTeamProject\\MomentSpring\\moment\\src\\main\\webapp\\resources\\uploadFile";
-		
+		//String savePath = "upload";
+		String savePath = Common.IMAGE_FILE_SAVE_PATH;
 		//Map�삎�떇�쓽 String �궎媛�, String 踰⑤쪟媛믪쑝濡� 吏��젙
 		Map<String, String> fileUploadMap = new HashMap<>();
 		String encoding = "UTF-8";

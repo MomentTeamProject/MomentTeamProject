@@ -63,6 +63,7 @@
 			<li><a>문의하기</a></li>
 			<li><a>지도로 보기</a></li>
 			<li><a href='room'>채팅</a></li>
+			<li><a href='push'>알림보내기</a></li>
 		</ul>
 	</div>
 <script>

@@ -8,21 +8,23 @@
 </head>
 <body>
 <h3>푸시 보내기</h3>
-<h3>푸시 보내기</h3>
-<form action="/moment/sendPush" method="post">
-	<h1>제목</h1>
-		<input type="text" id="title" name="title"/>
-	<H1>내용</H1>
-		<input type="text" id="content" name="content"/>
-	<H1>버튼</H1>
-		<input type="submit" value="push"/>
+<h3>광주</h3>
+	<table>
+	<tr>
+		<th>제목</th>
+		<th>
+		<input type="text" id="gwangju_title" value="광주알림"/>
+		</th>
+	</tr>
+	<tr>
+		<th>내용</th>
+		<th>
+		<input type="text" id="gwangju_body" name="content" />
+		</th>	
+		<th><button onclick="gwangjufcm()" id="sendBtn">전송</button></th>
+	</tr>
+	</table>
 
-		<input type="reset" value="cancel"/>
-
-	</form>
-
-
-
-
+<script type="text/javascript" src="js/fcmtest.js"></script>
 </body>
 </html>

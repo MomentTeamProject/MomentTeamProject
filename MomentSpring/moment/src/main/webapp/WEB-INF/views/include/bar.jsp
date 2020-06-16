@@ -64,6 +64,7 @@
 			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
 			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
 			<li><a href='room' class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
+			<li><a href='push'>알림보내기</a></li>
 		</ul>
 	</div>
 <script>

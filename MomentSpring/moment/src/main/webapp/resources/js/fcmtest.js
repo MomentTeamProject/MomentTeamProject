@@ -1,18 +1,22 @@
 /**
  * 
  */
+var key = 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D';
+var keyb = 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql';
 function gwangjufcm(){	
 	  $.ajax({        
           type : 'POST',
           url : "https://fcm.googleapis.com/fcm/send",
           headers : {
-              Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+//              Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
 //               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+               Authorization : 'key=' + key
 						
                },
           contentType : 'application/json',
           dataType: 'json',
-          data: JSON.stringify({"to": "/topics/gwangju", "notification": {"title":$('#gwangju_title').val(),"body":$('#gwangju_body').val()}}),
+          data: JSON.stringify({"to": "/topics/gwangju", "notification":
+          {"title":$('#gwangju_title').val(),"body":$('#gwangju_body').val()}}),
           success : function(response) {
               console.log(response);
               alert('정상적으로 푸시 알림을 보냈습니다.')
@@ -30,13 +34,14 @@ function seoulfcm(){
 		type : 'POST',
 		url : "https://fcm.googleapis.com/fcm/send",
 		headers : {
-			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
-//               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+//			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
 			
 		},
 		contentType : 'application/json',
 		dataType: 'json',
-		data: JSON.stringify({"to": "/topics/seoul", "notification": {"title":$('#seoul_title').val(),"body":$('#seoul_body').val()}}),
+		data: JSON.stringify({"to": "/topics/seoul", "notification": 
+		{"title":$('#seoul_title').val(),"body":$('#seoul_body').val()}}),
 		success : function(response) {
 			console.log(response);
 			alert('정상적으로 푸시 알림을 보냈습니다.')
@@ -53,13 +58,14 @@ function busanfcm(){
 		type : 'POST',
 		url : "https://fcm.googleapis.com/fcm/send",
 		headers : {
-			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
-//               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+//			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
 			
 		},
 		contentType : 'application/json',
 		dataType: 'json',
-		data: JSON.stringify({"to": "/topics/busan", "notification": {"title":$('#busan_title').val(),"body":$('#busan_body').val()}}),
+		data: JSON.stringify({"to": "/topics/busan", "notification": 
+		{"title":$('#busan_title').val(),"body":$('#busan_body').val()}}),
 		success : function(response) {
 			console.log(response);
 			alert('정상적으로 푸시 알림을 보냈습니다.')
@@ -76,13 +82,14 @@ function kyungkifcm(){
 		type : 'POST',
 		url : "https://fcm.googleapis.com/fcm/send",
 		headers : {
-			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
-//               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+//			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
 			
 		},
 		contentType : 'application/json',
 		dataType: 'json',
-		data: JSON.stringify({"to": "/topics/kyungki", "notification": {"title":$('#kyungki_title').val(),"body":$('#kyungki_body').val()}}),
+		data: JSON.stringify({"to": "/topics/kyungki", "notification": 
+		{"title":$('#kyungki_title').val(),"body":$('#kyungki_body').val()}}),
 		success : function(response) {
 			console.log(response);
 			alert('정상적으로 푸시 알림을 보냈습니다.')
@@ -99,13 +106,14 @@ function kangwonfcm(){
 		type : 'POST',
 		url : "https://fcm.googleapis.com/fcm/send",
 		headers : {
-			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
-//               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+//			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
 			
 		},
 		contentType : 'application/json',
 		dataType: 'json',
-		data: JSON.stringify({"to": "/topics/kangwon", "notification": {"title":$('#kangwon_title').val(),"body":$('#kangwon_body').val()}}),
+		data: JSON.stringify({"to": "/topics/kangwon", "notification": 
+		{"title":$('#kangwon_title').val(),"body":$('#kangwon_body').val()}}),
 		success : function(response) {
 			console.log(response);
 			alert('정상적으로 푸시 알림을 보냈습니다.')
@@ -122,13 +130,14 @@ function chungchungfcm(){
 		type : 'POST',
 		url : "https://fcm.googleapis.com/fcm/send",
 		headers : {
-			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
-//               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+//			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
 			
 		},
 		contentType : 'application/json',
 		dataType: 'json',
-		data: JSON.stringify({"to": "/topics/chungchung", "notification": {"title":$('#chungchung_title').val(),"body":$('#chungchung_body').val()}}),
+		data: JSON.stringify({"to": "/topics/chungchung", "notification": 
+		{"title":$('#chungchung_title').val(),"body":$('#chungchung_body').val()}}),
 		success : function(response) {
 			console.log(response);
 			alert('정상적으로 푸시 알림을 보냈습니다.')
@@ -140,18 +149,19 @@ function chungchungfcm(){
 	});
 	
 }
-function junra(){	
+function junrafcm(){	
 	$.ajax({        
 		type : 'POST',
 		url : "https://fcm.googleapis.com/fcm/send",
 		headers : {
-			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
-//               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+//			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
 			
 		},
 		contentType : 'application/json',
 		dataType: 'json',
-		data: JSON.stringify({"to": "/topics/junra", "notification": {"title":$('#junra_title').val(),"body":$('#junra_body').val()}}),
+		data: JSON.stringify({"to": "/topics/junra", "notification": 
+		{"title":$('#junra_title').val(),"body":$('#junra_body').val()}}),
 		success : function(response) {
 			console.log(response);
 			alert('정상적으로 푸시 알림을 보냈습니다.')
@@ -168,13 +178,14 @@ function kyungsangfcm(){
 		type : 'POST',
 		url : "https://fcm.googleapis.com/fcm/send",
 		headers : {
-			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
-//               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+//			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
 			
 		},
 		contentType : 'application/json',
 		dataType: 'json',
-		data: JSON.stringify({"to": "/topics/kyungsang", "notification": {"title":$('#kyungsang_title').val(),"body":$('#kyungsang_body').val()}}),
+		data: JSON.stringify({"to": "/topics/kyungsang", "notification": 
+		{"title":$('#kyungsang_title').val(),"body":$('#kyungsang_body').val()}}),
 		success : function(response) {
 			console.log(response);
 			alert('정상적으로 푸시 알림을 보냈습니다.')
@@ -191,13 +202,14 @@ function jejufcm(){
 		type : 'POST',
 		url : "https://fcm.googleapis.com/fcm/send",
 		headers : {
-			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
-//               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
+//			Authorization : 'key=' + 'AAAAKY1g2qo:APA91bFp38U2rJoXynapLxIT7BzkqD1-pWNtpaVCTIJOde7RIkVmxlX750B27qkoI5fzdZ4s5oP0CcGjwv_vqetA6NYTSYDzs_i9F0sCsW6GGYPdhVlmqhQjddBD67t27uck934R6sql'
+               Authorization : 'key=' + 'AAAAIPQBAY8:APA91bGsq-K5aiYyEvRYE7CsnPmLj9g5umPP1t0DRICTUL_3Wft6WB8YLFUdyMGPBqkKQXZRBiqWjkEAAFN6qbpxoIX84vvGlzOOjAoYAE9Xvuqo7Z4mpVMt1JCfnyNTIg2tlZNBtg-D'
 			
 		},
 		contentType : 'application/json',
 		dataType: 'json',
-		data: JSON.stringify({"to": "/topics/jeju", "notification": {"title":$('#jeju_title').val(),"body":$('#jeju_body').val()}}),
+		data: JSON.stringify({"to": "/topics/jeju", "notification": 
+		{"title":$('#jeju_title').val(),"body":$('#jeju_body').val()}}),
 		success : function(response) {
 			console.log(response);
 			alert('정상적으로 푸시 알림을 보냈습니다.')

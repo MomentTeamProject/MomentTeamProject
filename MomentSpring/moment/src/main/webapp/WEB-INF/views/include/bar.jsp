@@ -55,6 +55,9 @@
 					<a class="btn-fill" href='loginuser'>LOGIN</a>
 					<a class="btn-empty" href='joinuser'>JOIN US</a>
 				</c:if>
+				<c:if test="${!empty login_info }">
+					<a class="btn-fill" onclick="go_logout()">LOGOUT</a>
+				</c:if>
 			</div>
 		</div>
 		<ul class="bar-menu">
@@ -64,10 +67,22 @@
 			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
 			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
 			<li><a href='room' class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
-			<li><a href='push'>알림보내기</a></li>
+			<li><a href='push'>PushService</a></li>
 		</ul>
 	</div>
 <script>
+function go_logout(){
+	$.ajax({
+		type:'post',
+		url: 'weblogout',
+		success: function(){
+			location.href="http://localhost/moment";
+		},error: function(req, text){
+			alert(text+": "+req.status);
+		} 
+	});
+}
+
 	$('#bar-button').on('click', function(){
 		var scroll = window.scrollY || document.documentElement.scrollTop;
 		$('#bar-wrap').css('display','block');

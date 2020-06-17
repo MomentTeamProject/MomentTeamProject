@@ -53,7 +53,7 @@
 			<div class="bar-login">
 				<c:if test="${empty login_info }">
 					<a class="btn-fill" href='loginuser'>LOGIN</a>
-					<a class="btn-empty" href='joinuser'>JOIN US</a>
+					<a class="btn-fill" href='joinuser'>JOIN US</a>
 				</c:if>
 				<c:if test="${!empty login_info }">
 					<a class="btn-fill" onclick="go_logout()">LOGOUT</a>

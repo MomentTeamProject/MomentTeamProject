@@ -137,9 +137,12 @@ ul { list-style: none; padding: 0; }
 #list-top div { width: 100%; height: 32px; }
 #list-top ul:first-child { float: left; }
 #list-top ul:last-child { float: right; }
+#btn { height: 280px;}
 .btn-fill { color: white; background-color: black; font-style: italic; font-family: 'Sriracha', cursive; margin-left: 3px; }
 
 select { font-size: 1em; width: 100px; height: 30px; font-family: 'Sriracha', cursive; padding: 0 0 1px 3px; }
+
+.pictureContent { box-sizing: content-box; }
 </style>
 </head>
 
@@ -182,20 +185,24 @@ select { font-size: 1em; width: 100px; height: 30px; font-family: 'Sriracha', cu
 </div>
 
 <div id="content" style="margin: 0 auto;">
-<c:forEach items="${page.list}" var="list">
-<div class="pictureBox" onclick="detail(${list.b_no})">
-	<figure class="snip1368">
-		<img src="background/${list.b_imgpath}" class="pictures" alt="sample30"/>
-		<h5 style="font-family: 'Gamja Flower', cursive;">${list.b_title}</h5>
-		<figcaption>
-    <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-      <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-      <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-    </div>
-  </figcaption>
-	</figure>
-</div>
-</c:forEach>
+	<div id="contentBox">
+		<div class="pictureContent">
+			<c:forEach items="${page.list}" var="list">
+			<div class="pictureBox" onclick="detail(${list.b_no})">
+				<figure class="snip1368">
+					<img src="background/${list.b_imgpath}" class="pictures" alt="sample30"/>
+					<h5 style="font-family: 'Gamja Flower', cursive;">${list.b_title}</h5>
+					<figcaption>
+			    <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
+			      <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+			      <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
+			    </div>
+			  </figcaption>
+				</figure>
+			</div>
+			</c:forEach>
+		</div>
+	</div>
 <div id="btn">
 	<a type="button" id="confirm" class="btn-fill">MORE</a>
 </div>
@@ -228,14 +235,26 @@ $(".hover").mouseleave(
 //더보기 버튼클릭시 이벤트
 $('#confirm').on('click', function() {
 	console.log('더보기눌림')
-	var lastPicture = $('#content>div:last-child').index(); 
-	console.log(lastPicture);
- 	lastPicture.append('<div class="testDIV" style="color:white;">test</div>');
+
+	//10개의 사진 img 태그를 감싼 각각의 div 태그 10개를 감싼 하나의 div (pictureContent) 의 마지막 div 
+	var lastPC = $('#contentBox').last();
+ 	lastPC.append('<div class="testDIV" style="color:white; width: 50px; height: 548px;">test</div>');
+
+ 	//눌렀을때 새로운값이 들어오면 바디의 높이 값이 더 증가하도록 #content의 높이를 늘려줌
+ 	var bodyH = $('#content').css('height');
+ 	var addPCH = lastPC.css('height');
+ 	console.log(bodyH);
+ 	console.log(addPCH);
+ 	bodyH += addPCH;
+	$ajax.({
+		type:
+		
+	});	
 });
 
 //스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트
 window.onscroll = function(){
-		console.log('js 흐름탐');
+// 		console.log('js 흐름탐');
 		
 		var scroll = window.scrollY + $(window).height();
 		var endY = document.body.scrollHeight;

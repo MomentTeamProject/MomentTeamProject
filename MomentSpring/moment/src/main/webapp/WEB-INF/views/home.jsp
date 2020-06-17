@@ -143,13 +143,13 @@ $(".option").click(function(){
 
 //스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트
 window.onscroll = function(){
-		console.log('js 흐름탐');
+// 		console.log('js 흐름탐');
 		
 		var scroll = window.scrollY + $(window).height();
 		var endY = document.body.scrollHeight - 40;
 		
-		console.log(scroll);
-		console.log(endY);
+// 		console.log(scroll);
+// 		console.log(endY);
 		
 		//content 영역의 최상위 위치 값
 		var scrollTop = $(this).scrollTop();

@@ -31,10 +31,8 @@ body{ margin: 0 auto; }
 .footer-menu li a:hover { color: #fc7703; cursor: pointer; }
 .footer-menu1 { width: 100%; height: 30px; }
 .footer-menu2 { width: 100%; height: 50px; }
-.push { height: 50px; }
 .copyright { font-size: 12px !important; text-align: left !important; padding-left: 10px !important; color: #b5b1b1 !important; }
 </style>
-<div class="push"></div>
 <footer id="footer-wrap">
 		<div class="footer-menu-box">
 			<div class="footer-menu1">

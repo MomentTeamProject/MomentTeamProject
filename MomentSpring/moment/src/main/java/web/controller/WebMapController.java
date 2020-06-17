@@ -35,9 +35,8 @@ public class WebMapController {
 		map.put("b_longitude", b_longitude);		
 		
 		//System.out.println(map.toString());
-	    JSONArray data = (service.nearmarker(map));
-		
-		System.out.println("jsonString:" + data);
+	    JSONArray data = (service.nearmarker(map));	
+	
 		
 		return data;
 	

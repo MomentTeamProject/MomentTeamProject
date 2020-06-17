@@ -31,6 +31,7 @@ public class MapDAO implements MapService {
 			data.put("b_longitude", vo.b_longitude);
 			data.put("b_imgpath", vo.b_imgpath);
 			data.put("b_title", vo.b_title);
+			data.put("b_no", vo.b_no);
 			datas.add(data);
 			
 			System.out.println(data.toString());

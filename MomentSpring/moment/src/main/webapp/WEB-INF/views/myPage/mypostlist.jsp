@@ -12,6 +12,7 @@
 </head>
 <style>
 
+body {font-family: 'Do Hyeon', sans-serif;}
 .top {margin :0; padding-bottom:0;}
 .grid li div:nth-child(4) { font-size:80%; height:20px; }
 select { width: 200px; color:white; background-color: black;
@@ -24,38 +25,43 @@ background: url('img/arrow.png') no-repeat 99% 50%;
 	
 option { width: 200px; color:white; background-color: black;}	
 input {background-color: black; color:white; border: 1.5px solid white; padding: .4em .5em;
-	text-align: center;	
 	background-color:#000000;
 	border: 1.5px solid white;	border-radius:3px;
 	box-shadow: 1px 1px 2px #c0c0c0; 
 	color:#ffffff;
-	}
 	
+	}
+
+
+
 </style>
 <body>
+<nav id="topMenu">
+     <ul>
+        <li><a class="menuLink" href="mypostlist.moment">내가 쓴 글 </a></li>
+        <li><a class="menuLink" href="myddabong.moment"> 좋 아 요  </a></li>
+        <li><a class="menuLink" href="myfavorite.moment">즐 겨 찾 기</a></li>                     
+     </ul>
+</nav>
 
-<!-- 임시버튼  -->
-<div class="top" style="float:left; padding-top:150px; ">
-	<a class="btn-fill" href="mypostlist.moment"> 내글보기 </a>
-	<a class="btn-fill" href="myddabong.moment"> 좋아요 </a>
-	<a class="btn-fill" href="myfavorite.moment"> 즐겨찾기 </a>
-</div>
 
-<div class="contentbody" style="border:soild 1px white;">
+<div class="contentbody">
 	
-	<div class="top" style="padding-top:150px;"> 내가 쓴 게시글 : ${page.totalList} 개  </div>	
-	<div class="top">	
-		<input type="checkbox" id="allCheck" style="float:left;">
-		<label for="allCheck" style="float:left;">모두선택</label>
-		<div style="padding-bottom:50px;" >
-		<a class="btn-fill" id="deleteBtn" style="float:right;">삭제</a>
-		<a class="btn-fill" style="float:right;" >글쓰기</a>
+	
+	<div class="top">
+			
+		<div style=" padding-top:50px;"> 총 게시글 ${page.totalList}개 </div>	
+		<div style="float:right; padding-bottom: 10px;">
+			<input type="checkbox" id="allCheck" style="float:left;">
+			<label for="allCheck" >모두선택</label>		
+			<a class="btn-fill" id="deleteBtn" style="padding-right:10px;">삭제</a>
+			<a class="btn-fill" style="" >글쓰기</a>
 		</div>
 	</div>
-	
+		
 	<!-- 게시글 리스트  -->
 	<c:if test="${empty page.list}">
-		<a style="color:gray;">작성하신 게시글이 없습니다</a>
+		<a style="color:gray;">&nbsp;&nbsp;작성하신 게시글이 없습니다</a>
 	</c:if>
 	<c:if test="${!empty page.list}">
 		<div id="data-list" style="clear:both;" >
@@ -63,7 +69,7 @@ input {background-color: black; color:white; border: 1.5px solid white; padding:
 				<c:forEach items="${page.list}" var="vo">	
 						<li>
 							<div><input type="checkbox" name="delete" class="delete" style="float:left;" data-listno="${vo.b_no}"></div>					
-							<div style="border: 1px soild gray"><a href="mylist_detail.moment?id=${vo.b_no}" ><img src="img/${vo.b_imgpath}" style="width:98%; height:100%;"></a></div>			
+							<div style="border: 1px soild gray"><a href="mylist_detail.moment?id=${vo.b_no}" ><img src="img/background/${vo.b_imgpath}" style="width:98%; height:100%;"></a></div>			
 							<div><a href="mylist_detail.moment?id=${vo.b_no}">${vo.b_title}</a></div>	
 							<div><img src="img/eye.png" style="color:white; width:15px; padding-bottom: 2px;">${vo.b_readcnt} / <img src="img/heart.png" style="padding-bottom: 2px; font-size:80%; width:15px">${vo.b_ddabong}
 								&nbsp;&nbsp;&nbsp;${vo.b_writedate}
@@ -73,23 +79,27 @@ input {background-color: black; color:white; border: 1.5px solid white; padding:
 			</ul>	
 		</div>
 	</c:if>
+
 	
+
 <div class='btnSet' class="top">
 		<jsp:include page="/WEB-INF/views/include/page.jsp" />
 </div>	
+
 <form method="post" action="mypostlist.moment">
-		<input type="hidden" name="curPage" value="1"/>
-	  	<div class="top" style="padding-top: 60px; background-color: black; float:left;">
+	<input type="hidden" name="curPage" value="1"/>	
+	  	<div class="top" style="background-color: black; float:right; padding-top: 30px">
 			<select row="2" name="search" class="w-px80" >
 				<option value="all" ${page.search eq 'all' ? 'selected' : ''} >제목+내용    </option>
 				<option value="title" ${page.search eq 'title' ? 'selected' : ''}>제목</option>
 				<option value="content" ${page.search eq 'content' ? 'selected' : ''}>내용</option>				
 			</select>
-			<input type="text" name='keyword' class="btn-fill" value="${page.keyword}"/>
+			<input type="text" style="padding-bottom:1px; margin: 1px;" name='keyword' class="btn-fill" value="${page.keyword}"/>
 			<a class="btn-fill" style="color: yellow;"onclick="$('form').submit()">SEARCH</a>			
-		</div>	
-	</form> 
-</div>
+	    </div>	
+</form> 
+	
+</div>	
 <script type="text/javascript">
 
 /* 모두 선택 */

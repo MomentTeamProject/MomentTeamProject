@@ -3,13 +3,21 @@ package web.map;
 public class MapVO {
 
 	double b_latitude, b_longitude;
-	String b_imgpath,b_title;
+	String b_imgpath,b_title ;
+	int b_no;
 	
 	
 	
 	
 	
 	
+	
+	public int getB_no() {
+		return b_no;
+	}
+	public void setB_no(int b_no) {
+		this.b_no = b_no;
+	}
 	public String getB_title() {
 		return b_title;
 	}

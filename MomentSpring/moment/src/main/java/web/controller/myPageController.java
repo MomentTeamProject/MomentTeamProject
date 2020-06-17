@@ -29,12 +29,13 @@ public class myPageController {
 	public String mylist(@RequestParam(defaultValue = "1") int curPage,	String userid, String search, String keyword,
 															Model model, HttpSession session) {
 
-		userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
+		//userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
+		userid="zxc@naver.com";
 		page.setUserid(userid);
 		page.setCurPage(curPage);		
 		page.setSearch(search);
 		page.setKeyword(keyword);
-		
+		System.out.println("컨트롤 : " + userid + ",  curPage: " + curPage + ", keyword: " +keyword);
 		model.addAttribute("page",service.myList(page));		
 		return "/myPage/mypostlist";
 		
@@ -46,7 +47,8 @@ public class myPageController {
 	public String myDdabong(@RequestParam(defaultValue="1") int curPage, String userid, Model model, 
 												HttpSession session, String search, String keyword) {
 		
-		userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
+		//userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
+		userid="zxc@naver.com";
 		page.setUserid(userid);
 		page.setCurPage(curPage);	
 
@@ -66,7 +68,8 @@ public class myPageController {
 	public String myFavorite(@RequestParam(defaultValue="1") int curPage, String userid, Model model, 
 												HttpSession session, String search, String keyword) {
 		
-		userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
+		//userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
+		userid="zxc@naver.com";
 		page.setUserid(userid);
 		page.setCurPage(curPage);
 		page.setSearch(search);

@@ -6,17 +6,17 @@
 
 	<sql id="search_where">
 		<if test="search=='content' ">
-			and b_coment like '%' || #{keyword} || '%'
+			b_coment like '%' || #{keyword} || '%'
 		</if>
 		<if test="search=='title' ">
-			and b_title like '%' || #{keyword} || '%'
+			b_title like '%' || #{keyword} || '%'
 		</if>
 		<if test="search=='writer'">	
-				and u_nick like '%' || #{keyword} ||'%'
+			u_nick like '%' || #{keyword} ||'%'
 		
 		</if>
 		<if test="search=='all'">
-			and b_title like '%' || #{keyword} || '%'
+			b_title like '%' || #{keyword} || '%'
 			or b_coment like '%' || #{keyword} || '%'		
 		</if>
 	</sql>
@@ -26,15 +26,25 @@
 
 
 	<select id="total" resultType="Integer">
-		select count(*) from m_board where b_userid =#{userid} <if test="keyword != null "><include refid="search_where"/></if>
+	
+	    select count(*)  from (select * from m_board where b_userid =#{userid}	)          
+		<if test="keyword != null">where <include refid="search_where"/></if>
 	</select>
 
 	<select id="mylist" resultType="web.myPage.MyPageVO">
-		SELECT b.*
-		FROM (select rownum no, b.* from (select * from m_board where b_userid = #{userid} 
-		<if test="keyword != null "><include refid="search_where"/></if> ) b order by no desc) b
-		where no between #{beginList} and #{endList}
-	</select>
+<!-- 		select * from ( SELECT rownum no, b.*
+						FROM (select  b.* from (select * from m_board where b_userid = #{userid} 
+			<if test="keyword != null">where <include refid="search_where"/></if>) b order by no desc) b
+		where no between #{beginList} and #{endList} -->
+		
+		select * from (
+        select rownum no, b.* 
+        from (select * from m_board where b_userid =#{userid} 	)b
+       <if test="keyword != null">where <include refid="search_where"/></if>
+        ) where no between #{beginList} and #{endList}
+		
+		
+	</select>                
 
 	
 	<select id="myddabongtotal" resultType="Integer">

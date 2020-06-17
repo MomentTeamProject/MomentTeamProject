@@ -7,8 +7,8 @@
 	SELECT b.*, u_nick b_nick, u_profileimg b_profileimg 
 	FROM m_board b, m_user u 
 	WHERE b.b_userid = u.u_userid 
-	AND b_latitude - 0.008 < #{b_latitude} AND b_latitude + 0.008 > #{b_latitude} 
-	AND b_longitude - 0.008 < #{b_longitude} AND b_longitude + 0.008 > #{b_longitude}
+	AND b_latitude - 0.016 < #{b_latitude} AND b_latitude + 0.016 > #{b_latitude} 
+	AND b_longitude - 0.016 < #{b_longitude} AND b_longitude + 0.016 > #{b_longitude}
 	]]> 
 	</select>
 </mapper>

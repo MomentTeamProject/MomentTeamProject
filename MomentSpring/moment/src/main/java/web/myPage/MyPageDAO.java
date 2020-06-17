@@ -13,8 +13,10 @@ public class MyPageDAO implements MyPageService {
 	@Override
 	public MyPagePage myList(MyPagePage page) {
 
-		page.setTotalList((Integer)sql.selectOne("mypage.mapper.total", page));		
+		page.setTotalList((Integer)sql.selectOne("mypage.mapper.total", page));	
+		System.out.println("총 게시글 수 : totallist: "+ page.getTotalList());	
 		page.setList(sql.selectList("mypage.mapper.mylist",page));
+		System.out.println(page.getEndList());	
 		return page;
 	}
 
@@ -22,12 +24,12 @@ public class MyPageDAO implements MyPageService {
 	@Override
 	public MyPagePage myDdabong(MyPagePage page) {	
 	
-		System.out.println("dao 로 들어온 curPage "+ page.getCurPage());	
-		System.out.println("dao 로 들어온 userid "+ page.getUserid());	
+		//System.out.println("dao 로 들어온 curPage "+ page.getCurPage());	
+		//System.out.println("dao 로 들어온 userid "+ page.getUserid());	
 		page.setTotalList((Integer)sql.selectOne("mypage.mapper.myddabongtotal", page));		
-		System.out.println("dao 좋아요 총 게시글 수 : totallist: "+ page.getTotalList());	
+		//System.out.println("dao 좋아요 총 게시글 수 : totallist: "+ page.getTotalList());	
 		page.setList(sql.selectList("mypage.mapper.myddabong",page));
-		System.out.println("dao 좋아요 총 게시글 수 : totallist: "+ page.getTotalList());	
+
 
 		return page;
 	}

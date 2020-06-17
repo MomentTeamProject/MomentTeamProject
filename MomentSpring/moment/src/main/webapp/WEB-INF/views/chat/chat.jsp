@@ -157,7 +157,7 @@
 			<table class="inputTable">
 				<tr>
 					<th style="width:65px;">사용자명</th>
-					<th><input type="text" name="userName" id="userName"></th>
+					<th><input type="text" name="userName" style="font-size: 20px; font-weight: bolder"id="userName" value="${login_info.u_nick}" ></th>
 					<th><button onclick="chatName()" id="startBtn" style="width:90px;">이름 등록</button></th>
 				</tr>
 			</table>
@@ -166,7 +166,7 @@
 			<table class="inputTable">
 				<tr>
 					<th style="width:65px;">메시지</th>
-					<th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
+					<th><input id="chatting"  style="font-size: 20px;" placeholder="보내실 메시지를 입력하세요."></th>
 					<th><button onclick="send()" id="sendBtn" style="width:90px;">보내기</button></th>
 				</tr>
 			</table>

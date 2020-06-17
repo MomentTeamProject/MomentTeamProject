@@ -42,8 +42,8 @@ function go_login(){
 		data: { u_userid:$('#u_userid').val(), u_userpw:$('#u_userpw').val()},
 		success: function(data){
 			if( data ){ 
+// 				alert( '${login_info.u_name} 님 환영합니다!'  );
 				location.href="http://localhost/moment";
-				alert( $('login_info.u_name') +'님 환영합니다!' );
 			} else {
 				alert('이메일 인증하지 않았습니다. 인증해주세요');
 			}

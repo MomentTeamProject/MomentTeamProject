@@ -8,46 +8,60 @@ body{ margin: 0 auto; }
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	height: 100px;
+	height: 180px;
 	background-color: #151515;
 	margin-top: 30px;
-	padding: 25px 0 60px 0;
+	padding: 0;
 	font-family: 'Dosis', sans-serif;
 }
 .footer-menu-box {
-	max-width: 600px;
+	max-width: 500px;
 	width: 100%;
 	margin: 0 auto;
-	height: 250px;
+	height: 150px;
 }
 .footer-menu li{
 	float: left;
-	padding: 0 20px;
+	padding: 0 10px;
 	color: #b5b1b1 !important;
 }
 .footer-menu li a{
 	color: #b5b1b1 !important;
 }
 .footer-menu li a:hover { color: #fc7703; cursor: pointer; }
-.footer-menu2 { width: 100%; height: 30px; }
+.footer-menu1 { width: 100%; height: 30px; }
+.footer-menu2 { width: 100%; height: 50px; }
 .push { height: 50px; }
+.copyright { font-size: 12px !important; text-align: left !important; padding-left: 10px !important; color: #b5b1b1 !important; }
 </style>
 <div class="push"></div>
 <footer id="footer-wrap">
 		<div class="footer-menu-box">
-			<div class="footer-menu2">
+			<div class="footer-menu1">
 				<ul class="footer-menu">
-					<li><a href="">POST</a></li>
-					<li><a href="">PANORAMA</a></li>
-					<li><a href="#" >VR</a></li>
-					<li><a href="#" >QnA</a></li>
-					<li><a href="#" >MAP</a></li>
+					<li><a href="list.bo">POST</a></li>
+					<li style="font-weight: bold;">|</li>
+					<li><a href="list.pa">PANORAMA</a></li>
+					<li style="font-weight: bold;">|</li>
+					<li><a href="list.qa" >QnA</a></li>
+					<li style="font-weight: bold;">|</li>
+					<li><a href="list.map" >MAP</a></li>
+					<li style="font-weight: bold;">|</li>
+					<li><a href="room" >CHAT</a></li>
 				</ul>
 			</div>
 			<div class="footer-menu2">
 				<ul class="footer-menu">
-					<li>test1</li>
-					<li>test2</li>
+					<li style="font-weight: bold;">Team  Moment  Developers</li>
+				</ul><br>
+				<ul class="footer-menu">
+					<li>Chihyeon GOD</li>
+					<li>Minsaem Jung</li>
+					<li>Donghui Im</li>
+					<li>Dahun Han</li>
+				</ul><br>
+				<ul>
+					<li class="copyright">COPYRIGHT ⓒ 2020 HANUL VOCATIONAL TRAINING INSTITUTE.ALL RIGHT RESERVED</li>
 				</ul>
 			</div>
 		</div>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,9 +162,11 @@
 				tag += "<tr>"+
 							"<td class='num'>"+(idx+1)+"</td>"+
 							"<td class='room'>"+ rn +"</td>"+
-							"<td class='go'><button type='button' onclick='goRoom(\""+roomNumber+"\", \""+rn+"\")'>참여</button></td>" +
-							"<td class='de'><button type='button' id='deleteRoom'  onclick='deleteRoom(\""+idx+"\")'>삭제</button></td>" +
-						"</tr>";	
+							"<td class='go'><button type='button' onclick='goRoom(\""+roomNumber+"\", \""+rn+"\")'>참여</button></td>";
+						if(${login_info.u_admin eq 'M'}){
+							tag += "<td class='de'><button type='button' id='deleteRoom'  onclick='deleteRoom(\""+idx+"\")'>삭제</button></td>";
+							}
+						tag += "</tr>";	
 			});
 			$("#roomList").empty().append(tag);
 		}

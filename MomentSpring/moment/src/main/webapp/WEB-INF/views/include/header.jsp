@@ -35,6 +35,9 @@
 			<li style="font-weight: bold;">│</li>
 			<li><a href="room" class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
 			<li style="font-weight: bold;">│</li>
+			<c:if test="${login_info.u_admin eq 'M' }">
+			<li><a href='push'>PushService</a></li>
+			</c:if>			
 			<li><a id="bar-button" style="font-size: 25px; color: #fc7703;"><i class="fas fa-bars"></i></a></li>
 		</ul>
 	</div>

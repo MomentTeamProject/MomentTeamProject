@@ -16,7 +16,7 @@
 	width: 500px; height: 100%; background-color: #1b1b1b;
 	display: none;
 }
-.bar-menu { float: left; margin: 30px 0 0 30px; }
+ .bar-menu { margin: 55px 0 0 30px; } 
 .bar-menu li { font-size: 22px; margin-top: 10px; text-align: left; }
 .bar-menu li a { color: white; font-family: 'Sriracha', cursive; } 
 .bar-menu li a:hover, .bar-menu li a.active { color: #fc7703; cursor: pointer; }
@@ -56,6 +56,7 @@
 					<a class="btn-fill" href='joinuser'>JOIN US</a>
 				</c:if>
 				<c:if test="${!empty login_info }">
+					<h3>${login_info.u_name}</h3>
 					<a class="btn-fill" onclick="go_logout()">LOGOUT</a>
 				</c:if>
 			</div>
@@ -67,7 +68,9 @@
 			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
 			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
 			<li><a href='room' class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
+			<c:if test="${login_info.u_admin eq 'M' }">
 			<li><a href='push'>PushService</a></li>
+			</c:if>
 		</ul>
 	</div>
 <script>

@@ -11,35 +11,91 @@
 			margin:0;
 			padding:0;
 		}
+		body{
+		background-color: #f56437fa;
+		}
 		.container{
-			width: 500px;
-			margin: 100px auto;
-			padding: 25px
+		position: relative;
+		z-index:1;
+			width: 550px;
+			margin: 130px auto;
+			border-radius: 40px;
+			background-color: #00000099;
+			color: black;
+			padding: 18px;
+			    box-shadow: 0 0 20px 0 rgba(5, 5, 5, 0.56), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+		}
+		.container1{
+			background: #fffffffc;
+			border-radius: 40px;
+			padding: 20px 20px 10px 20px;
+			 margin-top: 22px;
+			
 		}
 		.container h1{
 			text-align: left;
 			padding: 5px 5px 5px 15px;
-			color: #FFBB00;
-			border-left: 3px solid #FFBB00;
+			border-left: 3px solid #ff6032;
 			margin-bottom: 20px;
+			margin-top: 20px;
 		}
 		.chating{
-			background-color: #000;
-			width: 500px;
+/* 			background-color: #fff; */
+/* 			width: 457px; */
+/* 			height: 495px; */
+/* 			overflow: auto; */
+/* 			color: black; */
+/* 			margin-bottom: 26px; */
+/* 			padding: 20px; */
+/* 			border: 1px solid black; */
+/* 			border-radius: 30px; */
+				width: 500px;
 			height: 500px;
 			overflow: auto;
+			
+			border: 1px solid black;
 		}
 		.chating p{
-			color: #fff;
+			margin-left:10px;
+			color: black;
 			text-align: left;
+			font-size: larger;
 		}
 		input{
 			width: 330px;
 			height: 25px;
+			font-family: "Roboto", sans-serif;
+  			outline: 0;
+ 			background: #dddddd;
+			border: 0;
+			padding: 20px;
+ 			box-sizing: border-box;
+ 			font-size: 14px;
+  			border-radius:7px;
+		}
+		#yourName{
+					margin: 15px 10px 15px 0;
+		
 		}
 		#yourMsg{
 			display: none;
+			margin: 10px 10px 10px 0;
+					}
+		button{
+			background-color: #fff;
+			margin: 3px;
+  			text-transform: uppercase;
+  			outline: 0;
+  			background: #fb5f2e;
+  			width: 88%;
+  			border: 0;
+  			border-radius:23px;
+  			padding: 10px;
+  			color: #FFFFFF;
+  			font-size: 14px;
+  			cursor: pointer;
 		}
+					
 	</style>
 </head>
 
@@ -91,27 +147,30 @@
 </script>
 <body>
 	<div id="container" class="container">
-		<h1>채팅</h1>
+	<div class="container1">
+	
+		<h1>Chat</h1>
 		<div id="chating" class="chating">
 		</div>
 		
 		<div id="yourName">
 			<table class="inputTable">
 				<tr>
-					<th>사용자명</th>
+					<th style="width:65px;">사용자명</th>
 					<th><input type="text" name="userName" id="userName"></th>
-					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
+					<th><button onclick="chatName()" id="startBtn" style="width:90px;">이름 등록</button></th>
 				</tr>
 			</table>
 		</div>
 		<div id="yourMsg">
 			<table class="inputTable">
 				<tr>
-					<th>메시지</th>
+					<th style="width:65px;">메시지</th>
 					<th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
-					<th><button onclick="send()" id="sendBtn">보내기</button></th>
+					<th><button onclick="send()" id="sendBtn" style="width:90px;">보내기</button></th>
 				</tr>
 			</table>
+		</div>
 		</div>
 	</div>
 </body>

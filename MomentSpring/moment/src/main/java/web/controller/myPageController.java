@@ -30,7 +30,7 @@ public class myPageController {
 															Model model, HttpSession session) {
 
 		//userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
-		userid="zxc@naver.com";
+		userid="admin@gmail.com";
 		page.setUserid(userid);
 		page.setCurPage(curPage);		
 		page.setSearch(search);
@@ -48,7 +48,7 @@ public class myPageController {
 												HttpSession session, String search, String keyword) {
 		
 		//userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
-		userid="zxc@naver.com";
+		userid="admin@gmail.com";
 		page.setUserid(userid);
 		page.setCurPage(curPage);	
 
@@ -69,7 +69,7 @@ public class myPageController {
 												HttpSession session, String search, String keyword) {
 		
 		//userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();
-		userid="zxc@naver.com";
+		userid="admin@gmail.com";
 		page.setUserid(userid);
 		page.setCurPage(curPage);
 		page.setSearch(search);

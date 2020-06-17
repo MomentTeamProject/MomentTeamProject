@@ -81,7 +81,7 @@ public class WebUserController {
 	}
 	
 	//로그아웃
-		@ResponseBody @RequestMapping("/userlogout")
+		@ResponseBody @RequestMapping("/weblogout")
 		public void logout(HttpSession session) {
 			session.removeAttribute("login_info");
 		}

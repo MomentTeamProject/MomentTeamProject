@@ -13,19 +13,24 @@ async defer></script>
 
 
 <style>
-	#map_ma {margin: 0 auto; width:1250px; height:700px; clear:both; border:solid 2px gray;}
-	#autocomplete {width:500px; height: 40px;  border-radius : 5px; box-shadow: 1px 1px 2px gray; padding:0 15px; }
-	#locationField {padding: 10px;  }
-	#title {width: 1237px; margin: 0 auto; color:white; padding-top:100px;font-size:30px; border-bottom : 1px solid gray;}
-	
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+#map_ma {margin: 0 auto; width:1250px; height:700px; clear:both; border:solid 2px black; box-shadow: 1px 1px 2px black;}
+#autocomplete {width:500px; height: 40px; border: 1px solid black; border-radius :15px; box-shadow: 1px 1px 2px black; padding:0 15px; }
+#locationField {padding: 40px 20px 10px;  }
+#title {width: 1237px; margin: 0 auto; color:white; padding-top:100px;font-size:30px; border-bottom : 1px solid gray;}
+p {float: left; font-family: 'Suez One', serif; font-size: 38px; padding-left: 60px;}
 
- 	#infoimg {width:120px; height:80px;  } 	
-	#infocon {width :120px; margin: 0 ; padding: 2px 0 0 0; }    
-	#infotitle { width :120px; text-overflow: ellipsis; white-space: nowrap;  
-	display: block; overflow: hidden; font-size:90%; /* 글줄임 */
-	font-weight: bolder;  text-align: center;} 
-	#footer-wrap { display: none; }
-	.push { display: none; }
+
+/* 지도 css */
+#infoimg {width:120px; height:80px;  } 	
+#infocon {width :120px; margin: 0 ; padding: 2px 0 0 0; }    
+#infotitle { width :120px; text-overflow: ellipsis; white-space: nowrap;  
+display: block; overflow: hidden; font-size:90%; /* 글줄임 */
+font-weight: bolder;  text-align: center;} 
+#footer-wrap { display: none; }
+.push { display: none; }
+
+
 
 </style>
 
@@ -33,16 +38,16 @@ async defer></script>
 <body>
 
 
-<div id ="title"><P style="float: left;"> 지도로 검색</P> </div>
+<div id ="title"><P > Search by Map.. </P> </div>
 <div style="padding-top:10px; height: 1000px; background-color: #f56437fa;">
+	
 	 <!-- 주소검색  -->
 	<div id="locationField">
 	  <input id="autocomplete" placeholder="찾고 싶은 지역을 검색하세요" type="text">
 	</div>
 	 
 	<input type="hidden" class="field" id="lat" />
-	<input type="hidden" class="field"  id="lng" />
-	
+	<input type="hidden" class="field"  id="lng" />	
 	
 	<!-- 지도  -->
 	<div id="map_ma" style="color:black;"></div> 
@@ -180,8 +185,8 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 	                });	                
 
 	                var img = "<img id='infoimg' src='img/background/"+data[i].b_imgpath+"'>"
-	                +"<div id='infocon'><a id='infotitle'>"+data[i].b_title+"&nbsp;&nbsp;<img style='width:10%; padding-bottom:1px' src='img/background/heart.png'>"
-	                +data[i].b_ddabong+"</a><a href='' style='color:black;text-decoration: underline; font-size:70%'> 글보러 가기≫≫ </a></div>"; 
+	                +"<div id='infocon'><a id='infotitle'>"+data[i].b_title+"&nbsp;&nbsp;<img style='width:8%; padding-bottom:1px' src='img/background/heart.png'>"
+	                +data[i].b_ddabong+"</a><a href='' style='color:black;text-decoration: underline; font-size:70%'> 글보러 가기≫</a></div>"; 
 	              	// 클릭시 글 번호로 글 상세 화면으로 넘어가게 함             	
 	              	                        
 	                

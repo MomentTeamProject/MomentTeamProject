@@ -12,75 +12,101 @@
 			padding:0;
 		}
 		.container{
-			width: 500px;
-			margin: 80px auto;
-			padding: 25px
+		position: relative;
+		z-index:1;
+			width: 550px;
+			margin: 130px auto;
+			border-radius: 40px;
+			background-color: #00000099;
+			color: black;
+			padding: 18px;
+			    box-shadow: 0 0 20px 0 rgba(5, 5, 5, 0.56), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+			
+		}
+		.container1{
+			background: #fffffffc;
+			border-radius: 40px;
+			padding: 21px;
+			
 		}
 		.container h1{
 			text-align: left;
 			padding: 5px 5px 5px 15px;
-			color:  #fff;
-			border-left: 3px solid #FFBB00;
+			border-left: 3px solid #ff6032;
 			margin-bottom: 20px;
 		}
 		.roomContainer{
-			background-color: black;
 			width: 500px;
 			height: 500px;
 			overflow: auto;
+			border: 1px solid black;
 		}
 		.roomList{
 			border: none;
 		}
 		.roomList th{
-			border: 1px solid #FFBB00;
-			background-color: black;
-			color: #FFBB00;
+			border: 1px solid black;
 		}
 		.roomList td{
-			border: 1px solid #FFBB00;
-			background-color: #fff;
+			border: 1px solid black;
 			text-align: center;
-			color: #FFBB00;
 		}
 		.roomList .num{
 			width: 75px;
-						background-color: black;
-			
 			text-align: center;
 		}
 		.roomList .room{
-						background-color: black;
-			
+			color: black;			
 			width: 350px;
 		}
 		.roomList .go{
-			
-						background-color: black;
 			width: 71px;
 			text-align: center;
 		}
 		.roomList .de{
-			
-						background-color: black;
 			width: 71px;
 			text-align: center;
 		}
 		button{
-			background-color: #FFBB00;
-			font-size: 14px;
-			color: #000;
-			border: 1px solid #000;
-			border-radius: 5px;
-			padding: 3px;
+			background-color: #fff;
 			margin: 3px;
+  text-transform: uppercase;
+  outline: 0;
+  background: #fb5f2e;
+  width: 88%;
+  border: 0;
+  border-radius:23px;
+  padding: 10px;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
 		}
 		.inputTable th{
-			padding: 5px;
+			padding: 4px;
 		}
 		.inputTable input{
 			width: 330px;
 			height: 25px;
+			  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #dddddd;
+  border: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+    border-radius:7px;
+  
+		}
+		button:hover{
+  background-color: #4CAF50;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  border-radius:9px;
+  color: #fff;
+  transform: translateY(-2px);
+  font-weight: bold;
+}
+		body{
+		background-color: #f56437fa;
 		}
 	</style>
 </head>
@@ -161,19 +187,21 @@
 <body>
 	<div class="container">
 		<br>
+		<div class="container1">
 		<br>
-		<h1>채팅방</h1>
+		<h1 style="font-weight: bolder;">채팅방</h1>
 		<div id="roomContainer" class="roomContainer">
 			<table id="roomList" class="roomList"></table>
 		</div>
 		<div>
-			<table class="inputTable">
+			<table class="inputTable" style="width: 508px;">
 				<tr>
-					<th>방 제목</th>
+					<th style="width: 55px;">방 제목</th>
 					<th><input type="text" name="roomName" id="roomName"></th>
-					<th><button id="createRoom">방 만들기</button></th>
+					<th ><button id="createRoom" style="width: 80px;">방 만들기</button></th>
 				</tr>
 			</table>
+		</div>
 		</div>
 	</div>
 </body>

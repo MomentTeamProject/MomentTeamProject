@@ -96,7 +96,6 @@
 		b_userid=#{userid}
 	</select>
 	
-	
 
 
 	<delete id="mylistdelete">

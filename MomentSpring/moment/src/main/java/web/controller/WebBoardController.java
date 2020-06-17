@@ -18,7 +18,7 @@ public class WebBoardController {
 	@Autowired private WebBoardPage page;
 	
 	@RequestMapping("/list.bo")
-	public String board(Model model, HttpSession session, String search, String keyword, @RequestParam(defaultValue = "1") int curPage, @RequestParam(defaultValue = "9") int pageList, @RequestParam(defaultValue = "list") String viewType) {
+	public String board(Model model, HttpSession session, String search, String keyword, @RequestParam(defaultValue = "1") int curPage, @RequestParam(defaultValue = "10") int pageList, @RequestParam(defaultValue = "list") String viewType) {
 		System.out.println("======== 사진 카테고리 이동 ========");
 		session.setAttribute("category", "bo");
 		

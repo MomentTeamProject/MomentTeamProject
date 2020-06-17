@@ -2,6 +2,8 @@ package web.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +20,8 @@ public class WebMapController {
 	
 	// 지도화면 요청
 	@RequestMapping("/map.moment")
-	public String mylist() {
+	public String mylist(HttpSession session) {
+		session.setAttribute("category", "ma");
 		return "map/map";
 	}
 		

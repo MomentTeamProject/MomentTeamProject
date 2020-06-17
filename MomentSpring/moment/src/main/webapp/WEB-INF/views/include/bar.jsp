@@ -18,7 +18,8 @@
 }
 .bar-menu { float: left; margin: 30px 0 0 30px; }
 .bar-menu li { font-size: 22px; margin-top: 10px; text-align: left; }
-.bar-menu li a { color: white; } 
+.bar-menu li a { color: white; font-family: 'Sriracha', cursive; } 
+.bar-menu li a:hover, .bar-menu li a.active { color: #fc7703; cursor: pointer; }
 .bar-user { margin: 20px 0 20px 20px; width: 480px; height: 100px; }
 .bar-profile { 
 	width: 100px; height: 100px; border: 2px solid #2f2f2f;
@@ -32,8 +33,11 @@
 	text-align: left;
 }
 .bar-login { float: left; margin: 40px 0 0 20px; } 
-.fa-caret-square-left:hover{ color: yellow; }
+.fa-caret-square-left:hover{ color: #fc7703; }
 
+a:hover { cursor: pointer; }
+
+a.btn-fill:hover { background: #fc7703; cursor: pointer; }
 
 </style>
 <div id="bar-wrap"></div>
@@ -46,23 +50,24 @@
 		<div class="bar-user">
 			<div class="bar-profile">
 				<c:if test="${empty login_info }">
-					<p style="color: black; text-align: center; margin-top: 40px; ">회원정보 없음</p>
+					<a style="color: black; text-align: center; margin-top: 40px; font-family: 'Sriracha', cursive; line-height: 50px;">X&nbsp;&nbsp;__&nbsp;&nbsp;X</a>
 				</c:if>
 			</div>
 			<div class="bar-login">
 				<c:if test="${empty login_info }">
-					<a class="btn-fill">로그인</a>
-					<a class="btn-empty">회원가입</a>
+					<a class="btn-fill" href='loginuser'>LOGIN</a>
+					<a class="btn-empty" href='joinuser'>JOIN US</a>
 				</c:if>
 			</div>
 		</div>
 		<ul class="bar-menu">
-			<li><a href='<c:url value="/" />' >HOME</a></li>
-			<li><a>사진</a></li>
-			<li><a>파노라마 사진</a></li>
-			<li><a>VR</a></li>
-			<li><a>문의하기</a></li>
-			<li><a>지도로 보기</a></li>
+			<li><a href='<c:url value="/" />' class="${category eq 'home' ? 'active' : '' }">HOME</a></li>
+			<li><a href="list.bo" class="${category eq 'bo' ? 'active' : '' }">POST</a></li>
+			<li><a href="list.pa" class="${category eq 'pa' ? 'active' : '' }">PANORAMA</a></li>
+			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
+			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
+			<li><a href='room' class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
+			<li><a href='push'>알림보내기</a></li>
 		</ul>
 	</div>
 <script>

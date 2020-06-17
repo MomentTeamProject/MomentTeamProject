@@ -54,11 +54,11 @@ public class BoardController {
 	
 	//신규글 작성
 	@ResponseBody @RequestMapping(value = "/BoardWriteAction.mo", produces = "application/json; charset=UTF-8")
-	public JSONObject BoardWrite(HttpServletRequest request, HttpServletResponse response) {
+	public String BoardWrite(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Controller ============= > /BoardWriteAction.mo");
 		
 		JSONObject data = service.boardWrite(request, response);
-		return data;
+		return "1";
 	}	
 	
 	//게시글 수정

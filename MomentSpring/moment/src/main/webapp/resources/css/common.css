@@ -1,8 +1,10 @@
 @charset "UTF-8";
 /* 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
 /* 바디부분 기본적인 사항 적용 */
+html, body { height: 100%; }
 body{
 	margin: 0 auto; text-align: center;
 	font-family: 'Jua', sans-serif;
@@ -38,7 +40,7 @@ a { text-decoration: none; }
 /* 마이페이지 grid 설정 */
 
 ul.grid { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 900px; min-height: 900px;}
-.contentbody { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 1150px;}
+.contentbody { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 1300px; }
 .grid li { float:left; width:299px; border:1px solid gray; box-sizing:border-box;  }
 .top {width: 98%; margin:0 auto; }
 .btnSet {margin-top: 20px;}
@@ -55,9 +57,10 @@ a.btn-fill, a.btn-empty {
 	background-color:#000000;
 	border: 2px solid #ffffff;	border-radius:3px;
 	box-shadow: 1px 1px 2px #c0c0c0; 
-	color:#ffffff;
+	color:#ffffff; font-family: 'Sriracha', cursive;
 }
-a:hover { cursor: pointer; }
+
+a.btn-fill:hover { background: #fc7703; cursor: pointer; }
 
 
 ul {list-style: none; padding:0;}
@@ -65,7 +68,6 @@ img { vertical-align:middle; }
 a:link, a:visited { text-decoration:none; color:white;}
 
 
-	
 #topMenu { padding-top:100px; height: 30px; width: 1237px; margin: 0 auto;}
 
 #topMenu ul li { list-style: none;  color: white; 
@@ -78,5 +80,4 @@ a:link, a:visited { text-decoration:none; color:white;}
        font-weight: bold; font-family: 'Do Hyeon', sans-serif; }
 #topMenu .menuLink:hover {            
         color: yellow; background-color: #4d4d4d;  margin: 5px;   
-       }	
-
+}	

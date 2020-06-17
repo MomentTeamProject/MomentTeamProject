@@ -38,7 +38,7 @@ table td {
 <body>
 <div class="join_page">
 	<div class="form">
-	<h3>회원가입</h3>
+	<h1 style="font-weight: bolder">회원가입</h1>
 	<p 	style="margin: 0 auto; font-size: 13px; padding-bottom: 5px; float:right;">
 	*은	필수 입력 항목 입니다.</p>
 
@@ -96,7 +96,7 @@ table td {
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="js/check_join.js"></script>
+<script type="text/javascript" src="js/check_join_1.js"></script>
 	<script type="text/javascript">
 		function gojoin() {
 			if ($('[name=u_name]').val() == '') {
@@ -228,7 +228,7 @@ table td {
 			}
 
 
-			
+// 			$('#footer-wrap').css('display', 'none');
 		
 	</script>
 

@@ -16,7 +16,7 @@
 <body>
 <div class="login_page">
 <div class="form">
-    <h1 style="color:black;">Moment</h1>
+    <h1 style="color:black; font-weight: bolder;">Moment</h1>
     <form action="userlogin" method="post" class="login-form">
         <input type="text" id="u_userid" name="u" placeholder="abc123@abcd.com" required="required" />
         <input type="password" id="u_userpw" name="p" placeholder="Password" required="required" />

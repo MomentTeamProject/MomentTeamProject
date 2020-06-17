@@ -13,18 +13,20 @@
 		}
 		.container{
 			width: 500px;
-			margin: 80px auto;
+			margin: 130px auto;
+			border-radius: 40px;
+			background-color:white;
+			border: 1px solid black;
+			color: black;
 			padding: 25px
 		}
 		.container h1{
 			text-align: left;
 			padding: 5px 5px 5px 15px;
-			color:  #fff;
 			border-left: 3px solid #FFBB00;
 			margin-bottom: 20px;
 		}
 		.roomContainer{
-			background-color: black;
 			width: 500px;
 			height: 500px;
 			overflow: auto;
@@ -33,41 +35,30 @@
 			border: none;
 		}
 		.roomList th{
-			border: 1px solid #FFBB00;
-			background-color: black;
-			color: #FFBB00;
+			border: 1px solid black;
 		}
 		.roomList td{
-			border: 1px solid #FFBB00;
-			background-color: #fff;
+			border: 1px solid black;
 			text-align: center;
-			color: #FFBB00;
 		}
 		.roomList .num{
 			width: 75px;
-						background-color: black;
-			
 			text-align: center;
 		}
 		.roomList .room{
-						background-color: black;
-			
+			color: black;			
 			width: 350px;
 		}
 		.roomList .go{
-			
-						background-color: black;
 			width: 71px;
 			text-align: center;
 		}
 		.roomList .de{
-			
-						background-color: black;
 			width: 71px;
 			text-align: center;
 		}
 		button{
-			background-color: #FFBB00;
+			background-color: #fff;
 			font-size: 14px;
 			color: #000;
 			border: 1px solid #000;
@@ -81,6 +72,9 @@
 		.inputTable input{
 			width: 330px;
 			height: 25px;
+		}
+		body{
+		background-color: white;
 		}
 	</style>
 </head>

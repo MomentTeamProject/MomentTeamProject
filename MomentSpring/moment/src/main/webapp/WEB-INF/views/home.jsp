@@ -6,8 +6,8 @@
 <title>Home</title>
 <link rel="stylesheet" type="text/css" href="css/home.css" />
 <style type="text/css">
-#content { width: 100%; height: 250px; }
-.content { margin: 0 auto; box-sizing: content-box; width: 100%; }
+#content { width: 100%; height: 700px; }
+.content { margin: 0 auto; box-sizing: content-box; width: 100%;  }
 .title { width: 100%; height:auto; text-align: center; }
 .title a { color: white; font-size: 2em; text-align: center; font-family: 'Suez One', serif; }
 body {
@@ -58,6 +58,8 @@ p span {
     background-position: 100% 50%;
   }
 }
+
+#footer-wrap { display: none; }
 </style>
 </head>
 <body>
@@ -133,15 +135,39 @@ p span {
 	</div>
 </div>
 
-<a href="http://victorofvalencia-blog.tumblr.com" target="_blank" class="credit">Photos from Victor of Valencia on tumblr</a>
-
 <script type="text/javascript">
 $(".option").click(function(){
-	   $(".option").removeClass("active");
-	   $(this).addClass("active");
-	   
-	});
+   $(".option").removeClass("active");
+   $(this).addClass("active");
+});
+
+//스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트
+window.onscroll = function(){
+		console.log('js 흐름탐');
+		
+		var scroll = window.scrollY + $(window).height();
+		var endY = document.body.scrollHeight - 40;
+		
+		console.log(scroll);
+		console.log(endY);
+		
+		//content 영역의 최상위 위치 값
+		var scrollTop = $(this).scrollTop();
+		//content 영역의 (패딩영역합산한) content의 높이
+		var innerHeight = $(this).innerHeight();
+		
+		
+		//스크롤이 컨텐트아래 50 hegiht 를 넘어서면 이벤트 시작
+		if (scroll > endY) {
+			$("#confirm").css('color', 'white');
+			$("#footer-wrap").slideDown();
+		} else {
+		 	$("#confirm").css('color', 'gray');
+		 	$("#footer-wrap").slideUp();
+		}
+};
 </script>
+
 
 </body>
 </html>

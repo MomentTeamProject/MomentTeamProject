@@ -110,18 +110,18 @@ figure.snip1368.hover figcaption {
 }
 /* 여기까지 */
 
-
+#footer-wrap { display: none; }
 .contentBody { overflow-y: auto; margin-top: 50px; }
 #title { width: 100%; height: auto; font-family: 'Suez One', serif; color: white; font-size: 2em; }
-#content { width: 100%; height: 850px; color: black; margin: 0 auto -100; }
+#content { width: 100%; height: 850px; color: black; margin: 0 auto -100; background-color: black; }
 .pictureBox { display: inline-block; }
 .pictures { width: 500px; height: 250px;}
-#confirm { margin-top: 30px; border-radius: 5px;}
+#confirm { margin-top: 30px; border-radius: 5px; color: gray; }
 
 #detail { position:absolute;	width:800px;	height:800px;
 				  left:50%;	top:50%;	transform:translate(-50%, -50%);
 				  border:3px solid yellow; background-color: black;	display: none;
-				  color: yellow; z-index: 4; opacity: 0.3;
+				  color: yellow; z-index: 4; opacity: 0.9;
 }
 #detail-background { position:absolute; left:0;	top:0;
 										 width:100%;		height:100%; z-index: 3;
@@ -228,31 +228,34 @@ $(".hover").mouseleave(
 //더보기 버튼클릭시 이벤트
 $('#confirm').on('click', function() {
 	console.log('더보기눌림')
-	var lastPicture = $(this).children().last(); 
+	var lastPicture = $('#content>div:last-child').index(); 
 	console.log(lastPicture);
-// 	lastPicture.append('<div class="testDIV" style="color:white;">test</div>');
+ 	lastPicture.append('<div class="testDIV" style="color:white;">test</div>');
 });
 
 //스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트
 window.onscroll = function(){
+		console.log('js 흐름탐');
+		
 		var scroll = window.scrollY + $(window).height();
-		var endY = document.body.scrollHeight - $('#footer-wrap').height();
+		var endY = document.body.scrollHeight;
+		
+		console.log(scroll);
+		console.log(endY);
 		
 		//content 영역의 최상위 위치 값
 		var scrollTop = $(this).scrollTop();
 		//content 영역의 (패딩영역합산한) content의 높이
 		var innerHeight = $(this).innerHeight();
 		
-		console.log(scroll);
-		console.log(endY);
 		
 		//스크롤이 컨텐트아래 50 hegiht 를 넘어서면 이벤트 시작
 		if (scroll > endY) {
 			$("#confirm").css('color', 'white');
-		 	$("#footer-wrap").css('display', 'block');
+			$("#footer-wrap").slideDown();
 		} else {
 		 	$("#confirm").css('color', 'gray');
-		 	$("#footer-wrap").css('display', 'none');
+		 	$("#footer-wrap").slideUp();
 		}
 };
 
@@ -260,8 +263,6 @@ window.onscroll = function(){
 function detail(picNo) {
 	$('#detail, #detail-background').css('display', 'block');
 	console.log('클릭한 이미지 no : ' + picNo );
-	console.log('클릭한 이미지 title : ' + $('.'+picNo).val() );
-	$('.detitle').html($('.'+picNo).val());
 }
 
 //백그라운드 클릭시 디테일창 사라짐

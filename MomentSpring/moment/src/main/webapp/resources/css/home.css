@@ -4,7 +4,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: scroll;
   height: 100vh;
   font-family: "Roboto", sans-serif;
 }
@@ -22,8 +22,8 @@ body .options {
   min-width: 1500px;
   max-width: 1500px;
   width: calc(100% - 100px);
-  height: 300px;
-  margin: 50px auto;
+  height: 600px;
+  margin: 300px auto 250px;
 }
 @media screen and (max-width: 718px) {
   body .options {

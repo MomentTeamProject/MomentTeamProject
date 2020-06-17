@@ -23,12 +23,18 @@
 	<div id="header-top" class="category">
 		<div id="header-home-image"><a href='<c:url value="/" />'><img src="background/logo1.jpg" alt="홈으로" /></a></div>
 		<ul id="header-menu">
-			<li><a href='<c:url value="/" />' class="${category eq 'home' ? 'active' : '' }">HOME</a>│</li>
-			<li><a href="list.bo" class="${category eq 'bo' ? 'active' : '' }">POST</a>│</li>
-			<li><a href="list.pa" class="${category eq 'pa' ? 'active' : '' }">PANORAMA</a>│</li>
-			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">QnA</a>│</li>
-			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a>│</li>
-			<li><a href="room" class="${category eq 'ch' ? 'active' : '' }">CHAT</a>│</li>
+			<li><a href='<c:url value="/" />' class="${category eq 'home' ? 'active' : '' }">HOME</a></li>
+			<li style="font-weight: bold;">│</li>
+			<li><a href="list.bo" class="${category eq 'bo' ? 'active' : '' }">POST</a></li>
+			<li style="font-weight: bold;">│</li>
+			<li><a href="list.pa" class="${category eq 'pa' ? 'active' : '' }">PANORAMA</a></li>
+			<li style="font-weight: bold;">│</li>
+			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
+			<li style="font-weight: bold;">│</li>
+			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
+			<li style="font-weight: bold;">│</li>
+			<li><a href="room" class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
+			<li style="font-weight: bold;">│</li>
 			<li><a id="bar-button" style="font-size: 25px; color: #fc7703;"><i class="fas fa-bars"></i></a></li>
 		</ul>
 	</div>

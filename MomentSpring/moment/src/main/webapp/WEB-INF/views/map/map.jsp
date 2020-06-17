@@ -15,18 +15,26 @@ async defer></script>
 <style>
 	#map_ma {margin: 0 auto; width:1250px; height:700px; clear:both; border:solid 2px gray;}
 	#autocomplete {width:500px; height: 40px;  border-radius : 5px; box-shadow: 1px 1px 2px gray; padding:0 15px; }
-	#locationField {padding: 10px; }
-	#googleinfo { width :100px; text-overflow: ellipsis; white-space: nowrap; display: block; overflow: hidden; font-size:90%; font-weight: bolder;}
-	#infobox  {width :100px; margin: 0 ; padding: 2px 5px; 
-	   background-color: #0b2d70;  color: white;  }
+	#locationField {padding: 10px;  }
 	#title {width: 1237px; margin: 0 auto; color:white; padding-top:100px;font-size:30px; border-bottom : 1px solid gray;}
+	
+
+ 	#infoimg {width:120px; height:80px;  } 	
+	#infocon {width :120px; margin: 0 ; padding: 2px 0 0 0; }    
+	#infotitle { width :120px; text-overflow: ellipsis; white-space: nowrap;  
+	display: block; overflow: hidden; font-size:90%; /* 글줄임 */
+	font-weight: bolder;  text-align: center;} 
+	#footer-wrap { display: none; }
+	.push { display: none; }
+
 </style>
+
 </head>
 <body>
 
 
 <div id ="title"><P style="float: left;"> 지도로 검색</P> </div>
-<div style="padding-top:10px;">
+<div style="padding-top:10px; height: 1000px; background-color: #f56437fa;">
 	 <!-- 주소검색  -->
 	<div id="locationField">
 	  <input id="autocomplete" placeholder="찾고 싶은 지역을 검색하세요" type="text">
@@ -42,6 +50,29 @@ async defer></script>
 
 <script type="text/javascript">
 
+//스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트
+window.onscroll = function(){
+		console.log('js 흐름탐');
+		
+		var scroll = window.scrollY + $(window).height();
+		var endY = document.body.scrollHeight - 20;
+		
+		console.log(scroll);
+		console.log(endY);
+		
+		//content 영역의 최상위 위치 값
+		var scrollTop = $(this).scrollTop();
+		//content 영역의 (패딩영역합산한) content의 높이
+		var innerHeight = $(this).innerHeight();
+		
+		
+		//스크롤이 컨텐트아래 50 hegiht 를 넘어서면 이벤트 시작
+		if (scroll > endY) {
+			$("#footer-wrap").slideDown();
+		} else {
+		 	$("#footer-wrap").slideUp();
+		}
+};
 
 
 //처음 페이지 실행시 현재 위치 
@@ -132,7 +163,7 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 			b_longitude : lng
 		},
 		success : function(data) {
-		 alert('주변 정보 전달 성공');
+		 //alert('주변 정보 전달 성공');
 		 
 			var map = new google.maps.Map(document.getElementById('map_ma'), {        	    
         	    center: {
@@ -148,14 +179,12 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 	                    map: map,	                    
 	                });	                
 
-	                var img = "<img style='width:110px; height:60px;' src='img/background/"+data[i].b_imgpath+"'>"
-	                +"<div id='infobox'><a id='googleinfo'>"+data[i].b_title+"</a></div>"; 
-	              	// 클릭시 글 번호로 글 상세 화면으로 넘어가게 함 
-	              	
-	              	
-	                //alert(parseFloat(data[i].b_latitude)+'----'+parseFloat(data[i].b_longitude));	                
+	                var img = "<img id='infoimg' src='img/background/"+data[i].b_imgpath+"'>"
+	                +"<div id='infocon'><a id='infotitle'>"+data[i].b_title+"&nbsp;&nbsp;<img style='width:10%; padding-bottom:1px' src='img/background/heart.png'>"
+	                +data[i].b_ddabong+"</a><a href='' style='color:black;text-decoration: underline; font-size:70%'> 글보러 가기≫≫ </a></div>"; 
+	              	// 클릭시 글 번호로 글 상세 화면으로 넘어가게 함             	
+	              	                        
 	                
-		           // var infowindow = new google.maps.InfoWindow({ content: img });
 		            var infowindow = new google.maps.InfoWindow({
 		                content: img,
 		                maxWidth: 160,
@@ -173,23 +202,7 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 		     // infowindow.setContent(html); 
 		    infowindow.open(map, marker); 
 		         }); 
-
-		  	 
-        /*     google.maps.event.addListener(marker, 'click', function() {
-            	   infowindow.open(map, marker); 
-            });  */ 
-		     
-	/* 	    google.maps.event.addListener(marker, 'mouseout', function() {
-		    infowindow.close();
-	      }); 	
- */
-
-	 	    /* google.maps.event.addListener(map, 'click', (function(infowindow) {
-	            return function() {
-	              infowindow.close();
-	            }
-	          })(infowindow));
-		       */
+		
 	     }//bindInfoWindow
 	                    
 	}, //success 

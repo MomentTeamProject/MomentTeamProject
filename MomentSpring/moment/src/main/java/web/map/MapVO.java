@@ -4,7 +4,7 @@ public class MapVO {
 
 	double b_latitude, b_longitude;
 	String b_imgpath,b_title ;
-	int b_no;
+	int b_no, b_ddabong;
 	
 	
 	
@@ -12,6 +12,12 @@ public class MapVO {
 	
 	
 	
+	public int getB_ddabong() {
+		return b_ddabong;
+	}
+	public void setB_ddabong(int b_ddabong) {
+		this.b_ddabong = b_ddabong;
+	}
 	public int getB_no() {
 		return b_no;
 	}

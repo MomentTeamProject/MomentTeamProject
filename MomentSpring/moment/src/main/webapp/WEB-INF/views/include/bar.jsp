@@ -35,9 +35,6 @@
 .bar-login { float: left; margin: 40px 0 0 20px; } 
 .fa-caret-square-left:hover{ color: #fc7703; }
 
-a:hover { cursor: pointer; }
-
-a.btn-fill:hover { background: #fc7703; cursor: pointer; }
 
 </style>
 <div id="bar-wrap"></div>

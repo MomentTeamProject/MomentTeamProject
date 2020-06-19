@@ -29,7 +29,7 @@
 			<li style="font-weight: bold;">│</li>
 			<li><a href="list.pa" class="${category eq 'pa' ? 'active' : '' }">PANORAMA</a></li>
 			<li style="font-weight: bold;">│</li>
-			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
+			<li><a href="list.qn" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
 			<li style="font-weight: bold;">│</li>
 			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
 			<li style="font-weight: bold;">│</li>

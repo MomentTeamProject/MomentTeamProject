@@ -1,5 +1,7 @@
 package web.board;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class WebBoardVO {
 	private int b_no;
@@ -105,7 +107,7 @@ public class WebBoardVO {
 	public String getB_imgpath() {
 		return b_imgpath;
 	}
-
+	
 	public void setB_imgpath(String b_imgpath) {
 		this.b_imgpath = b_imgpath;
 	}
@@ -130,8 +132,11 @@ public class WebBoardVO {
 		return b_writedate;
 	}
 
-	public void setB_writedate(String b_writedate) {
-		this.b_writedate = b_writedate;
+	public void setB_writedate(String b_writedate) throws Exception {
+		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
+		Date d =  date.parse(b_writedate);
+		this.b_writedate = date.format(d).toString();
+//		this.b_writedate = b_writedate.substring(2, 10);
 	}
 
 	public String getB_profileimg() {

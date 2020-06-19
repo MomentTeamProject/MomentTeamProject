@@ -41,7 +41,7 @@ body{ margin: 0 auto; }
 					<li style="font-weight: bold;">|</li>
 					<li><a href="list.pa">PANORAMA</a></li>
 					<li style="font-weight: bold;">|</li>
-					<li><a href="list.qa" >QnA</a></li>
+					<li><a href="list.qn" >QnA</a></li>
 					<li style="font-weight: bold;">|</li>
 					<li><a href="list.map" >MAP</a></li>
 					<li style="font-weight: bold;">|</li>

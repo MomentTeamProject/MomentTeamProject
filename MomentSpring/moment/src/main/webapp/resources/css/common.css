@@ -61,9 +61,17 @@ a.btn-fill, a.btn-empty {
 	box-shadow: 1px 1px 2px #c0c0c0; 
 	color:#ffffff; font-family: 'Sriracha', cursive;
 }
-
 a.btn-fill:hover { background: #fc7703; cursor: pointer; }
-
+/* QNA 버튼 */
+a.qna-btn-fill, a.qna-btn-empty {
+	text-align: center;	padding: 3px 10px;	
+	border: 2px solid #ffffff;	border-radius:3px;
+	box-shadow: 1px 1px 2px #c0c0c0; 
+	color:#ffffff; font-family: 'Sriracha', cursive;
+}
+a.qna-btn-fill { background-color:#fc7703; }
+a.qna-btn-empty { background-color:#000000; }
+a.qna-btn-empty:hover { background-color:#fc7703; }
 
 ul {list-style: none; padding:0;}
 img { vertical-align:middle; }

@@ -7,14 +7,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link>
 <style>
 .menu-box{ width: 80%; height: 50px; margin: 10px auto; text-align: center; }
 .menu ul{ margin: 0 auto; }
 .menu li{ float: none; margin: 0 10px;}
 #content { margin-top: 150px; }
+#qna-body { margin: 0 auto; text-align: center; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
+input[type=radio], input[type=checkbox]{ width: 18px; margin: 0 5px 3px; vertical-align: middle; }
+select { height: 32px; }
+
+/* 테이블 스타일 */
+#qna-table td, #qna-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#qna-table tr:nth-child(even){background-color: #f2f2f2;}
+#qna-table tr:hover {background-color: #ddd;}
+#qna-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: black;
+}
+table { width: 80%; margin: 0 auto; border: 1px solid; border-collapse: collapse; }
+table th, table td { border: 1px solid; padding: 5px 10px; }
+table td a:hover { font-variant: bold; }
+input { height: 22px; padding: 3px 5px; font-size: 15px; }
+table tr td label:not(:last-child){ margin-right: 20px; }
 </style>
 </head>
-<body>
+<body id="qna-body">
 <h3>문의 하기</h3>
 <div class="menu-box" style="margin-bottom: 80px;">
 	<div id="list-top" >
@@ -29,13 +53,13 @@
 			<a class="btn-fill" onclick="search_list();">검색</a>
 		</div>
 		<div style="margin-bottom: 20px">
-		<a class="btn-fill" id="faq">자주 묻는 질문과 답변</a>
+		<a class="qna-btn-fill" id="faq">자주 묻는 질문과 답변</a>
 		<a class="btn-empty" id="all_list">전체 질문 목록</a>
 		<c:if test="${!empty login_info }">
 			<a class="btn-empty" id="myq">내 질문 목록</a>
 			<a class="btn-empty" id="question">질문하기</a>
 		</c:if>
-		<c:if test="${login_info.admin eq 'Y' }">	
+		<c:if test="${login_info.u_admin eq 'M' }">	
 			<a class="btn-empty" id="qlist">답변 할 목록</a>
 			<a class="btn-empty" id="alist">답변 완료 목록</a>
 		</c:if>
@@ -45,7 +69,7 @@
 <div id="contents">
 <!-- 자주 묻는 질문과 답변 -->
 	<div class="faq_list" style="overflow: hidden;">
-	<table>
+	<table id="qna-table">
 		<tr>
 			<th class="w-px60">번호</th>
 			<th>제목</th>
@@ -173,14 +197,14 @@ $('#myq').on('click', function(){
 		type: 'post',
 		url: 'myquestion',
 		success: function(data){
-			var tag = '<table>';
+			var tag = '<table id="qna-table">';
 			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><th class="w-px60">글삭제</th></tr>';
 			$.each(data, function(key, value){
 				tag += '<tr><td>'+value.no+'</td>';								
-				tag += '<td class="left"><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
+				tag += '<td class="left" onclick="content_view('+value.id+')" ><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
 				tag += '<td>'+value.name+'</td><td>'+formatDate(value.writedate)+'</td>';
 				tag += '<td>'+ (value.answer_result == 'Y' ? '답변완료' : '진행중') +'</td>';
-				tag += '<td><a onclick="write_delete('+value.id+' ,\''+value.answer_result+'\' ,\'${login_info.admin}\')">삭제</a></td>';
+				tag += '<td><a onclick="write_delete('+value.id+' ,\''+value.answer_result+'\' ,\'${login_info.u_admin}\')">삭제</a></td>';
 				tag += '</tr>';
 				tag += '<tr class="content_view'+value.id+'" style="display: none; cursor: pointer;" onclick="content_close('+value.id+')">'
 					+'<td>질문</td><td colspan="5" class="left">'+value.content.replace(/\n/g, '<br/>')+'</td></tr>'
@@ -216,11 +240,11 @@ $('#qlist').on('click', function(){
 		type: 'post',
 		url: 'question_list.qn',
 		success: function(data){
-			var tag = '<table>';
+			var tag = '<table id="qna-table">';
 			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><th class="w-px60">글삭제</th></tr>';
 			$.each(data, function(key, value){
 				tag += '<tr><td>'+value.no+'</td>';								
-				tag += '<td class="left"><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
+				tag += '<td class="left" onclick="content_view('+value.id+')" ><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
 				tag += '<td>'+value.name+'</td><td>'+formatDate(value.writedate)+'</td>';
 				tag += '<td>'+ (value.answer_result == 'Y' ? '답변완료' : '진행중') +'</td>';
 				tag += '<td><a onclick="write_delete('+value.id+')">삭제</a></td>';
@@ -251,11 +275,11 @@ $('#alist').on('click', function(){
 		type: 'post',
 		url: 'answer_list.qn',
 		success: function(data){
-			var tag = '<table>';
+			var tag = '<table id="qna-table">';
 			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><th class="w-px60">글삭제</th></tr>';
 			$.each(data, function(key, value){
 				tag += '<tr><td>'+value.no+'</td>';								
-				tag += '<td class="left"><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
+				tag += '<td class="left" onclick="content_view('+value.id+')" ><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
 				tag += '<td>'+value.name+'</td><td>'+formatDate(value.writedate)+'</td>';
 				tag += '<td>'+ (value.answer_result == 'Y' ? '답변완료' : '진행중') +'</td>';
 				tag += '<td><a onclick="write_delete('+value.id+')">삭제</a></td>';
@@ -292,14 +316,14 @@ function search_list(){
 		url: 'all_list.qn',
 		data: { search: $('[name=search]').val(), keyword : $('[name=keyword]').val() },
 		success: function(data){
-			var tag = '<table>';
-			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><c:if test="${login_info.admin eq \'Y\' }"><th class="w-px60">글삭제</th></c:if></tr>';
+			var tag = '<table id="qna-table">';
+			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><c:if test="${login_info.u_admin eq \'Y\' }"><th class="w-px60">글삭제</th></c:if></tr>';
 			$.each(data, function(key, value){
 				tag += '<tr><td>'+value.no+'</td>';								
-				tag += '<td class="left"><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
+				tag += '<td class="left" onclick="content_view('+value.id+')"><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
 				tag += '<td>'+value.name+'</td><td>'+formatDate(value.writedate)+'</td>';
 				tag += '<td>'+ (value.answer_result == 'Y' ? '답변완료' : '진행중') +'</td>';
-				tag += '<c:if test="${login_info.admin eq \'Y\' }"><td><a onclick="write_delete('+value.id+')">삭제</a></td></c:if>';
+				tag += '<c:if test="${login_info.u_admin eq \'Y\' }"><td><a onclick="write_delete('+value.id+')">삭제</a></td></c:if>';
 				tag += '</tr>';
 				tag += '<tr class="content_view'+value.id+'" style="display: none; cursor: pointer;" onclick="content_close('+value.id+')">'
 					+'<td>질문</td><td colspan="5" class="left">'+value.content.replace(/\n/g, '<br/>')+'</td></tr>'
@@ -319,12 +343,12 @@ function search_list(){
 		$('#question').removeClass();
 		$('#qlist').removeClass();
 		$('#alist').removeClass();
-		$('#all_list').addClass('btn-fill');
-		$('#faq').addClass('btn-empty');
-		$('#myq').addClass('btn-empty');
-		$('#question').addClass('btn-empty');
-		$('#qlist').addClass('btn-empty');
-		$('#alist').addClass('btn-empty');
+		$('#all_list').addClass('qna-btn-fill');
+		$('#faq').addClass('qna-btn-empty');
+		$('#myq').addClass('qna-btn-empty');
+		$('#question').addClass('qna-btn-empty');
+		$('#qlist').addClass('qna-btn-empty');
+		$('#alist').addClass('qna-btn-empty');
 }
 </script>
 </body>

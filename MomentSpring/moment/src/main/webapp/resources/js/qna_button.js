@@ -8,12 +8,12 @@
 		$('#question').removeClass();
 		$('#qlist').removeClass();
 		$('#alist').removeClass();
-		$('#all_list').addClass('btn-fill');
-		$('#faq').addClass('btn-empty');
-		$('#myq').addClass('btn-empty');
-		$('#question').addClass('btn-empty');
-		$('#qlist').addClass('btn-empty');
-		$('#alist').addClass('btn-empty');
+		$('#all_list').addClass('qna-btn-fill');
+		$('#faq').addClass('qna-btn-empty');
+		$('#myq').addClass('qna-btn-empty');
+		$('#question').addClass('qna-btn-empty');
+		$('#qlist').addClass('qna-btn-empty');
+		$('#alist').addClass('qna-btn-empty');
 		$('[name=keyword]').val('');
 	});
 	
@@ -24,12 +24,12 @@
 		$('#question').removeClass();
 		$('#qlist').removeClass();
 		$('#alist').removeClass();
-		$('#faq').addClass('btn-fill');
-		$('#all_list').addClass('btn-empty');
-		$('#myq').addClass('btn-empty');
-		$('#question').addClass('btn-empty');
-		$('#qlist').addClass('btn-empty');
-		$('#alist').addClass('btn-empty');
+		$('#faq').addClass('qna-btn-fill');
+		$('#all_list').addClass('qna-btn-empty');
+		$('#myq').addClass('qna-btn-empty');
+		$('#question').addClass('qna-btn-empty');
+		$('#qlist').addClass('qna-btn-empty');
+		$('#alist').addClass('qna-btn-empty');
 	});
 
 	$('#myq').on('click', function(){
@@ -39,12 +39,12 @@
 		$('#qlist').removeClass();
 		$('#alist').removeClass();
 		$('#all_list').removeClass();
-		$('#all_list').addClass('btn-empty');
-		$('#myq').addClass('btn-fill');
-		$('#faq').addClass('btn-empty');
-		$('#question').addClass('btn-empty');
-		$('#qlist').addClass('btn-empty');
-		$('#alist').addClass('btn-empty');
+		$('#all_list').addClass('qna-btn-empty');
+		$('#myq').addClass('qna-btn-fill');
+		$('#faq').addClass('qna-btn-empty');
+		$('#question').addClass('qna-btn-empty');
+		$('#qlist').addClass('qna-btn-empty');
+		$('#alist').addClass('qna-btn-empty');
 	});
 	
 	$('#question').on('click', function(){
@@ -54,12 +54,12 @@
 		$('#qlist').removeClass();
 		$('#alist').removeClass();
 		$('#all_list').removeClass();
-		$('#all_list').addClass('btn-empty');
-		$('#question').addClass('btn-fill');
-		$('#faq').addClass('btn-empty');
-		$('#myq').addClass('btn-empty');
-		$('#qlist').addClass('btn-empty');
-		$('#alist').addClass('btn-empty');
+		$('#all_list').addClass('qna-btn-empty');
+		$('#question').addClass('qna-btn-fill');
+		$('#faq').addClass('qna-btn-empty');
+		$('#myq').addClass('qna-btn-empty');
+		$('#qlist').addClass('qna-btn-empty');
+		$('#alist').addClass('qna-btn-empty');
 	});
 	
 	$('#qlist').on('click', function(){
@@ -69,12 +69,12 @@
 		$('#qlist').removeClass();
 		$('#alist').removeClass();
 		$('#all_list').removeClass();
-		$('#all_list').addClass('btn-empty');
-		$('#qlist').addClass('btn-fill');
-		$('#faq').addClass('btn-empty');
-		$('#myq').addClass('btn-empty');
-		$('#question').addClass('btn-empty');
-		$('#alist').addClass('btn-empty');
+		$('#all_list').addClass('qna-btn-empty');
+		$('#qlist').addClass('qna-btn-fill');
+		$('#faq').addClass('qna-btn-empty');
+		$('#myq').addClass('qna-btn-empty');
+		$('#question').addClass('qna-btn-empty');
+		$('#alist').addClass('qna-btn-empty');
 	});
 	
 	$('#alist').on('click', function(){
@@ -84,10 +84,10 @@
 		$('#qlist').removeClass();
 		$('#alist').removeClass();
 		$('#all_list').removeClass();
-		$('#all_list').addClass('btn-empty');
-		$('#alist').addClass('btn-fill');
-		$('#faq').addClass('btn-empty');
-		$('#myq').addClass('btn-empty');
-		$('#question').addClass('btn-empty');
-		$('#qlist').addClass('btn-empty');
+		$('#all_list').addClass('qna-btn-empty');
+		$('#alist').addClass('qna-btn-fill');
+		$('#faq').addClass('qna-btn-empty');
+		$('#myq').addClass('qna-btn-empty');
+		$('#question').addClass('qna-btn-empty');
+		$('#qlist').addClass('qna-btn-empty');
 	});

@@ -24,8 +24,10 @@ public class PushController {
 
 	@RequestMapping("/push")
 	public String push(HttpSession session) {
+		session.setAttribute("category", "al");
 		return "fcm/push";
 	}
+	
 	@RequestMapping(value ="/sendPush", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public String sendPush(HttpServletRequest request, Model model) {

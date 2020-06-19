@@ -24,8 +24,7 @@ public class WebBoardDAO implements WebBoardService {
 
 	@Override
 	public WebBoardVO board_detail(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return sql.selectOne("webBoard.mapper.detail", id);
 	}
 
 	@Override

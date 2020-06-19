@@ -25,6 +25,11 @@
 </div>
 </div>
 <script type="text/javascript">
+window.onkeydown = function()	{
+	if(event.keyCode == 13){
+		go_login();
+	}
+};
 function go_login(){
 	if( $('#u_userid').val()=='' ){
 		alert('아이디를 입력하세요!');

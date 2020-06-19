@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="web.user.mapper">
-
+	<select id="list" resultType="web.user.WebUserVO">
+		select u_userid 
+		from m_user where u_admin="Y" 
+	</select>
 	<insert id="insert">
-		insert into m_user(u_userid, u_userpw, u_name, u_nick, u_profileimg)
-		values (#{u_userid}, #{u_userpw}, #{u_name}, #{u_nick}, #{u_profileimg , jdbcType=VARCHAR})
+		insert into m_user(u_userid, u_userpw, u_name, u_nick, u_profileimg, u_imgpath)
+		values (#{u_userid}, #{u_userpw}, #{u_name}, #{u_nick}, #{u_profileimg , jdbcType=VARCHAR}, #{u_imgpath , jdbcType=VARCHAR})
 	</insert>
 
 	<select id="idcheck" resultType="integer">

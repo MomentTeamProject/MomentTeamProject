@@ -200,9 +200,11 @@
 		<div>
 			<table class="inputTable" style="width: 508px;">
 				<tr>
+					<c:if test="${!empty login_info }">
 					<th style="width: 55px;">방 제목</th>
 					<th><input type="text" name="roomName" id="roomName"></th>
 					<th ><button id="createRoom" style="width: 80px;">방 만들기</button></th>
+					</c:if>
 				</tr>
 			</table>
 		</div>

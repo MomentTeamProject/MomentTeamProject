@@ -98,6 +98,11 @@ table td {
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="js/check_join_1.js"></script>
 	<script type="text/javascript">
+	window.onkeydown = function()	{
+		if(event.keyCode == 13){
+			gojoin();
+		}
+	};
 		function gojoin() {
 			if ($('[name=u_name]').val() == '') {
 				alert('성명을 입력하세요!');

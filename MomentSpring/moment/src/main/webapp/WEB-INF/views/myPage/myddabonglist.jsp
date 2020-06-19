@@ -10,7 +10,6 @@
 <jsp:include page="/WEB-INF/views/include/header.jsp" />
 </head>
 <style>
-ul.grid { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 1010px; min-height: 1010px;}
 .top {margin :0 auto; padding-bottom:0; padding-top: 30px;} 
 .grid li div:nth-child(4) { font-size:80%; height:15px; padding: 10 0 0 0; }
 .grid li div:nth-child(5) { font-size:80%; height:20px; padding: 0 ;}	
@@ -39,7 +38,7 @@ option { width: 200px; color:white; background-color: black;}
      <ul>
         <li><a class="menuLink" href="mypostlist.moment">MYPOST </a></li>
         <li><a class="menuLink" href="myddabong.moment" style= "font-weight:bold; color: #f56437fa;"> LIKE  </a></li>
-        <li><a class="menuLink" href="myfavorite.moment"> FAV</a></li>                     
+        <li><a class="menuLink" href="myfavorite.moment"> FAVORITES </a></li>                     
      </ul>
 </nav>
 

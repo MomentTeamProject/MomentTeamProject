@@ -10,7 +10,6 @@
 <jsp:include page="/WEB-INF/views/include/header.jsp" />
 </head>
 <style>
-ul.grid { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 1010px; min-height: 1010px;}
 .top {margin :0 auto; padding-bottom:0; padding-top: 30px;} 
 .grid li div:nth-child(4) { font-size:80%; height:15px; padding: 10 0 0 0; }
 .grid li div:nth-child(5) { font-size:80%; height:20px; padding: 0 ;}	
@@ -38,9 +37,9 @@ option { width: 200px; color:white; background-color: black;}
 		
 <nav id="topMenu">
      <ul>
-        <li><a class="menuLink" href="mypostlist.moment">내가 쓴 글 </a></li>
-        <li><a class="menuLink" href="myddabong.moment" > 좋 아 요  </a></li>
-        <li><a class="menuLink" href="myfavorite.moment" style= "font-weight:bold; color: #f56437fa;">즐 겨 찾 기</a></li>                     
+        <li><a class="menuLink" href="mypostlist.moment"> MYPOST </a></li>
+        <li><a class="menuLink" href="myddabong.moment" > LIKE  </a></li>
+        <li><a class="menuLink" href="myfavorite.moment" style= "font-weight:bold; color: #f56437fa;"> FAVORTES </a></li>                     
      </ul>
 </nav>
 <div class="contentbody"  style="padding-top:50px;">	

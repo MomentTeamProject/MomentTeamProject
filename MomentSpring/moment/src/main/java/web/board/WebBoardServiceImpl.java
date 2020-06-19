@@ -11,7 +11,7 @@ public class WebBoardServiceImpl implements WebBoardService {
 	@Override
 	public int board_insert(WebBoardVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.board_insert(vo);
 	}
 
 	@Override

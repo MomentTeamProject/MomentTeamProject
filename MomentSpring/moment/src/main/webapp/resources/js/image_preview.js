@@ -28,6 +28,11 @@ $('#u_profileimg').on('change', function(){
 		}else $('#preview').html('');
 	}
 });
+
+
+
+
+
 // 삭제처리
 $('#delete-file').on('click', function(){
 	$('#preview').html('');

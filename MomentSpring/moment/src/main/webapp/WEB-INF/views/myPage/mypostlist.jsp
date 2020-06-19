@@ -12,7 +12,6 @@
 </head>
 <style>
 
-ul.grid { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 1010px; min-height: 1010px;}
 .top {margin :0 auto; padding-bottom:0; padding-top: 30px;} 
 .grid li div:nth-child(4) { font-size:80%; height:20px; }
 select { width: 200px; color:white; background-color: black;
@@ -39,9 +38,9 @@ option { width: 200px; color:white; background-color: black;}
 <body>
 <nav id="topMenu">
      <ul>
-        <li><a class="menuLink" href="mypostlist.moment" style= "font-weight:bold; color: #f56437fa;">내가 쓴 글 </a></li>
-        <li><a class="menuLink" href="myddabong.moment"> 좋 아 요  </a></li>
-        <li><a class="menuLink" href="myfavorite.moment">즐 겨 찾 기</a></li>                     
+        <li><a class="menuLink" href="mypostlist.moment" style= "font-weight:bold; color: #f56437fa;">MYPOST </a></li>
+        <li><a class="menuLink" href="myddabong.moment">  LIKE  </a></li>
+        <li><a class="menuLink" href="myfavorite.moment">  FAVORITES </a></li>                     
      </ul>
 </nav>
 

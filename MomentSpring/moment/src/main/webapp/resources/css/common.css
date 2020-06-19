@@ -39,11 +39,13 @@ a { text-decoration: none; }
 
 /* 마이페이지 grid 설정 */
 
-ul.grid { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 950px; min-height: 960px;}
+ul.grid { width:1237px; margin:0 auto; margin-top: 10px; min-width: 1237px; height: 950px; min-height: 960px;
+	border-bottom: 2px solid gray;
+}
 .contentbody { width:1237px; margin:0 auto; padding: 0; min-width: 1237px; height: 1500px; }
-.grid li { float:left; width:299px; background-color:#f56437fa; box-shadow: 1px 1px 3px #c0c0c0;
+.grid li { float:left; width:299px; background-color:#f56437fa; box-shadow: 1px 1px 2px #ffffff;
 box-sizing:border-box; padding-bottom: 3px; border : 1px solid #c0c0c0;
-border-radius: 10px;}
+border-radius: 15px;}
 .top {width: 98%; margin:0 auto; }
 .btnSet {margin-top: 20px;}
 
@@ -73,13 +75,13 @@ a:link, a:visited { text-decoration:none; color:white;}
 #topMenu { padding-top:70px; height: 30px; width: 1237px; margin: 0 auto;}
 
 #topMenu ul li { list-style: none;  color: white; 
-                /*  background-color: #2d2d2d; */  float: left;      
+                 background-color: #2d2d2d;   float: left;      
                  line-height: 30px; text-align: center;  }
 #topMenu .menuLink {                        
        text-decoration:none;                     
        color: white; display: block;                          
-       width: 150px; font-size: 12px; margin: 5px;                                     
-       font-weight: bold; font-family: 'Do Hyeon', sans-serif; border-left: 1px solid #f56437fa; }
+       width: 150px; font-size: 13px; margin: 5px;                                     
+       font-weight: bold; font-family: 'Sriracha', cursive; /* font-family: 'Do Hyeon', sans-serif;  */}
 #topMenu .menuLink:hover {            
         color: #f56437fa;/*  background-color: #4d4d4d; */ /*  margin: 5px; */   
 }	

@@ -12,7 +12,7 @@ public class WebBoardDAO implements WebBoardService {
 	@Override
 	public int board_insert(WebBoardVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sql.insert("webBoard.mapper.insert", vo);
 	}
 
 	@Override

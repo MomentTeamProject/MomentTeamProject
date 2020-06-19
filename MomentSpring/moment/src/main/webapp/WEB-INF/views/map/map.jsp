@@ -21,14 +21,40 @@ async defer></script>
 p {float: left; font-family: 'Suez One', serif; font-size: 38px; padding-left: 60px;}
 
 
-/* 지도 css */
-#infoimg {width:120px; height:80px;  } 	
-#infocon {width :120px; margin: 0 ; padding: 2px 0 0 0; }    
-#infotitle { width :120px; text-overflow: ellipsis; white-space: nowrap;  
-display: block; overflow: hidden; font-size:90%; /* 글줄임 */
-font-weight: bolder;  text-align: center;} 
+/* footer */
 #footer-wrap { display: none; }
 .push { display: none; }
+
+
+/* 지도 css */
+#infoimg {width:119px; height:99px; float:left; } 	
+#infocon {width :115px;  margin: 0 ;}    
+#infotitle { width :110px;
+text-overflow: ellipsis; white-space: nowrap;  
+display: block; overflow: hidden; font-size:90%; /* 글줄임 */
+font-weight: bolder;  text-align: center;} 
+
+
+
+div.gm-style-iw.gm-style-iw-c {
+	width: 150px !important; 
+	height: 155px;
+
+	
+}
+
+
+div.gm-style-iw-d {
+
+	width: 99%; 
+	height: 99%;
+	
+
+}
+
+
+
+
 
 
 
@@ -175,7 +201,7 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
         	        lat: lat,
         	        lng: lng
         	    },        	    
-        	   zoom: 15
+        	   zoom: 17
         	});        		
          
 	            for (var i = 0; i < data.length; i++) {	            
@@ -192,7 +218,7 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 	                
 		            var infowindow = new google.maps.InfoWindow({
 		                content: img,
-		                maxWidth: 160,
+		               /*  maxWidth: 200, */
 		                
 		              });
 

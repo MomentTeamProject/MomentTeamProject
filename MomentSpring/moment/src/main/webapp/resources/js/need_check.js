@@ -11,8 +11,10 @@ function necessary(){
 			$(this).focus();
 			need = false;
 			return need;
-		}
-	});
+		}	 	
+		
+	});	
+	
 	return need;
 	
 }

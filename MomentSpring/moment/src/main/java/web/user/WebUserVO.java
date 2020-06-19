@@ -4,7 +4,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class WebUserVO {
-	private String u_userid, u_userpw, u_name, u_nick, u_local, u_profileimg,u_admin, u_authkey;
+	private String u_userid, u_userpw, u_name, u_nick, u_local, u_profileimg,u_admin, u_authkey, u_imgpath;
+
+	public String getU_imgpath() {
+		return u_imgpath;
+	}
+
+	public void setU_imgpath(String u_imgpath) {
+		this.u_imgpath = u_imgpath;
+	}
 
 	public String getU_userid() {
 		return u_userid;
@@ -74,7 +82,7 @@ public class WebUserVO {
 	public String toString() {
 		return "WebUserVO [u_userid=" + u_userid + ", u_userpw=" + u_userpw + ", u_name=" + u_name + ", u_nick="
 				+ u_nick + ", u_local=" + u_local + ", u_profileimg=" + u_profileimg + ", u_admin=" + u_admin
-				+ ", u_authkey=" + u_authkey + "]";
+				+ ", u_authkey=" + u_authkey + ", u_imgpath=" + u_imgpath + "]";
 	}
 
 	

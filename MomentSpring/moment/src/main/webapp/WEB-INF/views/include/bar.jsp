@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>    
+
 <style>
 #bar-wrap{
 	position: fixed;
@@ -49,11 +51,11 @@
 				<c:if test="${empty login_info }">
 					<a style="color: black; text-align: center; margin-top: 40px; font-family: 'Sriracha', cursive; line-height: 50px;">X&nbsp;&nbsp;__&nbsp;&nbsp;X</a>
 				</c:if>
+				<span id='preview_profile'></span>
 			</div>
 			<div class="bar-login">
 				<c:if test="${empty login_info }">
 					<a class="btn-fill" href='loginuser'>LOGIN</a>
-					<a class="btn-empty" href='joinuser'>JOIN US</a>
 					<a class="btn-fill" href='joinuser'>JOIN US</a>
 				</c:if>
 				<c:if test="${!empty login_info }">
@@ -86,7 +88,6 @@ function go_logout(){
 		} 
 	});
 }
-
 	$('#bar-button').on('click', function(){
 		var scroll = window.scrollY || document.documentElement.scrollTop;
 		$('#bar-wrap').css('display','block');
@@ -106,4 +107,19 @@ function go_logout(){
 		//스크롤바 생성
 		$('body').css('overflow-y','scroll');
 	});
+	if( ${!empty login_info} ){
+		showAttachedImage( '#preview_profile' );
+	}
+	function showAttachedImage( id ){
+		var filename = '${login_info.u_profileimg}';
+		var ext = filename.substring( filename.lastIndexOf('.')+1 ).toLowerCase();
+		var imgs = [ 'jpg', 'png', 'gif', 'bmp', 'jpeg' ];
+		if( imgs.indexOf(ext) > -1 ){
+			var img = '<img id="preview-img" class="' + (id=='#popup' ? 'popup' : 'file-img') + '" '
+					+ 'style="border-radius:50%" src="'
+					+ '${login_info.u_imgpath}'.substring(1) +' "/>';
+			$( id ).html( img );
+		}
+	}
+	
 </script>

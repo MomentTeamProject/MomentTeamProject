@@ -116,7 +116,7 @@ function go_logout(){
 		var imgs = [ 'jpg', 'png', 'gif', 'bmp', 'jpeg' ];
 		if( imgs.indexOf(ext) > -1 ){
 			var img = '<img id="preview-img" class="' + (id=='#popup' ? 'popup' : 'file-img') + '" '
-					+ 'style="border-radius:50%" src="'
+					+ 'style="border-radius:50%     width: 100px;   height: 100px;" src="'
 					+ '${login_info.u_imgpath}'.substring(1) +' "/>';
 			$( id ).html( img );
 		}

@@ -9,7 +9,8 @@ var join = {
 		, max: {code: 'invalid', desc: '최대10자 이하 입력하세요'}
 	}
 	, u_userid: {
-		invalid: {code: 'invalid', desc: '이메일 형식으로 입력해주세요' }
+		empty:{ code: 'invalid', desc:'아이디를 입력하세요!'}
+		, invalid: {code: 'invalid', desc: '이메일 형식으로 입력해주세요' }
 		, valid: {code: 'valid', desc: '아이디 중복확인하세요' }
 		, usable: {code:'valid', desc: '사용가능한 아이디입니다'}
 		, unusable: {code:'invalid', desc: '이미사용중인 아이디입니다'}
@@ -68,14 +69,14 @@ var join = {
 	}
 	, u_userid_status: function(id){
 		var reg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-		if( id=='') return this.common.empty;/*빈칸검사*/
+		if( id=='') return this.u_userid.empty;/*빈칸검사*/
 		else if(id.match(space)) return this.common.space;/*공백입력검사*/
 		else if(!reg.test(id)) return this.u_userid.invalid; /*아이디검사*/
 		else 					return this.u_userid.valid;
 		
 	}
 	, u_nick_status: function(nick){
-		if( nick=='') return this.common.empty;/*빈칸검사*/
+		if( nick=='') return this.u_nick.invalid;/*빈칸검사*/
 		else if(nick.match(space)) return this.common.space;/*공백입력검사*/
 		else return this.u_nick.valid;
 		

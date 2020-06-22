@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +37,8 @@ public class WebUserController {
 			String msg = "<script>";
 //			String key = new TempKey().getKey(50, false); // 인증키 생성
 			if(!file.isEmpty()) {
-				vo.setU_profileimg(common.upload("profile", file, session));
+				vo.setU_profileimg(file.getOriginalFilename());
+				vo.setU_imgpath(common.upload("profile", file, session));
 			}
 			if(service.user_insert(vo)) {
 				System.out.println(vo.getU_name()+"getU_name");

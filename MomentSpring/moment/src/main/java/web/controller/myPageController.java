@@ -28,7 +28,8 @@ public class myPageController {
 	@RequestMapping("/mypostlist.moment")
 	public String mylist(@RequestParam(defaultValue = "1") int curPage,	String userid, String search, String keyword,
 															Model model, HttpSession session) {
-
+		
+		session.setAttribute("category", "my");
 		userid = ((WebUserVO) session.getAttribute("login_info")).getU_userid();		
 		page.setUserid(userid);
 		page.setCurPage(curPage);		

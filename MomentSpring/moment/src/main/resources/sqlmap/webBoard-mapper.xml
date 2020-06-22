@@ -3,6 +3,13 @@
 <mapper namespace="webBoard.mapper">
 
 
+<select id="detail" resultType="web.board.WebBoardVO">
+SELECT b.*, u_nick b_nick, u_profileimg b_profileimg 
+FROM m_board b, m_user u 
+WHERE b.b_userid = u.u_userid 
+AND b.b_no = #{id}
+</select>
+
 <select id="total" resultType="integer">
 	select count(*) from m_board <include refid="search_where" />
 </select>
@@ -18,12 +25,12 @@
 
 <!-- 공통 쿼리문 작성 -->
 <sql id="search_writer">
-	u_userid in (select u_userid from m_user where name like '%' || #{keyword} || '%')
+	b_userid in (select u_userid from m_user where u_nick like '%' || #{keyword} || '%')
 </sql>
 
 <sql id="search_where">
-	<if test="search=='title' or search=='content'">
-		where ${search} like '%' || #{keyword} || '%'
+	<if test="search=='title' or search=='coment'">
+		where b_${search} like '%' || #{keyword} || '%'
 	</if>
 	<if test="search=='writer'">
 		where <include refid="search_writer"/>
@@ -39,7 +46,7 @@
 <insert id="insert">
 	INSERT INTO m_board (b_no, b_userid, b_title, b_coment, b_imgpath, b_local, b_tag, b_writedate, b_latitude, b_longitude, b_ddabong, b_readcnt)
 	VALUES (m_board_seq.nextval, #{b_userid}, #{b_title}, #{b_coment}, #{b_imgpath}, #{b_local}, DEFAULT , SYSDATE , #{b_latitude}, #{b_longitude}, DEFAULT, DEFAULT)
-	</insert>
+</insert>
 
 
 

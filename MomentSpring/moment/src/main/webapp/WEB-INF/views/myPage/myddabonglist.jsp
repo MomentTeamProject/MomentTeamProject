@@ -70,8 +70,8 @@ option { width: 200px; color:white; background-color: black;}
 				<c:forEach items="${page.list}" var="vo">	
 					<li>
 						<div><input type="checkbox" name="delete" class="delete" style="float:left;" data-listno="${vo.b_no}"></div>		
-						<div style="padding:0; width:100%; padding-top:10px;"><a href="mylist_detail.moment?id=${vo.b_no}" ><img src="img/background/${vo.b_imgpath}" style="width:100%; height:100%;"></a></div>			
-						<div style="padding:5px; height:10px;"><a style="font-weight: bold;" href="mylist_detail.moment?id=${vo.b_no}">${vo.b_title}</a></div>
+						<div style="padding:0; width:100%; padding-top:10px;"><a onclick="detail(${vo.b_no})" ><img src="img/background/${vo.b_imgpath}" style="width:100%; height:100%;"></a></div>			
+						<div style="padding:5px; height:10px;"><a style="font-weight: bold;" onclick="detail(${vo.b_no})">${vo.b_title}</a></div>
 						<div><a href="memberpostlist.moment?userid=${vo.b_userid}">${vo.u_nick}</a></div>
 						<div><img src="img/eye.png" style="color:white; width:15px;">${vo.b_readcnt} / <img src="img/heart.png" style="font-size:80%; width:15px">${vo.b_ddabong}
 							&nbsp;&nbsp;&nbsp;${vo.b_writedate}	</div>
@@ -80,9 +80,6 @@ option { width: 200px; color:white; background-color: black;}
 			</ul>
 		</div>
 	</c:if>
-
-	
-	
 	
 	<!-- 페이지  -->
 	<div class='btnSet' class="top">
@@ -106,6 +103,16 @@ option { width: 200px; color:white; background-color: black;}
 	</form> 
 </div>
 
+<!-- detail div -->
+<div id="detail">
+	<div class="detitleBox">
+		<h3 class="detitle"></h3>
+	</div>
+</div>
+<div id="detail-background"></div>
+
+<!-- 디테일 js -->
+<script type="text/javascript" src="js/detail.js"></script>
 
 <script type="text/javascript">
 

@@ -30,14 +30,6 @@ public class WebBoardController {
 	private String key = "AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk";	
 	private String map_url = "https://maps.googleapis.com/maps/api/geocode/json?address=";
 	
-	
-	//파노라마게시판 이동
-	@RequestMapping("/list.pa")
-	public String panoList(HttpSession session) {
-		session.setAttribute("category", "pa");
-		return "pano/list";
-	}
-	
 	//사진디테일  클릭시
 	@ResponseBody @RequestMapping("/detail.bo")
 	public WebBoardVO detail(int no) {
@@ -48,7 +40,7 @@ public class WebBoardController {
 		return vo;
 	}
 	
-	//더보기 이벤트 ajax 통신시 다음페이지 10개 출력
+	//더보기 이벤트 ajax 통신시 다음페이지 14개 출력
 	@ResponseBody @RequestMapping("/more.bo")
 	public List<WebBoardVO> more(Model model, String search, String keyword, @RequestParam(defaultValue = "1") int curPage, @RequestParam(defaultValue = "10") int pageList ) {
 		System.out.println("======== 다음페이지 출력 ========");
@@ -58,6 +50,8 @@ public class WebBoardController {
 		page.setKeyword(keyword);
 		page.setPageList(pageList);
 		
+		//
+		page.setPageList(14);
 		System.out.println(page.getCurPage());
 		
 		List<WebBoardVO> list = service.board_list(page).getList();
@@ -75,7 +69,7 @@ public class WebBoardController {
 		page.setSearch(search);
 		page.setKeyword(keyword);
 		page.setPageList(pageList);
-		
+		page.setPageList(14);
 		model.addAttribute( "page", service.board_list(page) );
 		System.out.println("1페이지 목록출력" + page.getList());
 		return "pictures/list";

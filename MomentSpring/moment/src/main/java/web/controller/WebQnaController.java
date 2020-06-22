@@ -26,7 +26,7 @@ public class WebQnaController {
 	@RequestMapping("/list.qn")
 	public String list(Model model, HttpSession session, @RequestParam(defaultValue="1") int curPage, 
 			String search, String keyword) {
-		session.setAttribute("category", "qn");
+		session.setAttribute("category", "qa");
 		page.setCurPage(curPage);
 		page.setSearch(search);
 		page.setKeyword(keyword);

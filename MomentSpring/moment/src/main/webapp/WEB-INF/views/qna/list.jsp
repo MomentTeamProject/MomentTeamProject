@@ -9,59 +9,85 @@
 <title>Insert title here</title>
 <link>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 .menu-box{ width: 80%; height: 50px; margin: 10px auto; text-align: center; }
 .menu ul{ margin: 0 auto; }
 .menu li{ float: none; margin: 0 10px;}
-#content { margin-top: 150px; }
-#qna-body { margin: 0 auto; text-align: center; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
+#content { margin-top: 100px; }
+#title { width: 100%; height: auto; font-family: 'Suez One', serif; color: white; font-size: 2em; }
+#qna-body { margin: 0 auto; text-align: center; background-color: #f56437fa; }
 input[type=radio], input[type=checkbox]{ width: 18px; margin: 0 5px 3px; vertical-align: middle; }
-select { height: 32px; }
+
+.menu-box { height: inherit; }
+select { height: 32px; font-size: 1em; font-family: 'Sriracha', cursive; padding: 0 0 1px 3px; border: 1px solid white; border-radius: 5px; }
+#keyBox { border: 1px solid white; border-radius: 5px; }
 
 /* 테이블 스타일 */
-#qna-table td, #qna-table th {
-  border: 1px solid #ddd;
+#qna-table th {
+  border: 2px solid #ddd;
   padding: 8px;
+  text-align: center;
+  color: white;
+  font-family: 'Jua', sans-serif;
 }
-#qna-table tr:nth-child(even){background-color: #f2f2f2;}
-#qna-table tr:hover {background-color: #ddd;}
+#qna-table td {
+	color: black;
+	border: 2px solid #ddd;
+	font-family: 'Jua', sans-serif;
+}
+/* #fc7703 */
+#qna-table tr:nth-child(even){ background-color: white; }
+#qna-table tr:hover {background-color: #fc7703;}
+#qna-table tr:nth-child(even):hover { background-color: #fc7703; }
 #qna-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
   background-color: #4CAF50;
-  color: black;
+  font-size: 1.3em;
+  font-weight: normal;
 }
+
+.qa { background-color: #32bf37 !important; }
+.qa:hover { background-color: #fc7703 !important; }
+.an { background-color: #4CAF50 !important; }
+.an:hover { background-color: #fc7703 !important;  }
+
 table { width: 80%; margin: 0 auto; border: 1px solid; border-collapse: collapse; }
 table th, table td { border: 1px solid; padding: 5px 10px; }
 table td a:hover { font-variant: bold; }
 input { height: 22px; padding: 3px 5px; font-size: 15px; }
 table tr td label:not(:last-child){ margin-right: 20px; }
+textarea { width: 100%; height: 200px; resize: none; }
+
 </style>
 </head>
 <body id="qna-body">
-<h3>문의 하기</h3>
-<div class="menu-box" style="margin-bottom: 80px;">
+<div id="title">
+<h2>Q & A</h2>
+</div>
+<div class="menu-box">
 	<div id="list-top" >
 	<div style="margin-bottom: 20px">
 				<select name="search" class="w-px80">
-					<option value="title" ${page.search eq title ? 'selected' : '' }>제목</option>
-					<option value="content" ${page.search eq content ? 'selected' : '' }>내용</option>
-					<option value="writer" ${page.search eq writer ? 'selected' : '' }>작성자</option>
-					<option value="all" ${page.search eq all ? 'selected' : '' }>전체</option>
+					<option value="title" ${page.search eq title ? 'selected' : '' }>TITLE</option>
+					<option value="content" ${page.search eq content ? 'selected' : '' }>CONTENT</option>
+					<option value="writer" ${page.search eq writer ? 'selected' : '' }>WRITER</option>
+					<option value="all" ${page.search eq all ? 'selected' : '' }>ALL</option>
 				</select>
-			<input type="text" name="keyword" class="w-px300" value="${page.keyword}"/>
-			<a class="btn-fill" onclick="search_list();">검색</a>
+			<input type="text" id="keyBox" name="keyword" class="w-px300" value="${page.keyword}"/>
+			<a class="btn-fill" onclick="search_list();">SEARCH</a>
 		</div>
-		<div style="margin-bottom: 20px">
+		<div style="margin-bottom: 20px; margin-top: 60px;">
 		<a class="qna-btn-fill" id="faq">자주 묻는 질문과 답변</a>
-		<a class="btn-empty" id="all_list">전체 질문 목록</a>
+		<a class="qna-btn-empty" id="all_list">전체 질문 목록</a>
 		<c:if test="${!empty login_info }">
-			<a class="btn-empty" id="myq">내 질문 목록</a>
-			<a class="btn-empty" id="question">질문하기</a>
+			<a class="qna-btn-empty" id="myq">내 질문 목록</a>
+			<a class="qna-btn-empty" id="question">질문하기</a>
 		</c:if>
 		<c:if test="${login_info.u_admin eq 'M' }">	
-			<a class="btn-empty" id="qlist">답변 할 목록</a>
-			<a class="btn-empty" id="alist">답변 완료 목록</a>
+			<a class="qna-btn-empty" id="qlist">답변 할 목록</a>
+			<a class="qna-btn-empty" id="alist">답변 완료 목록</a>
 		</c:if>
 		</div>
 		</div>
@@ -75,7 +101,7 @@ table tr td label:not(:last-child){ margin-right: 20px; }
 			<th>제목</th>
 			<th class="w-px100">작성자</th>
 			<th class="w-px100">작성일자</th>
-			<th class="w-px60">질문 현황</th>
+			<th class="w-px100">질문 현황</th>
 		</tr>
 		<c:forEach items="${page.list}" var="vo">
 			<tr>
@@ -106,16 +132,15 @@ table tr td label:not(:last-child){ margin-right: 20px; }
 	<table>
 		<tr>
 			<th class="w-px120">제목</th>
-			<td><input type="text" name="title" class="need" title="제목" onkeypress="if(event.keyCode == 13){if(!necessary()) return false;}" /></td>
+			<td><input type="text" name="title" style="width: 99%" class="need" title="제목" onkeypress="if(event.keyCode == 13){if(!necessary()) return false;}" /></td>
 		</tr>
 		<tr>
 			<th>문의 내용</th>
-			<td><textarea name="content" class="need" title="내용" ></textarea></td>
+			<td><textarea name="content" style="width: 100%; height: 200px; resize: none;" class="need" title="내용" ></textarea></td>
 		</tr>
 	</table>
 	<div class="btnSet">
 		<a class="btn-fill" onclick="if( necessary() ){ $('form').submit() }" >저장</a>
-		<a class="btn-empty">취소</a>
 	</div>
 	</form>
 </div>
@@ -124,7 +149,7 @@ table tr td label:not(:last-child){ margin-right: 20px; }
 <script type="text/javascript" src="js/need_check.js"></script>
 <script type="text/javascript">
 function content_view(id){
-	$('.content_btn'+id).css('color','blue');
+	$('.content_btn'+id).css('color','black');
 	$('.content_view'+id).css('display','table-row');
 	$('.content_view'+id).siblings('td').eq(1).attr('colspan','5');
 }
@@ -145,8 +170,10 @@ function formatDate(date) {
 
 //글삭제
 function write_delete(qid, result, admin){
-	if(admin == 'N'){
-		if(result == 'Y') { alert('답변이 완료된 글은 삭제가 불가능합니다. '); return; }
+	if(admin == 'M'){
+		if(result == 'Y') {
+			 alert('답변이 완료된 글은 삭제가 불가능합니다. '); return; 
+			 }
 	}
 	
 	if(!confirm("정말삭제?")) return;
@@ -198,7 +225,7 @@ $('#myq').on('click', function(){
 		url: 'myquestion',
 		success: function(data){
 			var tag = '<table id="qna-table">';
-			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><th class="w-px60">글삭제</th></tr>';
+			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px100">질문 현황</th><th class="w-px100">글삭제</th></tr>';
 			$.each(data, function(key, value){
 				tag += '<tr><td>'+value.no+'</td>';								
 				tag += '<td class="left" onclick="content_view('+value.id+')" ><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
@@ -241,7 +268,7 @@ $('#qlist').on('click', function(){
 		url: 'question_list.qn',
 		success: function(data){
 			var tag = '<table id="qna-table">';
-			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><th class="w-px60">글삭제</th></tr>';
+			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px100">질문 현황</th><th class="w-px60">글삭제</th></tr>';
 			$.each(data, function(key, value){
 				tag += '<tr><td>'+value.no+'</td>';								
 				tag += '<td class="left" onclick="content_view('+value.id+')" ><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
@@ -276,7 +303,7 @@ $('#alist').on('click', function(){
 		url: 'answer_list.qn',
 		success: function(data){
 			var tag = '<table id="qna-table">';
-			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><th class="w-px60">글삭제</th></tr>';
+			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px100">질문 현황</th><th class="w-px60">글삭제</th></tr>';
 			$.each(data, function(key, value){
 				tag += '<tr><td>'+value.no+'</td>';								
 				tag += '<td class="left" onclick="content_view('+value.id+')" ><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
@@ -317,20 +344,26 @@ function search_list(){
 		data: { search: $('[name=search]').val(), keyword : $('[name=keyword]').val() },
 		success: function(data){
 			var tag = '<table id="qna-table">';
-			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px60">질문 현황</th><c:if test="${login_info.u_admin eq \'Y\' }"><th class="w-px60">글삭제</th></c:if></tr>';
+			tag += '<tr><th class="w-px60">번호</th><th>제목</th><th class="w-px100">작성자</th><th class="w-px100">작성일자</th><th class="w-px100">질문 현황</th><c:if test="${login_info.u_admin eq \'M\' }"><th class="w-px60">글삭제</th></c:if></tr>';
 			$.each(data, function(key, value){
 				tag += '<tr><td>'+value.no+'</td>';								
 				tag += '<td class="left" onclick="content_view('+value.id+')"><a class="content_btn'+value.id+'" onclick="content_view('+value.id+')">'+value.title+'</a></td>' ;     
 				tag += '<td>'+value.name+'</td><td>'+formatDate(value.writedate)+'</td>';
 				tag += '<td>'+ (value.answer_result == 'Y' ? '답변완료' : '진행중') +'</td>';
-				tag += '<c:if test="${login_info.u_admin eq \'Y\' }"><td><a onclick="write_delete('+value.id+')">삭제</a></td></c:if>';
+				tag += '<c:if test="${login_info.u_admin eq \'M\' }"><td><a onclick="write_delete('+value.id+')">삭제</a></td></c:if>';
 				tag += '</tr>';
-				tag += '<tr class="content_view'+value.id+'" style="display: none; cursor: pointer;" onclick="content_close('+value.id+')">'
+				tag += '<tr class="content_view'+value.id+' qa" style="display: none; cursor: pointer;" onclick="content_close('+value.id+')">'
 					+'<td>질문</td><td colspan="5" class="left">'+value.content.replace(/\n/g, '<br/>')+'</td></tr>'
-				tag += '<tr class="content_view'+value.id+'" style="display: none; cursor: pointer;" onclick="content_close('+value.id+')">'
-					+'<td>답변</td><td colspan="5" class="left">'+(value.answer_content == null ? '아직 등록된 답변이 없습니다.' : value.answer_content.replace(/\n/g, '<br/>'))+'</td></tr>'
+				tag += '<tr class="content_view'+value.id+' an" style="display: none; cursor: pointer;" onclick="content_close('+value.id+')">'
+					  +'<td>답변</td><td colspan="5" class="left">'+(value.answer_content == null ? '아직 등록된 답변이 없습니다.' : value.answer_content.replace(/\n/g, '<br/>'))+'</td></tr>'
 			console.log(value);
 			});
+			tag += '<tr><td>2</td><td class="left">사진이 안올라가면 어떻게 해야할까요?</td><td>동카이</td><td>2020-06-18</td><td>답변완료</td></tr>';
+			tag += '<tr><td>3</td><td class="left">회원가입에 실패했어요.</td><td>도후니</td><td>2020-06-18</td><td>답변완료</td></tr>';
+			tag += '<tr><td>4</td><td class="left">채팅방이 안들어가져요.</td><td>정민생</td><td>2020-06-18</td><td>진행중</td></tr>';
+			tag += '<tr><td>5</td><td class="left">구글맵이 로드가 안됩니다.</td><td>치현갓</td><td>2020-06-18</td><td>답변완료</td></tr>';
+			tag += '<tr><td>6</td><td class="left">추천이 눌리지 않습니다.</td><td>치현갓</td><td>2020-06-18</td><td>진행중</td></tr>';
+			tag += '<tr><td>7</td><td class="left">지도검색이 되지않아요!</td><td>승철문</td><td>2020-06-18</td><td>답변포기</td></tr>';
 			tag += '</table>';
 			$('#append').html(tag);
 		}, error: function(req, text){

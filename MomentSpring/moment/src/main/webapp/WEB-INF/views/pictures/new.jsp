@@ -30,8 +30,8 @@ input:focus {outline:none;}
 </head>
 
 <body>
+<div class="content">
 <form method="post" action="insert.bo" enctype="multipart/form-data">
-	<div class="content">
 	<table>
 		<tr><th>제목</th>
 			<td><input type='text' name='b_title' class='need' title='제목'/></td>

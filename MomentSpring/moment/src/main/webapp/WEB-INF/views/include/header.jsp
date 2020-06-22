@@ -23,6 +23,9 @@
 	<div id="header-top" class="category">
 		<div id="header-home-image"><a href='<c:url value="/" />'><img src="background/logo1.jpg" alt="홈으로" /></a></div>
 		<ul id="header-menu">
+			<c:if test="${!empty login_info}">
+			<li><a href="mypostlist.moment" class="${category eq 'my' ? 'active' : '' }">MY POST</a></li>
+			</c:if>
 			<li><a href='<c:url value="/" />' class="${category eq 'home' ? 'active' : '' }">HOME</a></li>
 			<li style="font-weight: bold;">│</li>
 			<li><a href="list.bo" class="${category eq 'bo' ? 'active' : '' }">POST</a></li>

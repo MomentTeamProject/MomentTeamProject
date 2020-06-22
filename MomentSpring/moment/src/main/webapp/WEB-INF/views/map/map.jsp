@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>        
 <!DOCTYPE html>
+<html>
  <head>
     <title>Place Searches</title>
 <!-- 구글 api  -->
@@ -34,32 +35,18 @@ text-overflow: ellipsis; white-space: nowrap;
 display: block; overflow: hidden; font-size:90%; /* 글줄임 */
 font-weight: bolder;  text-align: center;} 
 
-
-
 div.gm-style-iw.gm-style-iw-c {
 	width: 150px !important; 
 	height: 155px;
-
-	
 }
 
 
 div.gm-style-iw-d {
-
 	width: 99%; 
 	height: 99%;
-	
-
 }
 
-
-
-
-
-
-
 </style>
-
 </head>
 <body>
 
@@ -114,7 +101,9 @@ $(document).ready(function() {
 		    navigator.geolocation.getCurrentPosition(function(position) {		   
 				var lat = parseFloat(position.coords.latitude);
 				var lng = parseFloat(position.coords.longitude);
-				initMap(lat, lng);		   
+				initMap(lat, lng);
+				console.log("coords.lat: "+position.coords.latitude);		   
+				console.log("coords.lng: "+position.coords.longitude);		   
 				
 			}, function(error) {
 		      console.error(error);
@@ -136,7 +125,8 @@ $(document).ready(function() {
 function initMap(lat,lng){
  
 	//alert("함수"+lat + ' ' +lng);
-
+	console.log("lat: "+lat);
+	console.log("lng: "+lng);		 
 	var map = new google.maps.Map(document.getElementById('map_ma'), {
 	    
 	    center: {

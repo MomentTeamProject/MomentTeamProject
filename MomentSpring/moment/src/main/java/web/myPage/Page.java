@@ -21,7 +21,4 @@ public class Page extends PageVO {
 	}
 	
 	
-	
-	
-	
 }

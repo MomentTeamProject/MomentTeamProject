@@ -14,7 +14,7 @@ async defer></script>
 .file-img {width:25px; height:25px;}
 input:focus {outline:none;}
 .btnSet {padding-left: 20px;}
-p {font-family: 'Suez One', serif; font-size: 38px; padding: 0 0 40px 60px; }
+p {font-family: 'Suez One', serif; font-size: 40px; padding: 0 0 40px 60px; }
 #delete-file:hover {cursor: pointer;}
 
 
@@ -25,10 +25,10 @@ p {font-family: 'Suez One', serif; font-size: 38px; padding: 0 0 40px 60px; }
 
 
 body {background-color: #f56437fa;  padding: 150px 0 250px 0; color: black;  /*  height: 1000px; */font-family: 'Jua', sans-serif;}
-#content { width:800px; margin: 0 auto;  padding: 50px 0px;  border-radius:15px; 
- box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+#content { width:800px; margin: 0 auto;  padding: 50px 0px;  border-radius:15px; margin-bottom:30px; 
+ box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); 
   box-shadow: 0 0 20px 0 rgba(12, 12, 12, 0.65), 0 5px 5px 0 rgba(0, 0, 0, 0.44);  
- background-color : white;} /* 하얀바탕 */
+ background-color : white;z-index: 3;position: relative;} /* 하얀바탕 */
 /* form { width: 100%;} */
 table { width: 90%; border-collapse:collapse; margin: 0 auto;}
 table td { padding : 20px; } 
@@ -46,7 +46,7 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width: 99%}
 
 <body>
 <div class="content">
-<div style="height: 50px; "> <p>WRITE</p> </div>
+<div style="height: 50px; "> <p>W R I T E</p> </div>
 <form method="post" action="insert.bo" enctype="multipart/form-data">
 	<table>
 		<tr><th>제목</th>
@@ -66,7 +66,7 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width: 99%}
     					<input type= "hidden" id="b_latitude" name="b_latitude" >
 						<input type= "hidden" id="b_longitude" name="b_longitude" >
 						<input type= "hidden" id="b_local" name="b_local" >
-			  	<a class="btn-fill" onclick="where()"> 지역검색 </a>
+			  	<a class="btn-fill" onclick="where()"style="font-family: 'Jua', sans-serif; padding: 7px 10px;"> 지역검색 </a>
 			  	</div>
 			  	<!-- <div id="address" style="color:white; height: 20px; padding: 10px;"></div> -->
 				<div id="map"></div>

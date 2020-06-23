@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Insert title here</title> 
 <link rel="stylesheet" href="css/common.css?v=<%=new java.util.Date().getTime()%>">
 <script type="text/javascript" 	src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 <jsp:include page="/WEB-INF/views/include/header.jsp" />

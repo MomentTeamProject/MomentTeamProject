@@ -1,5 +1,5 @@
 package web.pano;
 
 public interface PanoService {
-	void pano_list(PanoPage page);
+	PanoPage pano_list(PanoPage page);
 }

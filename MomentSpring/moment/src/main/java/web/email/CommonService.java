@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonArray;
 
+import android.common.Common;
 import web.user.WebUserServiceImpl;
 import web.user.WebUserVO;
 
@@ -165,9 +166,12 @@ public class CommonService {
 	// 게시판 새글 저장 이미지 업로드
 	public String uploadpic(String category, MultipartFile file, HttpSession session) {
 
-		String resources = session.getServletContext().getRealPath("resources");
-		String upload = resources + "/image";
-		String folder = upload + "/" + category;
+//		String resources = session.getServletContext().getRealPath("resources");
+//		String upload = resources + "/image";
+//		String folder = upload + "/" + category;
+		
+		String folder = Common.IMAGE_FILE_PATH;
+		
 		File f = new File(folder);
 		if (!f.exists())
 			f.mkdirs();

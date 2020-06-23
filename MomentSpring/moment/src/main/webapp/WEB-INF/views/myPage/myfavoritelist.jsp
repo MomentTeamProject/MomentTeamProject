@@ -45,10 +45,7 @@ option { width: 200px; color:white; background-color: black;}
 <div class="contentbody"  style="padding-top:50px;">	
 	<div class="top">	
 			<div style="float:right; padding-bottom: 15px;">
-			<input type="checkbox" id="allCheck" style="float:left; padding-left: 3px;">
-			<label for="allCheck">모두선택</label>		
-			<a class="btn-fill" id="deleteBtn">해제</a>
-			<a class="btn-fill">글쓰기</a>
+		
 		</div>
 	</div>
 	
@@ -65,9 +62,15 @@ option { width: 200px; color:white; background-color: black;}
 		<ul class="grid">
 		<c:forEach items="${page.list}" var="vo">	
 					<li>
+<<<<<<< HEAD
+					<div></div>					
+					<div style="padding:0; width:100%; padding-top:10px;"><a href="mylist_detail.moment?id=${vo.b_no}" ><img src="img/background/${vo.b_imgpath}" style="width:100%; height:100%;"></a></div>			
+					<div style="padding:5px; height:10px;"><a style="font-weight: bold;" href="mylist_detail.moment?id=${vo.b_no}">${vo.b_title}</a></div>
+=======
 					<div><input type="checkbox" name="delete" class="delete" style="float:left;" data-listno="${vo.b_no}"></div>					
 					<div style="padding:0; width:100%; padding-top:10px;"><a onclick="detail(${vo.b_no})" ><img src="img/background/${vo.b_imgpath}" style="width:100%; height:100%;"></a></div>			
 					<div style="padding:5px; height:10px;"><a style="font-weight: bold;" onclick="detail(${vo.b_no})">${vo.b_title}</a></div>
+>>>>>>> refs/remotes/origin/master
 					<div><a href="memberpostlist.moment?userid=${vo.b_userid}">${vo.u_nick}</a></div>	
 					<div><img src="img/eye.png" style="color:white; width:15px;">${vo.b_readcnt} / <img src="img/heart.png" style="font-size:80%; width:15px">${vo.b_ddabong}
 							&nbsp;&nbsp;&nbsp;${vo.b_writedate}	</div>

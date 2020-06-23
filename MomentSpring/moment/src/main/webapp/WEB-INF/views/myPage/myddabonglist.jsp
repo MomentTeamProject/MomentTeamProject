@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/common.css?v=<%=new java.util.Date().getTime()%>">
+<link rel="stylesheet" href="css/common.css?v=<%= new java.util.Date().getTime()%>">
 <jsp:include page="/WEB-INF/views/include/header.jsp" />
 </head>
 <style>
@@ -48,10 +48,6 @@ option { width: 200px; color:white; background-color: black;}
 	<!-- 삭제, 글쓰기 버튼  -->
 	<div class="top">	
 		<div style="float:right; padding-bottom: 10px;">
-			<input type="checkbox" id="allCheck" style="float:left; padding-left: 3px;">
-			<label for="allCheck">모두선택</label>		
-			<a class="btn-fill" id="deleteBtn">해제</a>
-			<a class="btn-fill">글쓰기</a>
 		</div>
 	</div>
 		

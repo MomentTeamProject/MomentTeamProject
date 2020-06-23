@@ -4,7 +4,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
-	#wrap { position: fixed; width: 100%; background-color: black; height: 50px; line-height: 45px; top:0;  z-index: 20;}
+	#wrap { position: fixed; width: 100%; background-color: black; height: 50px; line-height: 45px; top:0;  z-index: 997;}
 	#header-top { 
 		height: 50px; background-color: black; width: 80%; margin-top: 15px;
 		position: absolute; margin: 0 auto; left: 10%; top:0;

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board.mapper">
 
-<select id="latelyList" resultType="android.board.BoardVO">
+<select id="latelyList" resultType="android.board.BoardVO">  
 	SELECT b.*, u_nick b_nick, u_profileimg b_profileimg
 	FROM m_board b, m_user u
 	WHERE b.b_userid = u.u_userid
@@ -36,7 +36,7 @@
 </update>
 
 <select id="detail" resultType="android.board.BoardVO">
-	SELECT b.*, u_nick b_nick, u_profileimg b_profileimg 
+	SELECT b.*, u_nick b_nick, u_profileimg b_profileimg  
 	FROM m_board b, m_user u 
 	WHERE b.b_userid = u.u_userid 
 	AND b.b_no = #{no}

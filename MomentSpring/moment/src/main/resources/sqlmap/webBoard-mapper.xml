@@ -2,24 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="webBoard.mapper">
 
+<update id="boardDdabong">
+	UPDATE m_favorite SET f_ddabong = #{f_ddabong}, f_favorites = #{f_favorites} WHERE f_bno = #{f_bno} AND f_userid = #{f_userid}
+</update>
 
+<update id="boardDdabongUpdate">
+	UPDATE m_board
+	SET b_ddabong = (SELECT COUNT(f_ddabong) FROM m_board b, m_favorite f WHERE b.b_no = f.f_bno AND f.f_ddabong = 'Y' AND f.f_bno = #{f_bno} )
+	WHERE b_no = #{f_bno}
+</update>
+
+<!-- 해당 게시글에 대해 사용자가 최초 접근시 Favorite 테이블에 이력을 추가함. -->
+<insert id="boardAddFavorite">
+	INSERT INTO m_favorite( f_bno, f_userid, f_favorites, f_ddabong )
+	VALUES( #{b_no}, #{b_userid}, DEFAULT, DEFAULT )
+</insert>
+
+<!-- 상세조회시 해당게시글에대한 즐찾여부 (로그인 한 사용자 일시) 조회 -->
+<select id="boardFavorite" resultType="web.board.WebFavoriteVO">
+	SELECT * FROM m_favorite WHERE f_bno = #{b_no} AND f_userid = #{b_userid}
+</select>
+
+<!-- 상세조회시 조회수 증가 -->
+<update id="readCnt">
+	UPDATE m_board 
+	SET b_readcnt = b_readcnt+1 
+	WHERE b_no = #{no}
+</update>
+
+<!-- 글상세조회 -->
 <select id="detail" resultType="web.board.WebBoardVO">
 SELECT b.*, u_nick b_nick, u_profileimg b_profileimg 
 FROM m_board b, m_user u 
 WHERE b.b_userid = u.u_userid 
-AND b.b_no = #{id}
+AND b.b_no = #{no}
 </select>
 
 <select id="total" resultType="integer">
 	select count(*) from m_board <include refid="search_where" />
 </select>
 
+<!-- 기본 default 출력 리스트 / 최신순 목록출력 -->
 <select id="list" resultType="web.board.WebBoardVO">
 	select b.*, (select u_nick from m_user where u_userid=b.b_userid) b_nick 
 	from (select rownum no, b.* 
 		  from (select * from m_board <include refid="search_where" /> order by b_no) b 
 		  order by no desc) b
 	where no between #{beginList} and #{endList}
+</select>
+<!-- 추천 순 목록 출력 ddabong! -->
+<select id="rankList" resultType="web.board.WebBoardVO">
+	select b.*, (select u_nick from m_user where u_userid=b.b_userid) b_nick 
+	from (select rownum no, b.* 
+		  from (select * from m_board <include refid="search_where" /> order by b_no) b 
+		  order by no desc) b
+	where no between #{beginList} and #{endList}
+	order by b_ddabong desc
 </select>
 
 

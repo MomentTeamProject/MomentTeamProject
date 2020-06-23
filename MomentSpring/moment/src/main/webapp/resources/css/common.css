@@ -117,7 +117,7 @@ a:link, a:visited { text-decoration:none; color:white;}
 .decoment { width: 100%; height: inherit; color: white; font-family: 'Gamja Flower', cursive; padding: 5px; font-size: 1.4em; text-align: left; padding-left: 60px; float: left; }
 .decntBox { box-sizing: content-box; float: right; font-size: 14px; vertical-align: text-bottom; font-size: 25px; }
 .cnt { width: 25px; height: 25px; margin-bottom: 8px; }
-.like { width: 25px; height: 25px; margin-bottom: 6px; }
+.like { width: 25px; height: 25px; margin-bottom: 6px; cursor: pointer; }
 #detail-background { position:absolute; left:0;	top:0;
 										 width:100%;		height:100%; z-index: 3;
 										 background-color:#000;	opacity:0.5; display: none; 

@@ -20,7 +20,7 @@
 input[type=radio], input[type=checkbox]{ width: 18px; margin: 0 5px 3px; vertical-align: middle; }
 
 .menu-box { height: inherit; }
-select { height: 32px; font-size: 1em; font-family: 'Sriracha', cursive; padding: 0 0 1px 3px; border: 1px solid white; border-radius: 5px; }
+select { height: 32px; font-size: 1em; font-family: 'Sriracha', cursive; padding: 0 0 1px 3px; borr: 1px solid white; border-radius: 5px; }
 #keyBox { border: 1px solid white; border-radius: 5px; }
 
 /* 테이블 스타일 */

@@ -20,15 +20,8 @@ public class WebBoardServiceImpl implements WebBoardService {
 	}
 
 	@Override
-	public WebBoardVO board_detail(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int board_read(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public WebBoardVO board_detail(int no, String userid) {
+		return dao.board_detail(no, userid);
 	}
 
 	@Override
@@ -41,6 +34,16 @@ public class WebBoardServiceImpl implements WebBoardService {
 	public int board_delete(int id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void boardDdabong(WebFavoriteVO fvo) {
+		dao.boardDdabong(fvo);
+	}
+
+	@Override
+	public void boardDdabongUpdate(WebFavoriteVO fvo) {
+		dao.boardDdabongUpdate(fvo);
 	}
 
 }

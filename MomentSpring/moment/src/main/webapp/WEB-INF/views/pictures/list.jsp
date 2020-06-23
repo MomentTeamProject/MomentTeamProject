@@ -112,58 +112,187 @@ figure.snip1368.hover figcaption {
 
 #footer-wrap { display: none; z-index: 3; }
 .contentBody { overflow-y: auto; margin-top: 50px; }
-#title { width: 100%; height: auto; font-family: 'Suez One', serif; color: white; font-size: 2em; }
+#title { width: 100%; height: auto; font-family: 'Suez One', serif; color: white; font-size: 2em; margin-top: 100px; }
 #content { width: 100%; height: 850px; color: black; margin: 0 auto -100; background-color: black; }
 #contentBox { margin-bottom: 200px; }
 .pictureBox { display: inline-block; }
 .pictures { width: 500px; height: 250px; border-radius: 10px; }
 #confirm { margin-top: 30px; border-radius: 5px; color: gray; }
 
-/* 디테일 창 css처리 */
-#detail { position:absolute;	width:800px;	height:800px; display: none;
-				  left:50%;	top:50%;	transform:translate(-50%, -50%);
-				  border:3px solid white; border-radius: 10px; background-color: #fc7703;	
-				  color: #fc7703; z-index: 4; margin-top: 470px; overflow: auto;
-}
-#detail::-webkit-scrollbar-thumb { background-color: white; }
-#detail::-webkit-scrollbar-track { background-color: gray; }
-.detitleBox { width: 100%; height: 60px; background-color: #dd552bfa; padding-top: 30px; }
-.detitle { font-weight: bold; font-size: 2em; font-family: 'Gamja Flower', cursive; color: white; margin: 0; }
-.deimg { width: 100%; height: 500px; border: 0px; }
 
-.decontent { padding: 10px; box-sizing: content-box; overflow: hidden; border-bottom: 5px solid #dd552bfa; }
-.deprofileBox { width: 50px; height: 50px; float: left; margin-right: 10px; }
-.deprofile { width: 50px; height: 50px; border-radius: 50px; float: left; background-color: white; }
-.denick { float: left; color: white; width: 700px; height: 25px; text-align: left; padding-left: 3px; font-size: 1.2em; font-weight: bold; font-family: 'Gamja Flower', cursive; }
-.delocation { float: left; color: white; width: 700px; height: 25px; text-align: left; padding-left: 3px; font-size: 0.9em; font-weight: bold;  font-family: 'Gamja Flower', cursive; }
-.decoment { width: 100%; height: inherit; color: white; font-family: 'Gamja Flower', cursive; padding: 5px; font-size: 1.4em; text-align: left; padding-left: 60px; float: left; }
-.decntBox { box-sizing: content-box; float: right; font-size: 14px; vertical-align: text-bottom; font-size: 25px; }
-.cnt { width: 25px; height: 25px; margin-bottom: 8px; }
-.like { width: 25px; height: 25px; margin-bottom: 6px; }
-#detail-background { position:absolute; left:0;	top:0;
-										 width:100%;		height:100%; z-index: 3;
-										 background-color:#000;	opacity:0.5; display: none;
-}
 /* 검색창  */
-#list-top { width: 80%; padding: 20px 0; padding-left: 10%; }
+#list-top { width: 80%; padding: 40px 0; padding-left: 10%; }
 #list-top ul { margin: 0; display: flex; }
 #list-top ul li *{ vertical-align: middle; }
 #list-top ul li:not(:first-child){ margin-left: 2px; }
 
 ul { list-style: none; padding: 0; }
-#list-top div { width: 100%; height: 32px; }
+#list-top div { height: 32px; }
 #list-top ul:first-child { float: left; }
 #list-top ul:last-child { float: right; }
-#selectBox { border: 1px solid white; border-radius: 5px; }
+#selectBox {  border-radius: 10px; }
 #keyBox { border: 1px solid white; border-radius: 5px; }
 
 
 #btn { height: 280px;}
 .btn-fill { color: white; background-color: black; font-style: italic; font-family: 'Sriracha', cursive; margin-left: 3px; }
 
-select { font-size: 1em; width: 100px; height: 30px; font-family: 'Sriracha', cursive; padding: 0 0 1px 3px; }
+select { font-size: 1em; width: 100px; height: 50px; font-family: 'Sriracha', cursive; padding: 0 0 0 3px; font-style: italic; }
 
-.pictureContent { box-sizing: content-box; }
+.pictureContent { box-sizing: content-box; min-width: 1914px; max-width: 2395px; margin: 0 auto; }
+.pictureBox { min-width: 335px; }
+</style>
+
+<!-- search버튼 애니메이션 -->
+<style type="text/css">
+.search-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+.search-wrapper.active {}
+
+.search-wrapper .input-holder {    
+    height: 50px !important;
+    width:50px !important;
+    background: rgba(255,255,255,0);
+    border-radius:6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-input{
+	background-color: white !important;
+	width: 310px;
+	color: black !important;
+	border-radius: 10px;
+}
+.search-wrapper.active .input-holder {
+    width:450px !important;
+    border-radius: 50px !important;
+    background: rgba(0,0,0,0.5);
+    transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+}
+.search-wrapper .input-holder .search-input {
+    height: 50px;
+    padding:0px 70px 0 20px;
+    opacity: 0;
+    position: absolute;
+    top:0px;
+    left:60%;
+    background: transparent;
+    box-sizing: border-box;
+    border:none;
+    outline:none;
+    font-family:"Open Sans", Arial, Verdana;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 70px;
+    color:#FFF;
+    transform: translate(0, 60px);
+    transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition-delay: 0.3s;
+}
+.search-wrapper.active .input-holder .search-input {
+    opacity: 1;
+    transform: translate(0, 10px);
+}
+.search-wrapper .input-holder .search-icon {
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:6px;
+    background: #FFF;
+    padding:0px;
+    outline:none;
+    position: relative;
+    z-index: 2;
+    float:right;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.search-wrapper.active .input-holder .search-icon {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 30px;
+    left: 35%;
+}
+.search-wrapper .input-holder .search-icon span {
+    width:22px;
+    height:22px;
+    display: inline-block;
+    vertical-align: middle;
+    position:relative;
+    transform: rotate(45deg);
+    transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+}
+.search-wrapper.active .input-holder .search-icon span {
+    transform: rotate(-45deg);
+}
+.search-wrapper .input-holder .search-icon span::before, .search-wrapper .input-holder .search-icon span::after {
+    position: absolute; 
+    content:'';
+}
+.search-wrapper .input-holder .search-icon span::before {
+    width: 4px;
+    height: 11px;
+    left: 9px;
+    top: 18px;
+    border-radius: 2px;
+    background: #fc7703;
+}
+.search-wrapper .input-holder .search-icon span::after {
+    width: 14px;
+    height: 14px;
+    left: 0px;
+    top: 0px;
+    border-radius: 16px;
+    border: 4px solid #fc7703;
+}
+.search-wrapper .close {
+    position: absolute;
+    z-index: 1;
+    top:24px;
+    right:10px;
+    width:25px;
+    height:25px;
+    cursor: pointer;
+    transform: rotate(-180deg);
+    transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+    transition-delay: 0.2s;
+}
+.search-wrapper.active .close {
+    right:-180px;
+    transform: rotate(45deg);
+    transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition-delay: 0.5s;
+}
+.search-wrapper .close::before, .search-wrapper .close::after {
+    position:absolute;
+    content:'';
+    background: #fc7703;
+    border-radius: 2px;
+}
+.search-wrapper .close::before {
+    width: 5px;
+    height: 25px;
+    left: 10px;
+    top: 0px;
+}
+.search-wrapper .close::after {
+    width: 25px;
+    height: 5px;
+    left: 0px;
+    top: 10px;
+}
+.selectDIV { position: absolute; display: none; left: 35%; top: 30%; }
+
+.newBtn { height: 70px !important; position: relative; top: 15%; }
+
+/* 플로팅 스크롤버튼 */
+#scrollbtn { 
+	display: block; width: 50px; height: 50px; background: url("icons/ArrowDown.png"); background-color: #fc7703; background-size: 100%; 
+	position: fixed; cursor: pointer; bottom: 100px; right: 50px; z-index: 3; color: gray; border-radius: 50px;
+}
 </style>
 </head>
 
@@ -175,30 +304,36 @@ select { font-size: 1em; width: 100px; height: 30px; font-family: 'Sriracha', cu
 <div id="list-top">
 <form action="list.bo" method="post">
 <input type="hidden" name="curPage" value="1" >
-
 	<div>
-		<ul>
-			<li>
-				<select id="selectBox" name="search" class="w-px80" style="">
-					<option value="all" ${page.search eq 'all' ? 'selected' : '' }>ALL</option>
-					<option value="title" ${page.search eq 'title' ? 'selected' : '' }>TITLE</option>
-					<option value="coment" ${page.search eq 'coment' ? 'selected' : '' }>CONTENT</option>
-					<option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>WRITER</option>
-				</select>
-			</li>
-			<li><input id="keyBox" type="text" name="keyword" class="w-px300" value="${page.keyword }" style="font-size: 1em; width: 150px; height: 25px;" ></li>
-			<li><a class="btn-fill" onclick="$('form').submit()" style="padding: 6px 10px 6px; line-height: 30px;">SEARCH</a></li>
-		</ul>
-		<ul>
+		<div class="search-wrapper">
+			<div class="selectDIV">
+			<ul>
 				<li>
-					<select id="selectBox" name="viewType" class="w-px80" onchange="$('form').submit();" >
-						<option value="lately" ${page.viewType eq 'lately' ? 'selected' : '' } >LATELY</option>
-						<option value="ddabong" ${page.viewType eq 'ddabong' ? 'selected' : '' } >RANK</option>
+					<select id="selectBox" name="search" class="w-px100" style="">
+						<option value="all" ${page.search eq 'all' ? 'selected' : '' }>ALL</option>
+						<option value="title" ${page.search eq 'title' ? 'selected' : '' }>TITLE</option>
+						<option value="coment" ${page.search eq 'coment' ? 'selected' : '' }>CONTENT</option>
+						<option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>WRITER</option>
 					</select>
 				</li>
-<%-- 			<c:if test="${ !empty login_info }"> --%>
-				<li><a class="btn-fill" href="new.bo">NEW</a></li>
-<%-- 			</c:if> --%>
+			</ul>
+			</div>
+			<div class="input-holder">
+			    <input type="text" name="keyword" class="search-input" placeholder="Type to search" />
+			    <button class="search-icon" onclick="searchToggle(this, event); $('form'.submit);"><span></span></button>
+			</div>
+			<span class="close" onclick="closeToggle(this, event);"></span>
+		</div>
+		<ul>
+			<li>
+				<select id="selectBox" name="viewType" class="w-px80" onchange="$('form').submit();" >
+					<option value="lately" ${page.viewType eq 'lately' ? 'selected' : '' } >LATELY</option>
+					<option value="ddabong" ${page.viewType eq 'ddabong' ? 'selected' : '' } >RANK</option>
+				</select>
+			</li>
+			<c:if test="${ !empty login_info }">
+				<li><a class="btn-fill newBtn" href="new.bo">NEW</a></li>
+			</c:if>
 		</ul>
 	</div>
 	<input type="hidden" name="id" />
@@ -211,9 +346,9 @@ select { font-size: 1em; width: 100px; height: 30px; font-family: 'Sriracha', cu
 		<!-- pictureContent가 10개 사진 div 한묶음 -->
 		<div class="pictureContent">
 			<c:forEach items="${page.list}" var="list">
-			<div class="pictureBox" onclick="detail(${list.b_no})">
+			<div class="pictureBox" onclick="detail(${list.b_no}, '${login_info.u_userid}' )">
 				<figure class="snip1368">
-					<img src="background/${list.b_imgpath}" class="pictures" alt="sample30"/>
+					<img src="background/${list.b_imgpath}" class="pictures" alt="sample30"/> <%-- ${list.b_imgpath} --%>
 					<h5 style="font-family: 'Gamja Flower', cursive;">${list.b_title}</h5>
 					<figcaption>
 			    <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
@@ -238,11 +373,56 @@ select { font-size: 1em; width: 100px; height: 30px; font-family: 'Sriracha', cu
 </div>
 <div id="detail-background"></div>
 
+<!-- <span title="scroll to top" id="scrolltop"></span> -->
+<span title="scroll to down" id="scrollbtn" onclick="scrollbtn()"></span>
+
 <!-- 글라이드 js (슬라이드 이미지) -->
 <script type="text/javascript" src="js/banner.js"></script>
 <script type="text/javascript" src="js/glidejs.js"></script>
 
+<!-- 디테일 js -->
+<script type="text/javascript" src="js/detail.js"></script>
+
 <script type="text/javascript">
+//스크롤 플로팅 버튼
+function scrollbtn() {
+	alert('플로팅버튼이벤트발생');
+	var btnClass = $('#scrollbtn').attr('class');
+	console.log(btnClass);
+	alert(btnClass);
+}
+
+//search버튼 js
+function searchToggle(obj, evt){
+    var container = $(obj).closest('.search-wrapper');
+    	//첫번째눌렸을때 class추가
+        if(!container.hasClass('active')){
+            container.addClass('active');
+            $('.selectDIV').css('display', 'block');
+            evt.preventDefault();
+        }
+        else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+            //두번째눌렸을때 클래스와 내용제거
+            container.removeClass('active');
+            // clear input
+            container.find('.search-input').val('');
+        }
+}
+//닫기버튼 js
+function closeToggle(obj, evt){
+    var container = $(obj).closest('.search-wrapper');
+        if(!container.hasClass('active')){
+            container.addClass('active');
+            evt.preventDefault();
+        }
+        else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+            $('.selectDIV').css('display', 'none');
+            container.removeClass('active');
+            // clear input
+            container.find('.search-input').val('');
+        }
+}
+
 //사진효과 js
 $(".hover").mouseleave(
   function () {
@@ -269,19 +449,20 @@ window.onscroll = function(){
 		if (scroll > endY) {
 			$("#confirm").css('color', 'white');
 			$("#footer-wrap").slideDown();
+			$("#scrollbtn").slideDown();
 			//10개의 사진 img 태그를 감싼 각각의 div 태그 10개를 감싼 하나의 div (pictureContent) 의 마지막 div 
 			var lastPC = $('#contentBox').last();
 			
 		 	$.ajax({
 		 	 	url: 'more.bo',
 		 	 	type: 'post',
-		 	 	data: { curPage: parseInt($('[name=curPage]').val()) },
+		 	 	data: { curPage: parseInt($('[name=curPage]').val()), search: $('[name=search]').val(), keyword: $('[name=keyword]').val() },
 		 	 	success: function(data){
 		 	 	 	console.log('ajax success');
 		 	 		var tag = '<div class="pictureContent">';
 		 			$.each(data, function(key, value){
 			 			if(data != null) {
-			 	 				tag += '<div class="pictureBox" onclick="detail('+ value.b_no +')">';
+			 	 				tag += '<div class="pictureBox" onclick="detail('+ value.b_no +' \'${login_info.u_userid}\' )">';
 			 	 					tag += '<figure class="snip1368">';
 			 	 						tag += '<img src="background/'+ value.b_imgpath +'" class="pictures" alt="sample30"/>';
 				 	 					tag	+= '<h5 style=&#39;font-family: "Gamja Flower", cursive;&#39;>'+ value.b_title +'</h5>';
@@ -314,63 +495,10 @@ window.onscroll = function(){
 		} else {
 		 	$("#confirm").css('color', 'gray');
 		 	$("#footer-wrap").slideUp();
+		 	$("#scrollbtn").slideUp();
+		 	$("#scrollbtn").css('background', 'url("icons/ArrowUp.png")');
 		}
 };
-
-//이미지목록 클릭시 디테일 화면에 띄워주기
-function detail(picNo) {
-	//다시 눌렀을때 기존 요소들 삭제
-	$('img.deimg').remove();
-	$('div.decontent').remove();
-
-	//스크롤 위치 확인해서 디테일창 떴을때 스크롤 고정
-	var scroll = window.scrollY || document.documentElement.scrollTop;
-	$('#detail, #detail-background').css('display', 'block');
-	$('#detail, #detail-background').css('top', scroll );
-	$('body').css('overflow-y','hidden');
-	$('body').css('overflow-x','hidden');
-
-	var place = $('#detail').last(); //detail div 안의 타이틀 아래부분에 tag append 됨
-	console.log('클릭한 이미지 no : ' + picNo );
-	$.ajax({
-		url: 'detail.bo',
-		type: 'post',
-		data: { 'no' : picNo },
-		success: function(data){
-			$('.detitle').html(data.b_title);
-			var tag = '<img class="deimg" src="background/'+ data.b_imgpath +'"/>';	//게시물사진
-			
-					tag +='<div class="decontent">';																		//게시물 내용담는 div
-						tag +='<div class="deprofileBox">';																	//게시물 프로필사진 div
-						tag +='<img class="deprofile" src="background/logo2.png"/>';				//게시자 프로필사진
-						tag +='</div>';
-						tag +='<div class="denick">'+ data.b_nick													
-								+ '<div class="decntBox"><img class="cnt" src="icons/like.png"/>&nbsp;'+ data.b_ddabong + '&nbsp;&nbsp;&nbsp;&nbsp;<img class="like" src="icons/cnt.png"/>&nbsp;'+ data.b_readcnt +'</div></div>';  		//닉네임+조회수+추천수					 
-						tag +='<div class="delocation" onclick="go_map('+data.b_local+')">'+ data.b_local +'</div>';						//게시물 위치정보
-						tag +='<div class="decoment">'+ data.b_coment +'</div>';
-							
-						tag +='<div class="test" style="height: 500px;"></div>';
-					tag +='</div>';
-			place.append(tag);
-		}, error: function(req, text){
-			alert(text+":"+req.status);
-		}
-	});
-}
-
-//백그라운드 클릭시 디테일창 사라짐
-$('#detail-background').on('click', function(){
-	$('#detail, #detail-background').css('display', 'none');
-	$('body').css('overflow-y','scroll');
-});
-
-
-var viewer = new PhotoSphereViewer.Viewer({
-  container: document.querySelector('#panorama-image'),
-  panorama: 'upload/1591952911.3873103_result.jpg'
-});
-
-
 
 </script>
 </body>

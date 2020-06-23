@@ -1,5 +1,6 @@
 package android.board;
 
+
 public class BoardVO {
 	private int b_no;
     private int b_ddabong;
@@ -17,6 +18,7 @@ public class BoardVO {
     private double b_longitude;
     private String f_ddabong;
     private String f_favorites;
+    private String b_pano;
     
     public BoardVO() {}
     
@@ -168,6 +170,14 @@ public class BoardVO {
 
 	public void setF_favorites(String f_favorites) {
 		this.f_favorites = f_favorites;
+	}
+	
+	public String getB_pano() {
+		return b_pano;
+	}
+
+	public void setB_pano(String b_pano) {
+		this.b_pano = b_pano;
 	}
 
 	@Override

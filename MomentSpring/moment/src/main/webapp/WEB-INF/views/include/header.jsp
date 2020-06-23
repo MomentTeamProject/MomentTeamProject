@@ -4,7 +4,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
-	#wrap { position: fixed; width: 100%; background-color: black; height: 50px; line-height: 45px; top:0;  z-index: 20;}
+	#wrap { position: fixed; width: 100%; background-color: black; height: 50px; line-height: 45px; top:0;  z-index: 997;}
 	#header-top { 
 		height: 50px; background-color: black; width: 80%; margin-top: 15px;
 		position: absolute; margin: 0 auto; left: 10%; top:0;
@@ -23,6 +23,9 @@
 	<div id="header-top" class="category">
 		<div id="header-home-image"><a href='<c:url value="/" />'><img src="background/logo1.jpg" alt="홈으로" /></a></div>
 		<ul id="header-menu">
+			<c:if test="${!empty login_info}">
+			<li><a href="mypostlist.moment" class="${category eq 'my' ? 'active' : '' }">MY POST</a></li>
+			</c:if>
 			<li><a href='<c:url value="/" />' class="${category eq 'home' ? 'active' : '' }">HOME</a></li>
 			<li style="font-weight: bold;">│</li>
 			<li><a href="list.bo" class="${category eq 'bo' ? 'active' : '' }">POST</a></li>

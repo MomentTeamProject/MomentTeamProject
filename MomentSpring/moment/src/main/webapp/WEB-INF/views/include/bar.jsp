@@ -9,11 +9,11 @@
 	top: 0;
 	width: 100%; height: 100%; background-color: #00000060;
 	display: none;
-	z-index: 21;
+	z-index: 998;
 }
 #bar-content {
 	position: absolute;
-	top: 0; right: -500px; z-index: 22;
+	top: 0; right: -500px; z-index: 999;
 	color: white;
 	width: 500px; height: 100%; background-color: #1b1b1b;
 	display: none;
@@ -116,7 +116,7 @@ function go_logout(){
 		var imgs = [ 'jpg', 'png', 'gif', 'bmp', 'jpeg' ];
 		if( imgs.indexOf(ext) > -1 ){
 			var img = '<img id="preview-img" class="' + (id=='#popup' ? 'popup' : 'file-img') + '" '
-					+ 'style="border-radius:50%     width: 100px;   height: 100px;" src="'
+					+ 'style="border-radius:50%;     width: 100px;   height: 100px;" src="'
 					+ '${login_info.u_imgpath}'.substring(1) +' "/>';
 			$( id ).html( img );
 		}

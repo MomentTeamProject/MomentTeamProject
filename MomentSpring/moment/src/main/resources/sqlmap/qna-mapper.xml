@@ -64,7 +64,7 @@
 	</select>
 	<!-- 전체 목록 리스트 조회(10건씩) -->
 	<select id="all" resultType="web.qna.QnaVO">
-		SELECT ROWNUM no, n.*, (SELECT u_name FROM m_user WHERE u_admin = writer ) name 
+		SELECT ROWNUM no, n.*, (SELECT u_name FROM m_user WHERE u_userid = writer ) name 
 		FROM	(SELECT n.*
 						FROM (SELECT * FROM qna <include refid="search_where" /> ) n
 						) n

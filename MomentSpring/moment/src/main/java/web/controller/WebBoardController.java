@@ -90,15 +90,14 @@ public class WebBoardController {
 	}
 	
 	//새로운 게시글 저장
-	@ResponseBody @RequestMapping(value="/insert.bo", produces="text/html; charset=utf-8")
+	@RequestMapping(value="/insert.bo", produces="text/html; charset=utf-8")
 	public String insert(WebBoardVO vo, MultipartFile file, HttpSession session) {
 	
 		if ( !file.isEmpty()) {
 			vo.setB_imgpath(common.uploadpic("background", file, session));
 		}
-		
-		
-		//vo.setB_userid("qweq123@naver.com");
+			
+
 		vo.setB_userid( ((WebUserVO)session.getAttribute("login_info")).getU_userid());
 		System.out.println("새 글 : " + vo.toString());
 		service.board_insert(vo); 

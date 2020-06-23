@@ -48,10 +48,6 @@ option { width: 200px; color:white; background-color: black;}
 	<!-- 삭제, 글쓰기 버튼  -->
 	<div class="top">	
 		<div style="float:right; padding-bottom: 10px;">
-			<input type="checkbox" id="allCheck" style="float:left; padding-left: 3px;">
-			<label for="allCheck">모두선택</label>		
-			<a class="btn-fill" id="deleteBtn">해제</a>
-			<a class="btn-fill">글쓰기</a>
 		</div>
 	</div>
 		
@@ -69,7 +65,7 @@ option { width: 200px; color:white; background-color: black;}
 			<ul class="grid">
 				<c:forEach items="${page.list}" var="vo">	
 					<li>
-						<div><input type="checkbox" name="delete" class="delete" style="float:left;" data-listno="${vo.b_no}"></div>		
+						<div></div>		
 						<div style="padding:0; width:100%; padding-top:10px;"><a href="mylist_detail.moment?id=${vo.b_no}" ><img src="img/background/${vo.b_imgpath}" style="width:100%; height:100%;"></a></div>			
 						<div style="padding:5px; height:10px;"><a style="font-weight: bold;" href="mylist_detail.moment?id=${vo.b_no}">${vo.b_title}</a></div>
 						<div><a href="memberpostlist.moment?userid=${vo.b_userid}">${vo.u_nick}</a></div>

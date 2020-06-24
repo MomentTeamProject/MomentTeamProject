@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk&libraries=places&callback=initAutocomplete" 
-async defer></script>
+ async defer></script>
 <style>
 
 .push { display: none; }
@@ -15,7 +15,7 @@ async defer></script>
 .need:focus {outline:none;}
 .need {border-radius :8px; padding: 5px; border: 1px solid black;}
 .btnSet {padding-left: 20px;}
-p {font-family: 'Suez One', serif; font-size: 38px; padding: 0 0 40px 60px; }
+p {font-family: 'Suez One', serif; font-size: 40px; padding: 0 0 40px 60px; }
 #delete-file:hover {cursor: pointer;}
 
 
@@ -25,11 +25,13 @@ p {font-family: 'Suez One', serif; font-size: 38px; padding: 0 0 40px 60px; }
 #address {padding-top: 10px ; }
 
 
+
 body {background-color: #f56437fa;  padding: 150px 0 250px 0; color: black;  /*  height: 1000px; */font-family: 'Gothic A1', sans-serif;}
 #content { width:850px; margin: 0 auto;  padding: 50px 0px;  border-radius:15px; 
  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
   box-shadow: 0 0 20px 0 rgba(12, 12, 12, 0.65), 0 5px 5px 0 rgba(0, 0, 0, 0.44);  
- background-color : white;} /* 하얀바탕 */
+ background-color : white;z-index: 3;position: relative;} /* 하얀바탕 */
 /* form { width: 100%;} */
 table { width: 90%; border-collapse:collapse; margin: 0 auto;}
 table td { padding : 20px; } 
@@ -46,7 +48,9 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width:99%}
 
 <body>
 <div class="content">
+
 <div style="height: 50px; padding-bottom: 10px; "> <p>WRITE</p> </div>
+
 <form method="post" action="insert.bo" enctype="multipart/form-data">
 	<table>
 		<tr><th>제목</th>
@@ -61,11 +65,13 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width:99%}
 		<tr ><th>위치검색</th>
 			<td id="search" style="padding-bottom: 10px;">
 				<div style="padding: 0 0 10px 0; float:left;">	
-					<input type= "text" id="location" placeholder="지역을 검색하세요" style="width:400px; " class='need' title='위치'>				 
+				
+				<input type= "text" id="location" placeholder="지역을 검색하세요" style="width:400px; " class='need' title='위치'>				 
 	    			<input type= "hidden" id="b_latitude" name="b_latitude" > 
 					<input type= "hidden" id="b_longitude" name="b_longitude" >
 					<input type= "hidden" id="b_local" name="b_local" >
 				  	<a class="btn-fill" onclick="where()"> SEARCH </a>
+
 			  	</div>
 			  	<!-- <div id="address" style="color:white; height: 20px; padding: 10px;"></div> -->
 				<div id="map"></div>
@@ -365,7 +371,7 @@ function content_check() {
 
 		});
 	} 
-	
+ 
 	 
 
 	//스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트

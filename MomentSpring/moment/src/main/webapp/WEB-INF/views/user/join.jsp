@@ -47,7 +47,7 @@ table td {
 		<table class='joinbox'>
 			<tr><th>프로필</th>
 		<td class='td-img left'>
-				<input type="file" name='file' id="u_profileimg" size="20"/>
+				<input type="file" name='file' id="u_profileimg" maxlength="20"/>
 			<label>
 				<img src='img/ps.png' class='file-img' style="width:70px; height:70px;" />
 			<span id='preview'></span>
@@ -58,29 +58,29 @@ table td {
 		</tr>
 			<tr>
 				<th class="w-px160">*성명</th>
-				<td><input type="text" name="u_name" size="20"/></td>
+				<td><input type="text" name="u_name" maxlength="5"/></td>
 			</tr>
 			<tr>
 				<th class="w-px160">*닉네임</th>
-				<td><input type="text" name="u_nick" class="chk" size="20"/>
+				<td><input type="text" name="u_nick" class="chk" maxlength="20"/>
 				 <a class="check_btn"	id="btn_nick">중복확인</a><br>
 					<div class="valid">닉네임을 입력하세요</div></td>
 			</tr>
 			<tr>
 				<th>* 아이디</th>
 				<td><input type="text" name="u_userid" class="chk"
-					placeholder="abc1234@abcd.com" /> 
+					placeholder="abc1234@abcd.com" maxlength="40"/> 
 					<a class="check_btn" id="btn_id">중복확인</a>
 					<div class="valid">아이디를 입력하세요(사용하는 이메일 형식으로 입력하세요)</div></td>
 			</tr>
 			<tr>
 				<th>* 비밀번호</th>
-				<td><input type="password" name="u_userpw" class="chk" size="20"/>
+				<td><input type="password" name="u_userpw" class="chk" maxlength="20"/>
 					<div class="valid">비밀번호를 입력하세요(영문대/소문자, 숫자를 모두 포함)</div></td>
 			</tr>
 			<tr>
 				<th>* 비밀번호확인</th>
-				<td><input type="password" name="u_userpw_ck" class="chk" size="20"/>
+				<td><input type="password" name="u_userpw_ck" class="chk" maxlength="20"/>
 					<div class="valid">비밀번호를 다시 입력하세요.</div></td>
 			</tr>
 			<tr>

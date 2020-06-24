@@ -6,7 +6,7 @@ var join = {
 		empty:{ code: 'invalid', desc:'입력하세요'}
 		, space: {code: 'invalid', desc: '공백없이 입력하세요'}
 		, min: {code: 'invalid', desc: '최소5자 이상 입력하세요'}
-		, max: {code: 'invalid', desc: '최대10자 이하 입력하세요'}
+		, max: {code: 'invalid', desc: '최대20자 이하 입력하세요'}
 	}
 	, u_userid: {
 		empty:{ code: 'invalid', desc:'아이디를 입력하세요!'}
@@ -62,7 +62,7 @@ var join = {
 		else if(pw.match(space)) 	return this.common.space;
 		else if(reg.test(pw))		return this.u_userpw.invalid;
 		else if(pw.length<5) 		return this.common.min;
-		else if(pw.length>10) 		return this.common.max;
+		else if(pw.length>20) 		return this.common.max;
 		else if(!upper.test(pw) || !lower.test(pw) || !digit.test(pw))	
 									return this.u_userpw.lack;
 		else 						return this.u_userpw.valid;

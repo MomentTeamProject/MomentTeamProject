@@ -166,7 +166,7 @@
 			<table class="inputTable">
 				<tr>
 					<th style="width:65px;">메시지</th>
-					<th><input id="chatting"  style="font-size: 20px;" placeholder="보내실 메시지를 입력하세요."></th>
+					<th><input id="chatting"  style="font-size: 20px;" placeholder="보내실 메시지를 입력하세요." maxlength="30"></th>
 					<th><button onclick="send()" id="sendBtn" style="width:90px;">보내기</button></th>
 				</tr>
 			</table>

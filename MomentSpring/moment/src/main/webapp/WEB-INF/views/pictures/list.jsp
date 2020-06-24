@@ -135,9 +135,9 @@ ul { list-style: none; padding: 0; }
 
 
 #btn { height: 280px;}
-.btn-fill { color: white; background-color: black; font-style: italic; font-family: 'Sriracha', cursive; margin-left: 3px; }
+.btn-fill { color: white; background-color: black; font-family: 'Gamja Flower', cursive; margin-left: 3px; font-weight: bold; font-size: 1.8em; }
 
-select { font-size: 1em; width: 100px; height: 50px; font-family: 'Sriracha', cursive; padding: 0 0 0 3px; font-style: italic; }
+select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flower', cursive; padding: 0 0 0 3px; font-weight: bold; }
 
 .pictureContent { box-sizing: content-box; min-width: 1914px; max-width: 2395px; margin: 0 auto; }
 .pictureBox { min-width: 335px; }
@@ -286,13 +286,23 @@ select { font-size: 1em; width: 100px; height: 50px; font-family: 'Sriracha', cu
 }
 .selectDIV { position: absolute; display: none; left: 35%; top: 30%; }
 
-.newBtn { height: 70px !important; position: relative; top: 15%; }
+.newBtn { 
+	width: 40px; height: 40px ; 
+	position: relative; top: 15%; right: -15px;
+}
 
 /* 플로팅 스크롤버튼 */
-#scrollbtn { 
+#scrolldown { 
 	display: block; width: 50px; height: 50px; background: url("icons/ArrowDown.png"); background-color: #fc7703; background-size: 100%; 
-	position: fixed; cursor: pointer; bottom: 100px; right: 50px; z-index: 3; color: gray; border-radius: 50px;
+	position: fixed; cursor: pointer; bottom: 100px; right: 20px; z-index: 3; border-radius: 50px; opacity: 0.6;
 }
+#scrolldown:hover { opacity: 1; width: 55px; height: 55px; }
+#scrolltop { 
+	display: block; width: 50px; height: 50px; background: url("icons/ArrowUp.png"); background-color: #fc7703; background-size: 100%; 
+	position: fixed; cursor: pointer; bottom: 200px; right: 20px; z-index: 3; border-radius: 50px; display: none; opacity: 0.6;
+}
+#scrolltop:hover { opacity: 1; width: 55px; height: 55px; }
+
 </style>
 </head>
 
@@ -310,10 +320,10 @@ select { font-size: 1em; width: 100px; height: 50px; font-family: 'Sriracha', cu
 			<ul>
 				<li>
 					<select id="selectBox" name="search" class="w-px100" style="">
-						<option value="all" ${page.search eq 'all' ? 'selected' : '' }>ALL</option>
-						<option value="title" ${page.search eq 'title' ? 'selected' : '' }>TITLE</option>
-						<option value="coment" ${page.search eq 'coment' ? 'selected' : '' }>CONTENT</option>
-						<option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>WRITER</option>
+						<option value="all" ${page.search eq 'all' ? 'selected' : '' }>전체</option>
+						<option value="title" ${page.search eq 'title' ? 'selected' : '' }>제목</option>
+						<option value="coment" ${page.search eq 'coment' ? 'selected' : '' }>내용</option>
+						<option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>작성자</option>
 					</select>
 				</li>
 			</ul>
@@ -327,12 +337,12 @@ select { font-size: 1em; width: 100px; height: 50px; font-family: 'Sriracha', cu
 		<ul>
 			<li>
 				<select id="selectBox" name="viewType" class="w-px80" onchange="$('form').submit();" >
-					<option value="lately" ${page.viewType eq 'lately' ? 'selected' : '' } >LATELY</option>
-					<option value="ddabong" ${page.viewType eq 'ddabong' ? 'selected' : '' } >RANK</option>
+					<option value="lately" ${page.viewType eq 'lately' ? 'selected' : '' } >최신순</option>
+					<option value="ddabong" ${page.viewType eq 'ddabong' ? 'selected' : '' } >추천순</option>
 				</select>
 			</li>
 			<c:if test="${ !empty login_info }">
-				<li><a class="btn-fill newBtn" href="new.bo">NEW</a></li>
+				<li><a href="new.bo"><img class="newBtn" src="img/floating-icon.png"/></a></li>
 			</c:if>
 		</ul>
 	</div>
@@ -348,7 +358,7 @@ select { font-size: 1em; width: 100px; height: 50px; font-family: 'Sriracha', cu
 			<c:forEach items="${page.list}" var="list">
 			<div class="pictureBox" onclick="detail(${list.b_no}, '${login_info.u_userid}' )">
 				<figure class="snip1368">
-					<img src="background/${list.b_imgpath}" class="pictures" alt="sample30"/> <%-- ${list.b_imgpath} --%>
+					<img src="background/${list.b_imgpath}" class="pictures" alt="sample30"/>
 					<h5 style="font-family: 'Gamja Flower', cursive;">${list.b_title}</h5>
 					<figcaption>
 			    <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
@@ -365,16 +375,33 @@ select { font-size: 1em; width: 100px; height: 50px; font-family: 'Sriracha', cu
 </div>
 
 
-
 <div id="detail">
 	<div class="detitleBox">
 		<h3 class="detitle"></h3>
+		
+			<img id="modify_open" class="modifyIcon" src="icons/modifyBtn.png" onclick="modify()"/>
+			<img id="modify_close" class="modifyIcon" src="icons/close.png" onclick="modify_close()"/>
+		
+		
+		<div class="modiMenu">
+			<input type="hidden" value="" class="board_no"/>
+			<input type="hidden" value="" class="board_userid"/>
+			<div id="modiBox" class="menuIconBox" onclick="modify_board()">
+				<img src="icons/modify.png" class="modicon"/>
+			</div>
+			<div id="trashBox" class="menuIconBox" onclick="delete_board()">
+				<img src="icons/trash.png" class="trashicon"/>
+			</div>
+		</div>
 	</div>
 </div>
+
 <div id="detail-background"></div>
 
 <!-- <span title="scroll to top" id="scrolltop"></span> -->
-<span title="scroll to down" id="scrollbtn" onclick="scrollbtn()"></span>
+<span title="scroll to down" id="scrolldown" onclick="scrollbtn(1)"></span>
+<span title="scroll to top" id="scrolltop" onclick="scrollbtn(2)"></span>
+<input type="hidden" id="checkScroll" value="0"/>
 
 <!-- 글라이드 js (슬라이드 이미지) -->
 <script type="text/javascript" src="js/banner.js"></script>
@@ -384,12 +411,37 @@ select { font-size: 1em; width: 100px; height: 50px; font-family: 'Sriracha', cu
 <script type="text/javascript" src="js/detail.js"></script>
 
 <script type="text/javascript">
+
 //스크롤 플로팅 버튼
-function scrollbtn() {
-	alert('플로팅버튼이벤트발생');
-	var btnClass = $('#scrollbtn').attr('class');
-	console.log(btnClass);
-	alert(btnClass);
+function scrollbtn(action) {
+	var checkScroll = $('#checkScroll').val();
+	var scroll = $(window).scrollY + $(window).height();
+// 	console.log("scroll : " + scroll);	
+	if(action == 1) {
+		//초기값 checkScroll이 0이면
+		if(checkScroll == 0) {
+			//맨처음 스크롤이동 220으로 2페이지 로딩
+			//checkScroll값이 초기값이 아니라면 계속 증가
+			$('#checkScroll').val('1');
+			$('html').animate({scrollTop: '500'}, 1000);
+		}	else if(checkScroll == 1){
+			$('#checkScroll').val('2');
+			$('html').animate({scrollTop: '1050'}, 1000);
+		} else if(checkScroll == 2) {
+			$('#checkScroll').val('3');
+			$('html').animate({scrollTop: '1605'}, 1000);
+		} else if(checkScroll == 3) {
+			$('#checkScroll').val('0');
+			$('html').animate({scrollTop: '2050'}, 1000);
+			//알럿 너무빨리뜸 시간주기.
+			setTimeout(function() {
+				alert('페이지 최하단입니다.');
+			}, 1500);
+		}
+	} else if(action == 2) {
+		$('#checkScroll').val('0');
+		$('html').animate({scrollTop: '0'}, 700);
+	}
 }
 
 //search버튼 js
@@ -432,12 +484,15 @@ $(".hover").mouseleave(
 
 //스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트
 window.onscroll = function(){
-// 		console.log('js 흐름탐');
-		
+		var htmlTop = $('html').scrollTop();
+		console.log("htmlTop : "+htmlTop);
+	
 		var scroll = window.scrollY + $(window).height();
 		var endY = document.body.scrollHeight + 30;
 // 		console.log(scroll);
 // 		console.log(endY);
+// 		console.log("scroll : " + scroll);
+// 	 	console.log("endY : " + endY);
 		
 		//content 영역의 최상위 위치 값
 		var scrollTop = $(this).scrollTop();
@@ -445,24 +500,26 @@ window.onscroll = function(){
 		var innerHeight = $(this).innerHeight();
 		
 		
+		
 		//스크롤이 컨텐트아래 50 hegiht 를 넘어서면 이벤트 시작
+		//scroll > endY
+		
 		if (scroll > endY) {
 			$("#confirm").css('color', 'white');
-			$("#footer-wrap").slideDown();
-			$("#scrollbtn").slideDown();
 			//10개의 사진 img 태그를 감싼 각각의 div 태그 10개를 감싼 하나의 div (pictureContent) 의 마지막 div 
 			var lastPC = $('#contentBox').last();
 			
 		 	$.ajax({
 		 	 	url: 'more.bo',
 		 	 	type: 'post',
+		 	 	async: false,
 		 	 	data: { curPage: parseInt($('[name=curPage]').val()), search: $('[name=search]').val(), keyword: $('[name=keyword]').val() },
 		 	 	success: function(data){
 		 	 	 	console.log('ajax success');
 		 	 		var tag = '<div class="pictureContent">';
 		 			$.each(data, function(key, value){
 			 			if(data != null) {
-			 	 				tag += '<div class="pictureBox" onclick="detail('+ value.b_no +' \'${login_info.u_userid}\' )">';
+			 	 				tag += '<div class="pictureBox" onclick="detail('+ value.b_no +', \'${login_info.u_userid}\' )">';
 			 	 					tag += '<figure class="snip1368">';
 			 	 						tag += '<img src="background/'+ value.b_imgpath +'" class="pictures" alt="sample30"/>';
 				 	 					tag	+= '<h5 style=&#39;font-family: "Gamja Flower", cursive;&#39;>'+ value.b_title +'</h5>';
@@ -475,8 +532,8 @@ window.onscroll = function(){
 			 	 					tag += '</figure>';
 								tag += '</div>';
 							console.log(value);
-			 			} else {
-				 			alert("마지막페이지입니다.");
+			 			} else if(data == null) {
+				 			return false;
 			 			}
 		 			});
 		 					tag += '</div>';
@@ -489,14 +546,26 @@ window.onscroll = function(){
 		 	//눌렀을때 새로운값이 들어오면 바디의 높이 값이 더 증가하도록 #content의 높이를 늘려줌
 		 	var bodyH = $('#content').css('height');
 		 	var addPCH = lastPC.css('height');
-		 	console.log(bodyH);
-		 	console.log(addPCH);
+// 		 	console.log("bodyH : " + bodyH);
+// 		 	console.log("addPCH : " + addPCH);
+// 		 	console.log("scroll : " + scroll);
+// 		 	console.log("endY : " + endY);
+		 	
 		 	bodyH += addPCH;
+		 	
+		 	if(endY > 2350) { 
+			 	$("#footer-wrap").slideDown();
+				$("#scrolldown").slideDown();
+				$("#scrolldown").css('display', 'none');
+				$("#scrolltop").css('display', 'block');
+		 	}
+		 	
 		} else {
 		 	$("#confirm").css('color', 'gray');
 		 	$("#footer-wrap").slideUp();
-		 	$("#scrollbtn").slideUp();
-		 	$("#scrollbtn").css('background', 'url("icons/ArrowUp.png")');
+		 	$("#scrolltop").slideUp();
+		 	$("#scrolltop").css('display', 'none');
+		 	$("#scrolldown").css('display', 'block');
 		}
 };
 

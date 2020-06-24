@@ -14,14 +14,15 @@
 .menu-box{ width: 80%; height: 50px; margin: 10px auto; text-align: center; }
 .menu ul{ margin: 0 auto; }
 .menu li{ float: none; margin: 0 10px;}
-#content { margin-top: 100px; }
-#title { width: 100%; height: auto; font-family: 'Suez One', serif; color: white; font-size: 2em; }
+#content { margin: 100px auto; width:1130px; border-radius:35px;  box-shadow: 0 0 20px 0 rgba(12, 12, 12, 0.65), 0 5px 5px 0 rgba(0, 0, 0, 0.44);
+ position: relative; z-index: 1; padding-bottom: 50px; padding-top:20px; background-color:white;}
+#title { width: 100%; height: auto; font-family: 'Suez One', serif; color: black; font-size: 2em; }
 #qna-body { margin: 0 auto; text-align: center; background-color: #f56437fa; }
 input[type=radio], input[type=checkbox]{ width: 18px; margin: 0 5px 3px; vertical-align: middle; }
 
 .menu-box { height: inherit; }
 select { height: 32px; font-size: 1em; font-family: 'Sriracha', cursive; padding: 0 0 1px 3px; borr: 1px solid white; border-radius: 5px; }
-#keyBox { border: 1px solid white; border-radius: 5px; }
+#keyBox { border: 1px solid black; border-radius: 5px; }
 
 /* 테이블 스타일 */
 #qna-table th {
@@ -43,14 +44,20 @@ select { height: 32px; font-size: 1em; font-family: 'Sriracha', cursive; padding
 #qna-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #4CAF50;
+  background-color: black;
   font-size: 1.3em;
   font-weight: normal;
 }
+#question_write {
+	border: 1px solid: black;
+	color: black;
+		font-family: 'Jua', sans-serif;
+	
+}
 
-.qa { background-color: #32bf37 !important; }
+.qa { background-color: #ff980091  !important; }
 .qa:hover { background-color: #fc7703 !important; }
-.an { background-color: #4CAF50 !important; }
+.an { background-color: #FF9800  !important; }
 .an:hover { background-color: #fc7703 !important;  }
 
 table { width: 80%; margin: 0 auto; border: 1px solid; border-collapse: collapse; }
@@ -97,8 +104,8 @@ textarea { width: 100%; height: 200px; resize: none; }
 	<div class="faq_list" style="overflow: hidden;">
 	<table id="qna-table">
 		<tr>
-			<th class="w-px60">번호</th>
-			<th>제목</th>
+			<th class="w-px60" >번호</th>
+			<th >제목</th>
 			<th class="w-px100">작성자</th>
 			<th class="w-px100">작성일자</th>
 			<th class="w-px100">질문 현황</th>
@@ -127,7 +134,7 @@ textarea { width: 100%; height: 200px; resize: none; }
 </div>
 
 <!-- 글작성 -->
-<div id="question_write" style="display: none;">
+<div id="question_write" style="display: none; ">
 	<form action="insert.qn" method="post">
 	<table>
 		<tr>
@@ -140,7 +147,7 @@ textarea { width: 100%; height: 200px; resize: none; }
 		</tr>
 	</table>
 	<div class="btnSet">
-		<a class="btn-fill" onclick="if( necessary() ){ $('form').submit() }" >저장</a>
+		<a class="btn-fill" style="font-family: 'Jua', sans-serif" onclick="if( necessary() ){ $('form').submit() }" >저장</a>
 	</div>
 	</form>
 </div>

@@ -51,7 +51,7 @@
 				<c:if test="${empty login_info }">
 					<a style="color: black; text-align: center; margin-top: 40px; font-family: 'Sriracha', cursive; line-height: 50px;">X&nbsp;&nbsp;__&nbsp;&nbsp;X</a>
 				</c:if>
-				<span id='preview_profile'></span>
+				<span id='preview_profile' ></span>
 			</div>
 			<div class="bar-login">
 				<c:if test="${empty login_info }">
@@ -69,7 +69,7 @@
 			<li><a href="list.bo" class="${category eq 'bo' ? 'active' : '' }">POST</a></li>
 			<li><a href="list.pa" class="${category eq 'pa' ? 'active' : '' }">PANORAMA</a></li>
 			<li><a href="list.qa" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
-			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
+			<li><a href="map.moment" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
 			<li><a href='room' class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
 			<c:if test="${login_info.u_admin eq 'M' }">
 			<li><a href='push'>PushService</a></li>

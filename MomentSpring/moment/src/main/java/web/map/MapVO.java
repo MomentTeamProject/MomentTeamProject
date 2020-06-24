@@ -3,7 +3,7 @@ package web.map;
 public class MapVO {
 
 	double b_latitude, b_longitude;
-	String b_imgpath,b_title ;
+	String b_imgpath,b_title, b_userid ;
 	int b_no, b_ddabong;
 	
 	

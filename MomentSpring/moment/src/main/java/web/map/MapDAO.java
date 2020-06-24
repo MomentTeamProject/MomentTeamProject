@@ -33,6 +33,7 @@ public class MapDAO implements MapService {
 			data.put("b_title", vo.b_title);
 			data.put("b_no", vo.b_no);
 			data.put("b_ddabong", vo.b_ddabong);
+			data.put("b_userid", vo.b_userid);
 			datas.add(data);
 			
 			System.out.println(data.toString());

@@ -10,17 +10,15 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk&libraries=places&callback=initAutocomplete" 
 async defer></script>
 
-
-
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
-#map_ma {margin: 0 auto; width:1250px; height:700px; clear:both; border:solid 2px black; box-shadow: 1px 1px 2px black;}
-#autocomplete {width:500px; height: 40px; border: 1px solid black; border-radius :15px; box-shadow: 1px 1px 2px black; padding:0 15px; }
-#locationField {padding: 40px 20px 10px;  }
-#title {width: 1237px; margin: 0 auto; color:white; padding-top:100px;font-size:30px; border-bottom : 1px solid gray;}
-p {float: left; font-family: 'Suez One', serif; font-size: 38px; padding-left: 60px;}
+body {background-color:#f56437fa; font-family: 'Noto Serif KR', serif !important;}
 
+#locationField { width:100%; padding: 100px 0 0 0;  /* float: left; */}
+#autocomplete {width:500px; height: 40px; border: 1px solid black; border-radius :15px; 
+box-shadow: 1px 1px 2px black; padding:0 15px; margin-bottom: 10px;}
+p {/* float: left; */ margin: 10px; padding: 0px; font-family: 'Suez One', serif; font-size: 38px;/*  padding-left: 450px; */} 
+input:focus {outline:none;}
+#map_ma {margin: 0 auto;  width:1250px; height:700px; clear:both; border:solid 2px black; box-shadow: 1px 1px 2px black;}
 
 /* footer */
 #footer-wrap { display: none; }
@@ -51,13 +49,12 @@ div.gm-style-iw-d {
 <body>
 
 
-<div id ="title"><P > Search by Map.. </P> </div>
 <div style="padding-top:10px; height: 1000px; background-color: #f56437fa;">
-	
-	 <!-- 주소검색  -->
-	<div id="locationField">
-	  <input id="autocomplete" placeholder="찾고 싶은 지역을 검색하세요" type="text">
-	</div>
+   <!-- 주소검색  -->
+   <div id="locationField">
+	   	  <P style="color:black;"> Search by Map.. </P> 
+		  <input id="autocomplete" placeholder="지역을 검색하세요" type="text">
+   </div>
 	 
 	<input type="hidden" class="field" id="lat" />
 	<input type="hidden" class="field"  id="lng" />	
@@ -65,7 +62,8 @@ div.gm-style-iw-d {
 	<!-- 지도  -->
 	<div id="map_ma" style="color:black;"></div> 
 </div>
-
+<!-- 디테일 js -->
+<script type="text/javascript" src="js/detail.js"></script>
 <script type="text/javascript">
 
 //스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트
@@ -94,7 +92,7 @@ window.onscroll = function(){
 
 
 //처음 페이지 실행시 현재 위치 
-$(document).ready(function() { 
+window.onload = function() {
 
 	function getLocation() {
 		  if (navigator.geolocation) { // GPS를 지원하면
@@ -118,7 +116,7 @@ $(document).ready(function() {
 		}
 		getLocation();
 
-});
+}
 
 
 // 마커 표시 
@@ -185,7 +183,7 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 		},
 		success : function(data) {
 		 //alert('주변 정보 전달 성공');
-		 
+		 00
 			var map = new google.maps.Map(document.getElementById('map_ma'), {        	    
         	    center: {
         	        lat: lat,
@@ -200,9 +198,10 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 	                    map: map,	                    
 	                });	                
 
+	              
 	                var img = "<img id='infoimg' src='img/background/"+data[i].b_imgpath+"'>"
-	                +"<div id='infocon'><a id='infotitle'>"+data[i].b_title+"&nbsp;&nbsp;<img style='width:8%; padding-bottom:1px' src='img/background/heart.png'>"
-	                +data[i].b_ddabong+"</a><a href='' style='color:black;text-decoration: underline; font-size:70%'> 글보러 가기≫</a></div>"; 
+	                +"<div id='infocon'><div id='infotitle'>"+data[i].b_title+"&nbsp;&nbsp;<img style='width:8%; padding-bottom:1px' src='img/background/heart.png'>"
+	                +data[i].b_ddabong+"</div><a onclick='' style='color:black; text-decoration: underline; font-size:70%'> 글보러 가기≫</a></div>"; 
 	              	// 클릭시 글 번호로 글 상세 화면으로 넘어가게 함             	
 	              	                        
 	                

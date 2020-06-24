@@ -5,14 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk&libraries=places" 
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk&libraries=places&callback=initAutocomplete" 
 async defer></script>
 <style>
 
 .push { display: none; }
 #attach-file, #delete-file {display:none;}
 .file-img {width:25px; height:25px;}
-input:focus {outline:none;}
+.need:focus {outline:none;}
+.need {border-radius :8px; padding: 5px; border: 1px solid black;}
 .btnSet {padding-left: 20px;}
 p {font-family: 'Suez One', serif; font-size: 38px; padding: 0 0 40px 60px; }
 #delete-file:hover {cursor: pointer;}
@@ -21,19 +22,18 @@ p {font-family: 'Suez One', serif; font-size: 38px; padding: 0 0 40px 60px; }
 /* 지도 CSS */
 #map { height: 250px; width: 100%; padding-top:10px; color:black;  border: 1px solid gray; }
 #autocomplete {width:500px; height: 40px; border: 1px solid gray; border-radius :15px; box-shadow: 1px 1px 2px black; padding:0 15px; }
-#locationField {padding-top: 10px ; }
+#address {padding-top: 10px ; }
 
 
-body {background-color: #f56437fa;  padding: 150px 0 250px 0; color: black;  /*  height: 1000px; */font-family: 'Jua', sans-serif;}
-#content { width:800px; margin: 0 auto;  padding: 50px 0px;  border-radius:15px; 
+body {background-color: #f56437fa;  padding: 150px 0 250px 0; color: black;  /*  height: 1000px; */font-family: 'Gothic A1', sans-serif;}
+#content { width:850px; margin: 0 auto;  padding: 50px 0px;  border-radius:15px; 
  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   box-shadow: 0 0 20px 0 rgba(12, 12, 12, 0.65), 0 5px 5px 0 rgba(0, 0, 0, 0.44);  
  background-color : white;} /* 하얀바탕 */
 /* form { width: 100%;} */
 table { width: 90%; border-collapse:collapse; margin: 0 auto;}
 table td { padding : 20px; } 
-table th {}
-input { height:22px; /*  padding:3px 5px; */ font-size:15px; width: 99%}
+input { height:22px; /*  padding:3px 5px; */ font-size:15px; width:99%}
 #coment {height: 150px;}
 
 
@@ -46,7 +46,7 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width: 99%}
 
 <body>
 <div class="content">
-<div style="height: 50px; "> <p>WRITE</p> </div>
+<div style="height: 50px; padding-bottom: 10px; "> <p>WRITE</p> </div>
 <form method="post" action="insert.bo" enctype="multipart/form-data">
 	<table>
 		<tr><th>제목</th>
@@ -58,27 +58,26 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width: 99%}
 			<td><textarea name='b_coment' class='need' title='내용' style="width: 100%; height: 200px; resize:none;"></textarea></td>
 		</tr>
 		
-		<tr ><th>주소검색</th>
+		<tr ><th>위치검색</th>
 			<td id="search" style="padding-bottom: 10px;">
 				<div style="padding: 0 0 10px 0; float:left;">	
-				<input type= "text" id="location" placeholder="지역을 검색하세요" style="width:400px; " class='need' title='위치'>
-				 
-    					<input type= "hidden" id="b_latitude" name="b_latitude" >
-						<input type= "hidden" id="b_longitude" name="b_longitude" >
-						<input type= "hidden" id="b_local" name="b_local" >
-			  	<a class="btn-fill" onclick="where()"> 지역검색 </a>
+					<input type= "text" id="location" placeholder="지역을 검색하세요" style="width:400px; " class='need' title='위치'>				 
+	    			<input type= "hidden" id="b_latitude" name="b_latitude" > 
+					<input type= "hidden" id="b_longitude" name="b_longitude" >
+					<input type= "hidden" id="b_local" name="b_local" >
+				  	<a class="btn-fill" onclick="where()"> SEARCH </a>
 			  	</div>
 			  	<!-- <div id="address" style="color:white; height: 20px; padding: 10px;"></div> -->
 				<div id="map"></div>
-				<div id="locationField"></div>
+				<div id="address" name="b_local" ></div> <!-- 주소표시 부분 -->
 			</td>
 		</tr>
-		<tr><th>첨부파일</th>
+		<tr><th>사진</th>
 			<td class='td-img left'>
 				<label><input type="file" name='file' id='attach-file' class='pic' title='사진'/>
 					   <img src='img/icons/select.png' class='file-img'/>
 				</label>
-				<img id='board_preview' style="width:610px; height:300px; display:none; border: 1px solid gray;" src="#" >  <!-- 파일 미리보기  -->
+				<img id='board_preview' style="width:650px; height:300px; display:none; border: 1px solid gray;" src="#" >  <!-- 파일 미리보기  -->
 				<div>
 				<span id='delete-file' style="width: 10px; float: right; padding-right: 10px;"><i class="far fa-trash-alt" style="color:black;"></i></span> <!-- 파일삭제  -->
 				<span id='file-name' style="font-size: 80%; float: right; padding-right: 10px;"></span> <!-- 파일이름  -->
@@ -87,7 +86,7 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width: 99%}
 		</tr>	
 	</table>		
 </form>
-<div class='btnSet' style="padding-top:50px;">
+<div class='btnSet' style="padding-top:20px; margin: 0px;">
 	<a id=login_btn onclick="if( content_check()) $('form').submit()">저장</a>	
 	<a id=login_btn href='list.bo'>취소</a>
 </div>
@@ -97,17 +96,24 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width: 99%}
 
 <script type="text/javascript">
 
-
+/* 첨부파일 변경시 파일이름, 삭제버튼 나타냄 */
 $('#attach-file').on('change', function(){
 	if( this.files[0] ) $('#file-name').text(this.files[0].name);
-	$('#delete-file').css('display','inline');
+	//$('#delete-file').css('display','block');
+	$('.file-img').css('display','none');
+	readURL(this);
 });
 
+
+//삭제처리
 $('#delete-file').on('click', function(){
-	$('#attach-file').val('');
-	$('#file-name').text('');
-	$('#delete-file').css('display','none');
+	 //$('#board_preview').attr('src', '');
+	 $('#board_preview').css('display','none');
+	 $('.file-img').css('display','inline');
+	 $('#delete-file').css('display','none');
+	 $('#file-name').html('');	
 });
+
 
 
 
@@ -128,10 +134,10 @@ function readURL(input) {
 	if (isImage(filename.name)){
 	   if (input.files && input.files[0]) {
 	        var reader = new FileReader();
-	        reader.onload = function(e) {
-		        
+	        reader.onload = function(e) {		        
 	            $('#board_preview').attr('src', e.target.result);
 	            $('#delete-file').css('display','block');
+	            $('#board_preview').css('display','block');
 	         }
         reader.readAsDataURL(input.files[0]);
 	   }
@@ -139,28 +145,14 @@ function readURL(input) {
 		  alert('첨부파일은 이미지 파일만 가능합니다.')
 		  $('#board_preview').html('');
 		  $('#file-name').html('');	
+		  $('#attach-file').val('');	
 		  $('#delete-file').css('display','none');
 		  $('.file-img').css('display','block');
+		
 	}
 		   
 }
 
-$("#attach-file").change(function() {
-	$('.file-img').css('display','none');
-	$('#board_preview').css('display','block');
-	
-    readURL(this);
-});
-
-
-
-//삭제처리
-$('#delete-file').on('click', function(){
-	 $('#board_preview').attr('src', '');
-	 $('#board_preview').css('display','none');
-	$('.file-img').css('display','inline');
-	 $('#delete-file').css('display','none');
-});
 
 
 
@@ -275,20 +267,22 @@ function content_check() {
 	 				var mydata = JSON.parse(JSON.stringify(results));	 				
 					var address = mydata[0].formatted_address;
 	 				//alert(mydata[0].formatted_address);
-					$('#locationField').html(address);
-
+					$('#address').html(address); //주소 표시 
+					document.getElementById("b_local").value = address;
+				//	alert("클릭시 주소 값" + address);
 					
+					document.getElementById("b_latitude").value = lat;
+					document.getElementById("b_longitude").value = lng;
 	 	 	 	}
-
-
-
 	 	 	 	
 			});
 			
-			document.getElementById("b_local").value = address;
+/* 			document.getElementById("b_local").value = address; //주소값 넘기기
+			alert(address);
+			
 			document.getElementById("b_latitude").value = lat;
 			document.getElementById("b_longitude").value = lng;
-			
+			 */
 			initMap(lat, lng, address); 
 			
 		});	
@@ -314,8 +308,13 @@ function content_check() {
 	         // var name = place.name; /* 건물이름  */
 	          
 	       //   alert(address+"ddd"+name);
-	          	$('#locationField').html(address);
+	         $('#address').html(address); //주소표시 
 			 initMap(lat, lng, address); 
+
+			 document.getElementById("b_local").value = address; //주소값 넘기기
+			// alert(address);
+			 document.getElementById("b_latitude").value = lat;
+			 document.getElementById("b_longitude").value = lng;
 		
 	 	  });
 
@@ -342,14 +341,14 @@ function content_check() {
 
 					//alert(data.lng+"+"+data.lat+"+"+data.address); // 지도 위도 경도 주소 값
 					$('#address').html(data.address);
-		 			document.getElementById("b_local").value = data.address;
+		 			document.getElementById("b_local").value = data.address; //주소값 넘겨주기
 					document.getElementById("b_latitude").value = data.lat;
 					document.getElementById("b_longitude").value = data.lng;
  
 					var lat = data.lat;
 					var lng = data.lng;
 					var address = data.address;
-					$('#locationField').html(address);
+					$('#address').html(address); //주소표시 
 					initMap(lat, lng, address);
 				
 				} else {

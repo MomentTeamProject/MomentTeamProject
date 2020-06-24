@@ -149,8 +149,14 @@ body {
 <div id="title"><h2> PANORAMA 360 VIEW</h2></div>
 <div id="loading-img">
 	<img src="img/loading.gif" style="">
-</div>
+</div>	
+	<c:if test="${ !empty login_info }">		
+		<div style="width:1000px; height: 20px; margin-bottom:40px; padding-left: 600px; ">
+			<a class="btn-fill newBtn" style="float:right; margin-bottom: 10px; " href="new.pa">NEW</a>
+		</div>		
+	</c:if>
 	<div id="panorama-image" style="position: relative;">
+	
 	<div id="floating-bars">
 		<div class="floating-icon"><img src="img/floating-icon.png"></div>
 		<div class="floating-title floating"><img src="img/floating-title.png"></div>

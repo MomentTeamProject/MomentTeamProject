@@ -49,6 +49,7 @@ AND b.b_no = #{no}
 		  from (select * from m_board <include refid="search_where" /> order by b_no) b 
 		  order by no desc) b
 	where no between #{beginList} and #{endList}
+	and b_pano = 'N'
 </select>
 <!-- 추천 순 목록 출력 ddabong! -->
 <select id="rankList" resultType="web.board.WebBoardVO">

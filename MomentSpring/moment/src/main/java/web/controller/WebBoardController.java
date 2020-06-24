@@ -152,7 +152,7 @@ public class WebBoardController {
 	
 	//새글 지도 검색
 	@ResponseBody @RequestMapping(value="/search_location", produces="application/json; charset=utf-8")
-	public JSONObject sigungu(String address) {
+	public JSONObject search_location(String address) {
 		System.out.println(address);
 		StringBuilder url = new StringBuilder( map_url + address);
 		url.append("&key=" + key);		

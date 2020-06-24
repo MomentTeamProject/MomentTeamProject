@@ -34,7 +34,7 @@
 			<li style="font-weight: bold;">│</li>
 			<li><a href="list.qn" class="${category eq 'qa' ? 'active' : '' }">QnA</a></li>
 			<li style="font-weight: bold;">│</li>
-			<li><a href="list.map" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
+			<li><a href="map.moment" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
 			<li style="font-weight: bold;">│</li>
 			<li><a href="room" class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
 			<li style="font-weight: bold;">│</li>

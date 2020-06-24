@@ -14,6 +14,12 @@
 </select>
 
 
+<!-- 새글 저장 -->
+<insert id="insert">
+	INSERT INTO m_board (b_no, b_userid, b_title, b_coment, b_imgpath, b_local, b_tag, b_writedate, b_latitude, b_longitude, b_ddabong, b_readcnt, b_pano)
+	VALUES (m_board_seq.nextval, #{b_userid}, #{b_title}, #{b_coment}, #{b_imgpath}, #{b_local}, DEFAULT , SYSDATE , #{b_latitude}, #{b_longitude}, DEFAULT, DEFAULT, #{b_pano})
+</insert>
+
 
 
 

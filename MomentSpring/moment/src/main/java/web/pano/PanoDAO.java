@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import web.board.WebBoardVO;
+
 @Repository
 public class PanoDAO implements PanoService {
 	@Autowired private SqlSession sql;
@@ -14,6 +16,12 @@ public class PanoDAO implements PanoService {
 		
 		page.setList(sql.selectList("pano.mapper.list", page));
 		return page;
+	}
+
+	@Override
+	public int pano_insert(WebBoardVO vo) {
+		// TODO Auto-generated method stub
+		return sql.insert("pano.mapper.insert",vo);
 	}
 
 }

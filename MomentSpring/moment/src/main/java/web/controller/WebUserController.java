@@ -92,7 +92,6 @@ public class WebUserController {
 	@ResponseBody @RequestMapping("/userlogin")
 	public boolean login(String u_userid, String u_userpw, HttpSession session) {
 		//DB에서 입력한 아이디/ 비밀번호가 일치하는 회원 정보가 조회한 후 
-		
 		HashMap<String, String>map = new HashMap<String, String>();
 		map.put("u_userid", u_userid);
 		map.put("u_userpw", u_userpw);

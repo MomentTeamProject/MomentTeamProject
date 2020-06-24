@@ -46,38 +46,42 @@ AND b.b_no = #{no}
 <select id="list" resultType="web.board.WebBoardVO">
 	select b.*, (select u_nick from m_user where u_userid=b.b_userid) b_nick 
 	from (select rownum no, b.* 
-		  from (select * from m_board <include refid="search_where" /> order by b_no) b 
+		  from (select * from m_board <include refid="search_where" /> <include refid="lateOrRank"/>) b 
 		  order by no desc) b
 	where no between #{beginList} and #{endList}
-</select>
-<!-- 추천 순 목록 출력 ddabong! -->
-<select id="rankList" resultType="web.board.WebBoardVO">
-	select b.*, (select u_nick from m_user where u_userid=b.b_userid) b_nick 
-	from (select rownum no, b.* 
-		  from (select * from m_board <include refid="search_where" /> order by b_no) b 
-		  order by no desc) b
-	where no between #{beginList} and #{endList}
-	order by b_ddabong desc
 </select>
 
 
 <!-- 공통 쿼리문 작성 -->
-<sql id="search_writer">
-	b_userid in (select u_userid from m_user where u_nick like '%' || #{keyword} || '%')
-</sql>
-
+<!-- 검색조건 분기 -->
 <sql id="search_where">
+	<!-- 제목이나 내용 검색 -->
 	<if test="search=='title' or search=='coment'">
 		where b_${search} like '%' || #{keyword} || '%'
 	</if>
 	<if test="search=='writer'">
 		where <include refid="search_writer"/>
 	</if>
+	<!-- 전체 검색 -->
 	<if test="search=='all'">
 		where b_title  like '%' || #{keyword} || '%'
 		or b_coment like '%' || #{keyword} || '%'
 		or <include refid="search_writer"/>
 	</if>
+</sql>
+<!-- 글쓴이 검색조건-->
+<sql id="search_writer">
+	b_userid in (select u_userid from m_user where u_nick like '%' || #{keyword} || '%')
+</sql>
+<!-- 최신글, 추천순 목록조회 분기 -->
+<sql id="lateOrRank">
+	<if test="viewType=='lately'">
+		order by b_no
+	</if>
+	<if test="viewType=='ddabong'">
+		order by b_ddabong
+	</if>
+	
 </sql>
 
 <!-- 새글 저장 -->
@@ -85,6 +89,11 @@ AND b.b_no = #{no}
 	INSERT INTO m_board (b_no, b_userid, b_title, b_coment, b_imgpath, b_local, b_tag, b_writedate, b_latitude, b_longitude, b_ddabong, b_readcnt)
 	VALUES (m_board_seq.nextval, #{b_userid}, #{b_title}, #{b_coment}, #{b_imgpath}, #{b_local}, DEFAULT , SYSDATE , #{b_latitude}, #{b_longitude}, DEFAULT, DEFAULT)
 </insert>
+<!-- 글 삭제 -->
+<delete id="boardDelete">
+	DELETE FROM m_board
+	WHERE b_no = #{id}
+</delete>
 
 
 

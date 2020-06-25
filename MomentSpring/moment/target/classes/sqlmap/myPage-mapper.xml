@@ -41,7 +41,7 @@
         select rownum no, b.* 
         from (select * from m_board where b_userid =#{userid} 	)b
        <if test="keyword != null">where <include refid="search_where"/></if>
-        ) where no between #{beginList} and #{endList}
+        ) where no between #{beginList} and #{endList} order by b_no desc
 		
 		
 	</select>                

@@ -61,6 +61,7 @@
 				<c:if test="${!empty login_info }">
 					<h3>${login_info.u_name}</h3>
 					<a class="btn-fill" onclick="go_logout()">LOGOUT</a>
+					<a class="btn-fill" href="usermodify">정보수정</a>
 				</c:if>
 			</div>
 		</div>

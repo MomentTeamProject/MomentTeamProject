@@ -361,12 +361,6 @@ function search_list(){
 					  +'<td>답변</td><td colspan="5" class="left">'+(value.answer_content == null ? '아직 등록된 답변이 없습니다.' : value.answer_content.replace(/\n/g, '<br/>'))+'</td></tr>'
 			console.log(value);
 			});
-			tag += '<tr><td>2</td><td class="left">사진이 안올라가면 어떻게 해야할까요?</td><td>동카이</td><td>2020-06-18</td><td>답변완료</td></tr>';
-			tag += '<tr><td>3</td><td class="left">회원가입에 실패했어요.</td><td>도후니</td><td>2020-06-18</td><td>답변완료</td></tr>';
-			tag += '<tr><td>4</td><td class="left">채팅방이 안들어가져요.</td><td>정민생</td><td>2020-06-18</td><td>진행중</td></tr>';
-			tag += '<tr><td>5</td><td class="left">구글맵이 로드가 안됩니다.</td><td>치현갓</td><td>2020-06-18</td><td>답변완료</td></tr>';
-			tag += '<tr><td>6</td><td class="left">추천이 눌리지 않습니다.</td><td>치현갓</td><td>2020-06-18</td><td>진행중</td></tr>';
-			tag += '<tr><td>7</td><td class="left">지도검색이 되지않아요!</td><td>승철문</td><td>2020-06-18</td><td>답변포기</td></tr>';
 			tag += '</table>';
 			$('#append').html(tag);
 		}, error: function(req, text){

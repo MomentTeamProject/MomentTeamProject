@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import android.user.UserVO;
 import web.email.CommonService;
 import web.user.WebUserServiceImpl;
 import web.user.WebUserVO;
@@ -73,15 +74,45 @@ public class WebUserController {
 	
 	//회원가입 화면 요청
 	@RequestMapping("/joinuser")
-	public String user(HttpSession session) {
+	public String user() {
 		return "user/join";
 	}
 	//로그인 화면 요청
 	@RequestMapping("/loginuser")
-	public String userlogin(HttpSession session) {
+	public String userlogin() {
 		return "user/login";
 	}
+	//회원 정보수정 화면 요청
+	@RequestMapping("/usermodify")
+	public String userModify(HttpSession session, Model model) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		String userid = ((WebUserVO)session.getAttribute("login_info")).getU_userid();
+		String userpw = ((WebUserVO)session.getAttribute("login_info")).getU_userpw();
+		map.put("u_userid", userid);
+		map.put("u_userpw", userpw);
+		WebUserVO vo  = service.user_login(map);
+		model.addAttribute("vo",vo);
+		return "user/modify";
+	}
 	
+	//회원가입 수정 요청
+	@RequestMapping("/userUpdate")
+	public String userUpdate(WebUserVO vo, HttpSession session, MultipartFile file) {
+		session.removeAttribute("login_info");
+		
+		if(!file.isEmpty()) {
+			vo.setU_profileimg(file.getOriginalFilename());
+			vo.setU_imgpath(common.upload("profile", file, session));
+		}else {
+			vo.setU_profileimg("default.jpg");
+		}
+		
+		
+		service.user_update(vo);
+		
+		
+		return "redirect:loginuser";
+	}
 	//로그아웃
 		@ResponseBody @RequestMapping("/weblogout")
 		public void logout(HttpSession session) {

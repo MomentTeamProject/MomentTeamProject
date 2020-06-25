@@ -28,7 +28,7 @@ input:focus {outline:none;}
 /* 지도 css */
 #infoimg {width:119px; height:99px; float:left; } 	
 #infocon {width :115px;  margin: 0 ;}    
-#infotitle { width :110px;
+#infotitle { width :115px;
 text-overflow: ellipsis; white-space: nowrap;  
 display: block; overflow: hidden; font-size:90%; /* 글줄임 */
 font-weight: bolder;  text-align: center;} 
@@ -199,10 +199,11 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 	                });	                
 
 	              
-	                var img = "<img id='infoimg' src='img/background/"+data[i].b_imgpath+"'>"
-	                +"<div id='infocon'><div id='infotitle'>"+data[i].b_title+"&nbsp;&nbsp;<img style='width:8%; padding-bottom:1px' src='img/background/heart.png'>"
-	                +data[i].b_ddabong+"</div><a onclick='' style='color:black; text-decoration: underline; font-size:70%'> 글보러 가기≫</a></div>"; 
-	              	// 클릭시 글 번호로 글 상세 화면으로 넘어가게 함             	
+	                var img = "<script type='text/javascript' src='js/detail.js'><"+"/script><img id='infoimg' src='img/background/"+data[i].b_imgpath+"'>"
+	                +"<div id='infocon'><div id='infotitle'>"+data[i].b_title+"</div><div><img style='width:8%; padding:1px' src='img/background/heart.png'>"
+	                +data[i].b_ddabong+"&nbsp;&nbsp;&nbsp;<img style='width:10%; padding-bottom:1px' src='img/background/eyeb.png'>"
+	                +data[i].b_readcnt+"</div></div>"; 
+	              	// 클릭시 글 번호로 글 상세 화면으로 넘어가게 함            	
 	              	                        
 	                
 		            var infowindow = new google.maps.InfoWindow({

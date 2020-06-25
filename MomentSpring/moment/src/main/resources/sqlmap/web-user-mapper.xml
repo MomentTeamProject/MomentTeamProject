@@ -32,5 +32,11 @@
 	<update id="userAuth" >
 		update m_user set u_admin = 'Y' where u_userid = #{u_userid} and u_authkey = #{u_authkey}
 	</update>
+	
+<update id="update">
+	UPDATE m_user 
+	SET u_userpw = #{u_userpw}, u_nick = #{u_nick}, u_local = #{u_local}, u_profileimg = #{u_profileimg} 
+	WHERE u_userid = #{u_userid}
+</update>
 </mapper>
  

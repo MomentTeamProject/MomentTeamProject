@@ -135,7 +135,6 @@ ul { list-style: none; padding: 0; }
 
 
 #btn { height: 280px;}
-.btn-fill { color: white; background-color: black; font-family: 'Gamja Flower', cursive; margin-left: 3px; font-weight: bold; font-size: 1.8em; }
 
 select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flower', cursive; padding: 0 0 0 3px; font-weight: bold; }
 

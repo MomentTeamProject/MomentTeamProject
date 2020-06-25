@@ -11,7 +11,7 @@
 html, body { height: 100%; }
 body{
 	margin: 0 auto; text-align: center;
-	font-family: 'Jua', sans-serif;
+	font-family: 'Noto Serif KR', serif;
 	background-color: black; color: #ffffff;
 	height: 100%;
 }
@@ -67,7 +67,7 @@ border-radius: 15px;}
 .mypageselect { color: white; background-color: black;
 padding: .6em .7em; text-align: center;
 border: 1px solid white; border-radius:3px;
-font-family: 'Jua', sans-serif;
+font-family: 'Noto Serif KR', serif;
 -webkit-appearance: none; -moz-appearance: none; appearance: none; 
 
 	}	
@@ -79,7 +79,7 @@ a.btn-fill, a.btn-empty {
 	background-color:#000000;
 	border: 2px solid #ffffff;	border-radius:3px;
 	box-shadow: 1px 1px 2px #c0c0c0; 
-	color:#ffffff; font-family: 'Sriracha', cursive;
+	color:#ffffff; font-family: 'Noto Serif KR', serif;
 }
 a.btn-fill:hover { background: #fc7703; cursor: pointer; }
 /* QNA 버튼 */
@@ -87,7 +87,7 @@ a.qna-btn-fill, a.qna-btn-empty {
 	text-align: center;	padding: 3px 10px;	
 	border: 2px solid #ffffff;	border-radius:3px;
 	box-shadow: 1px 1px 2px #c0c0c0; 
-	color:#ffffff; font-family: 'Jua', sans-serif;
+	color:#ffffff; font-family: 'Noto Serif KR', serif;
 }
 a.qna-btn-fill { background-color:#fc7703; }
 a.qna-btn-empty { background-color:#000000; }
@@ -107,7 +107,7 @@ a:link, a:visited { text-decoration:none; color:white;}
        text-decoration:none;                     
        color: white; display: block;                          
        width: 150px; font-size: 13px; margin: 5px;                                     
-       font-weight: bold; font-family: 'Sriracha', cursive; /* font-family: 'Do Hyeon', sans-serif;  */}
+       font-weight: bold; font-family: 'Noto Serif KR', serif;/* font-family: 'Do Hyeon', sans-serif;  */}
 #topMenu .menuLink:hover {            
         color: #f56437fa;/*  background-color: #4d4d4d; */ /*  margin: 5px; */   
 }	

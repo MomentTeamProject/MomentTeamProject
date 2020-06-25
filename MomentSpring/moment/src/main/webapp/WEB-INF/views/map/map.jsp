@@ -199,9 +199,9 @@ function fillInAddress() {  //좌표 얻어와서 창에 띄움.
 	                });	                
 
 	              
-	                var img = "<img id='infoimg' src='img/background/"+data[i].b_imgpath+"'>"
+	                var img = "<script type='text/javascript' src='js/detail.js'><"+"/script><img id='infoimg' src='img/background/"+data[i].b_imgpath+"'>"
 	                +"<div id='infocon'><div id='infotitle'>"+data[i].b_title+"&nbsp;&nbsp;<img style='width:8%; padding-bottom:1px' src='img/background/heart.png'>"
-	                +data[i].b_ddabong+"</div><a onclick='' style='color:black; text-decoration: underline; font-size:70%'> 글보러 가기≫</a></div>"; 
+	                +data[i].b_ddabong+"</div><a onclick='detail("+data[i].b_no+",'"+data[i].b_userid+"')' style='color:black; text-decoration: underline; font-size:70%'> 글보러 가기≫</a></div>"; 
 	              	// 클릭시 글 번호로 글 상세 화면으로 넘어가게 함             	
 	              	                        
 	                

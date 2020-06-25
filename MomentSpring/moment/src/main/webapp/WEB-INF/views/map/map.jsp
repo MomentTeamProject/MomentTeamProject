@@ -13,7 +13,7 @@ async defer></script>
 <style>
 body {background-color:#f56437fa; font-family: 'Noto Serif KR', serif !important;}
 
-#locationField { width:100%; padding: 100px 0 0 0;  /* float: left; */}
+#locationField { width:100%; padding: 60px 0 0 0;  /* float: left; */}
 #autocomplete {width:500px; height: 40px; border: 1px solid black; border-radius :15px; 
 box-shadow: 1px 1px 2px black; padding:0 15px; margin-bottom: 10px;}
 p {/* float: left; */ margin: 10px; padding: 0px; font-family: 'Suez One', serif; font-size: 38px;/*  padding-left: 450px; */} 
@@ -84,7 +84,7 @@ window.onscroll = function(){
 		
 		//스크롤이 컨텐트아래 50 hegiht 를 넘어서면 이벤트 시작
 		if (scroll > endY) {
-			$("#footer-wrap").slideDown();
+			$("#footer-wrap").css('display', 'none');
 		} else {
 		 	$("#footer-wrap").slideUp();
 		}

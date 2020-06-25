@@ -109,6 +109,7 @@
 }
 		body{
 		background-color: #f56437fa;
+		overflow-y: hidden; 
 		}
 	</style>
 </head>

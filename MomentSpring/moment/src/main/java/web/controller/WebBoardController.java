@@ -107,7 +107,7 @@ public class WebBoardController {
 		service.boardDdabong(fVo);
 		service.boardDdabongUpdate(fVo);
 		
-		System.out.println("변경된 추천정보 : " + fVo.getF_ddabong());
+		System.out.println("변경된 즐겨찾기정보 : " + fVo.getF_ddabong());
 	}
 	
 	//디테일에서 로그인한 사용자가 추천버튼 클릭시
@@ -179,9 +179,10 @@ public class WebBoardController {
 		System.out.println("======== 사진 카테고리 이동 ========");
 		session.setAttribute("category", "bo");
 		
+		System.out.println(viewType);
 		if(viewType.equals("lately")) {
 			System.out.println("ViewType : 최신순 목록 출력");
-		} else {
+		} else if(viewType.equals("ddabong")){
 			System.out.println("ViewType : 추천순 목록 출력");
 		}
 		
@@ -205,7 +206,6 @@ public class WebBoardController {
 	//글쓰기 페이지 요청
 	@RequestMapping("/new.bo")
 	public String board_new() {
-		
 		
 		return "pictures/new";		
 	}

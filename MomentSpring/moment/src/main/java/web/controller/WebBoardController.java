@@ -69,7 +69,7 @@ public class WebBoardController {
 		System.out.println("======== 게시글 삭제 요청 ========");
 		//삭제처리 전에 미리 imgPath 받아놓음.
 		WebBoardVO vo = service.board_detail(no, userid);
-		String imgPath = Common.IMAGE_PATH_BACKGROUND_128 + vo.getB_imgpath();
+		String imgPath = /*Common.IMAGE_PATH_BACKGROUND_128 + */ vo.getB_imgpath();
 		System.out.println("삭제요청 게시물 이미지경로 : "+imgPath);
 		
 		//해당 받아온 게시글번호로 삭제처리
@@ -107,7 +107,7 @@ public class WebBoardController {
 		service.boardDdabong(fVo);
 		service.boardDdabongUpdate(fVo);
 		
-		System.out.println("변경된 추천정보 : " + fVo.getF_ddabong());
+		System.out.println("변경된 즐겨찾기정보 : " + fVo.getF_ddabong());
 	}
 	
 	//디테일에서 로그인한 사용자가 추천버튼 클릭시
@@ -179,9 +179,10 @@ public class WebBoardController {
 		System.out.println("======== 사진 카테고리 이동 ========");
 		session.setAttribute("category", "bo");
 		
+		System.out.println(viewType);
 		if(viewType.equals("lately")) {
 			System.out.println("ViewType : 최신순 목록 출력");
-		} else {
+		} else if(viewType.equals("ddabong")){
 			System.out.println("ViewType : 추천순 목록 출력");
 		}
 		
@@ -205,7 +206,6 @@ public class WebBoardController {
 	//글쓰기 페이지 요청
 	@RequestMapping("/new.bo")
 	public String board_new() {
-		
 		
 		return "pictures/new";		
 	}
@@ -248,7 +248,7 @@ public class WebBoardController {
 			//10개의배열들의 imgpath 추출해서 바꿔줘야함
 			//(1) 각배열의 img
 //			System.out.println("getImgpath : "+page.getList().get(i).getB_imgpath());
-			String filePath = Common.IMAGE_PATH_BACKGROUND_128 + page.getList().get(i).getB_imgpath();
+			String filePath = /*Common.IMAGE_PATH_BACKGROUND_128 + */page.getList().get(i).getB_imgpath();
 			
 //			System.out.println("resource ["+i+"] : "+filePath);
 			try {
@@ -271,8 +271,8 @@ public class WebBoardController {
 	}
 	
 	private WebBoardVO existsDetailImgTest(WebBoardVO vo) {
-		String filePath = Common.IMAGE_PATH_BACKGROUND_128 + vo.getB_imgpath();
-		String filePathProfile = Common.IMAGE_PATH_BACKGROUND_128 + vo.getB_imgpath();
+		String filePath = /*Common.IMAGE_PATH_BACKGROUND_128 + */vo.getB_imgpath();
+		String filePathProfile = /*Common.IMAGE_PATH_BACKGROUND_128 + */vo.getB_imgpath();
 		try {
 			File img = new File(filePath);
 			File img2 = new File(filePathProfile);

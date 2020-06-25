@@ -136,7 +136,7 @@ ul { list-style: none; padding: 0; }
 
 #btn { height: 280px;}
 
-select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flower', cursive; padding: 0 0 0 3px; font-weight: bold; }
+select { font-size: 1em; width: 100px; height: 50px; font-family: 'Gothic A1', sans-serif; padding: 0 0 0 3px; font-weight: bold; }
 
 .pictureContent { box-sizing: content-box; min-width: 1914px; max-width: 2395px; margin: 0 auto; }
 .pictureBox { min-width: 335px; }
@@ -311,7 +311,7 @@ select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flowe
 <h2>POST</h2>
 </div>
 <div id="list-top">
-<form action="list.bo" method="post">
+<form action="list.bo" method="post" id="list_form">
 <input type="hidden" name="curPage" value="1" >
 	<div>
 		<div class="search-wrapper">
@@ -328,14 +328,14 @@ select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flowe
 			</ul>
 			</div>
 			<div class="input-holder">
-			    <input type="text" name="keyword" class="search-input" placeholder="Type to search" />
+			    <input id="keyBox" type="text" name="keyword" class="search-input" placeholder="Type to search" />
 			    <button class="search-icon" onclick="searchToggle(this, event); $('form'.submit);"><span></span></button>
 			</div>
 			<span class="close" onclick="closeToggle(this, event);"></span>
 		</div>
 		<ul>
 			<li>
-				<select id="selectBox" name="viewType" class="w-px80" onchange="$('form').submit();" >
+				<select id="selectBox" name="viewType" class="w-px80" onchange="$('#list_form').submit()" >
 					<option value="lately" ${page.viewType eq 'lately' ? 'selected' : '' } >최신순</option>
 					<option value="ddabong" ${page.viewType eq 'ddabong' ? 'selected' : '' } >추천순</option>
 				</select>
@@ -358,7 +358,7 @@ select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flowe
 			<div class="pictureBox" onclick="detail(${list.b_no}, '${login_info.u_userid}' )">
 				<figure class="snip1368">
 					<img src="background/${list.b_imgpath}" class="pictures" alt="sample30"/>
-					<h5 style="font-family: 'Gamja Flower', cursive;">${list.b_title}</h5>
+					<h5 style="font-family: 'Gothic A1', sans-serif;">${list.b_title}</h5>
 					<figcaption>
 					</figcaption>
 				</figure>
@@ -458,6 +458,7 @@ function searchToggle(obj, evt){
             container.find('.search-input').val('');
         }
 }
+
 //닫기버튼 js
 function closeToggle(obj, evt){
     var container = $(obj).closest('.search-wrapper');
@@ -520,12 +521,8 @@ window.onscroll = function(){
 			 	 				tag += '<div class="pictureBox" onclick="detail('+ value.b_no +', \'${login_info.u_userid}\' )">';
 			 	 					tag += '<figure class="snip1368">';
 			 	 						tag += '<img src="background/'+ value.b_imgpath +'" class="pictures" alt="sample30"/>';
-				 	 					tag	+= '<h5 style=&#39;font-family: "Gamja Flower", cursive;&#39;>'+ value.b_title +'</h5>';
+				 	 					tag	+= '<h5 style=&#39; font-family: "Gothic A1", sans-serif; &#39;>'+ value.b_title +'</h5>';
 				 	 					tag	+= '<figcaption>';
-				 	 						tag += '<div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>';
-				 	 							tag += '<a href="#"> <i class="ion-social-twitter-outline"></i></a>';
-				 	 							tag += '<a href="#"> <i class="ion-social-vimeo-outline"></i></a>';
-				 	 						tag += '</div>';
 				 	 					tag += '</figcaption>';
 			 	 					tag += '</figure>';
 								tag += '</div>';

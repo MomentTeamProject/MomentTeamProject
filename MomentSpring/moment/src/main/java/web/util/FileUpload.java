@@ -25,24 +25,17 @@ public class FileUpload {
 	public static Map<String, String> upload(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException{
 		
-		//�뵒�젆�넗由ш꼍濡� 吏��젙
 		//String savePath = "upload";
 		String savePath = Common.IMAGE_FILE_SAVE_PATH;
-		//Map�삎�떇�쓽 String �궎媛�, String 踰⑤쪟媛믪쑝濡� 吏��젙
 		Map<String, String> fileUploadMap = new HashMap<>();
 		String encoding = "UTF-8";
 		
-		//�쁽�옱 ���옣�냼瑜� File 媛앹껜瑜� �깮�꽦�빐 吏��젙�빐以�.
 		File currentDirPath = new File(savePath);
 		
-		//�뾽濡쒕뱶�맂 �뙆�씪�쓣 ���옣�븷 ���옣�냼�� 愿��젴�맂 �겢�옒�뒪.
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		
-		//硫붿꽌�뱶�뒗 �뾽濡쒕뱶 �맂 �뙆�씪�쓣 ���옣�븷 �쐞移섎�� File媛앹껜濡� 吏��젙.
 		factory.setRepository(currentDirPath);
 		
-		//HTTP �슂泥��뿉 ���븳 HttpServletRequest 媛앹껜濡쒕��꽣 multipart/form-data�삎�떇�쑝濡� �꽆�뼱�삩 HTTP Body 遺�遺꾩쓣 �떎猷④린 �돺寃� 蹂��솚(parse)�빐二쇰뒗 �뿭�븷�쓣 �닔�뻾.  
-		//parseRequest()硫붿꽌�뱶瑜� �닔�뻾�븯硫� FileItem�씠�씪�뒗 �삎�떇�쑝濡� 蹂��솚.
 		ServletFileUpload upload = new ServletFileUpload(factory);
 	
 		try {
@@ -63,7 +56,8 @@ public class FileUpload {
 						String fileName = fileItem.getName().substring(idx + 1);
 						fileUploadMap.put(fileItem.getFieldName(), fileName);
 						//�뙆�씪 留뚮뱾湲�
-						File uploadFile = new File(currentDirPath + "\\" + fileName);
+						File uploadFile = new File(savePath + "\\" + fileName);
+						System.out.println(uploadFile.getAbsolutePath());
 						fileItem.write(uploadFile);
 					}
 				}

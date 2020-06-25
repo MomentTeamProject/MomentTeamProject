@@ -1,3 +1,8 @@
+//공통 새로고침 함수
+function refreshPage(){
+	location.reload();
+}
+
 //이미지목록 클릭시 디테일 화면에 띄워주기
 function detail(picNo, userid) {
 	//다시 눌렀을때 기존 요소들 삭제
@@ -45,17 +50,32 @@ function detail(picNo, userid) {
 						
 						tag +='<div class="denick">'+ data.b_nick
 								+ '<div class="decntBox">'
-								+ '<img class="like" title="추천" src="icons/like.png" onclick="ddabong(' + data.b_no + ',\'' + userid + '\',\'' + data.f_ddabong + '\',\'' + data.f_favorites + '\')"/>&nbsp;'+ data.b_ddabong + '&nbsp;&nbsp;&nbsp;&nbsp;'           
+								+ '<img class="like_empty" title="추천" src="icons/like.png" onclick="ddabong(' + data.b_no + ',\'' + userid + '\',\'' + data.f_ddabong + '\',\'' + data.f_favorites + '\')"/>'        
+								+ '<img class="like_fill" title="추천" src="icons/like_fill.png" onclick="ddabong(' + data.b_no + ',\'' + userid + '\',\'' + data.f_ddabong + '\',\'' + data.f_favorites + '\')"/>&nbsp;'+ data.b_ddabong + '&nbsp;&nbsp;&nbsp;'           
 								+ '<img class="cnt" title="조회수" src="icons/cnt.png" />&nbsp;'+ data.b_readcnt  + '&nbsp;&nbsp;' 
 								+ '<img class="bookmark_empty" title="즐겨찾기" src="icons/bookmark_empty.png" onclick="fav(' + data.b_no + ',\'' + userid + '\',\'' + data.f_ddabong + '\',\'' + data.f_favorites + '\')"/>'
-								+ '<img class="bookmark_full" title="즐겨찾기" src="icons/bookmark_empty.png" />'
+								+ '<img class="bookmark_fill" title="즐겨찾기" src="icons/bookmark_full.png" onclick="fav(' + data.b_no + ',\'' + userid + '\',\'' + data.f_ddabong + '\',\'' + data.f_favorites + '\')"/>'
 								+ '</div></div>';  		//닉네임+조회수+추천수+즐겨찾기
 						tag +='<div class="delocation" onclick="go_map('+ data.b_local +')">'+ data.b_local +'</div>';	//게시물 위치정보
 						tag +='<div class="decoment">'+ data.b_coment +'</div>';
-						tag +='<div class="test" style="height: 500px;"></div>';
+						tag +='<div class="test" style="height: 150px;"></div>';
 						tag += '<input type="hidden" value="'+data.b_userid+'" name="userhidden"/>';
 					tag +='</div>';
 			place.append(tag);
+			if(data.f_ddabong == 'N') {
+				$('.like_empty').css('display','initial');
+				$('.like_fill').css('display','none');
+			} else {
+				$('.like_fill').css('display','initial');
+				$('.like_empty').css('display','none');
+			}
+			if(data.f_favorites == 'N') {
+				$('.bookmark_empty').css('display','initial');
+				$('.bookmark_fill').css('display','none');
+			} else {
+				$('.bookmark_fill').css('display','initial');
+				$('.bookmark_empty').css('display','none');
+			}
 		}, error: function(req, text){
 			alert(text+":"+req.status);
 		}
@@ -113,7 +133,6 @@ function delete_board() {
 			success: function(data){
 				if(data.redirect) {
 					alert('삭제가 완료되었습니다.');
-					window.location.href = data.redirect;
 				} else {
 					return false;
 				}
@@ -121,7 +140,7 @@ function delete_board() {
 				alert(text+":"+req.status);
 			}
 		});
-		
+		refreshPage();
 	} else {
 		return;
 	}
@@ -142,7 +161,7 @@ function fav(no, userid, ddabong, fav) {
 		}
 	//로그인한 사용자가 추천아이콘 클릭시
 	} else if(userid != '') {
-		//클릭한 사용자가 이전에 추천한 이력이 없다면
+		//클릭한 사용자가 이전에 즐겨찾기 추가 이력이 없다면
 		if(fav == 'N') {
 			var favTrue = confirm('즐겨찾기에 추가하시겠습니까?');
 			if(favTrue) {
@@ -159,6 +178,7 @@ function fav(no, userid, ddabong, fav) {
 						alert(text+":"+req.status);
 					}
 				});
+				refreshPage();
 			}
 		} else if(fav == 'Y') {
 			var favFalse = confirm('즐겨찾기를 취소하시겠습니까?');
@@ -176,6 +196,7 @@ function fav(no, userid, ddabong, fav) {
 						alert(text+":"+req.status);
 					}
 				});
+				refreshPage();
 			}
 		}
 	}
@@ -213,6 +234,7 @@ function ddabong(no, userid, ddabong, fav) {
 						alert(text+":"+req.status);
 					}
 				});
+				refreshPage();
 			}
 		//클릭한 사용자가 이전에 추천한 이력이 있다면 ddabong='Y'
 		} else if(ddabong == 'Y') {
@@ -231,6 +253,7 @@ function ddabong(no, userid, ddabong, fav) {
 						alert(text+":"+req.status);
 					}
 				});
+				refreshPage();
 			}
 		}
 	}

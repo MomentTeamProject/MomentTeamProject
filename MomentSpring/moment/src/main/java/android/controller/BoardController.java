@@ -103,7 +103,7 @@ public class BoardController {
 	}
 	
 	//추천 & 즐겨찾기 이벤트
-	@RequestMapping(value = "/FavoriteAction.mo", produces = "application/json; charset=UTF-8")
+	@ResponseBody @RequestMapping(value = "/FavoriteAction.mo", produces = "application/json; charset=UTF-8")
 	public void Favorite(@RequestBody HashMap<String, Object> param) {
 		System.out.println("Controller ============= > /FavoriteAction.mo");
 		

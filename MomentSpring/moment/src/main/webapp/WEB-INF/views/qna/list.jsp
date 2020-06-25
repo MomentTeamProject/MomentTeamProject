@@ -107,16 +107,12 @@ textarea { width: 100%; height: 200px; resize: none; }
 			<th class="w-px60" >번호</th>
 			<th >제목</th>
 			<th class="w-px100">작성자</th>
-			<th class="w-px100">작성일자</th>
-			<th class="w-px100">질문 현황</th>
 		</tr>
 		<c:forEach items="${page.list}" var="vo">
 			<tr>
 				<td>${vo.no }</td>
 				<td class="left"><a class="content_btn${vo.id }" onclick="content_view(${vo.id})">${vo.title }</a></td>
 				<td>${vo.name }</td>
-				<td>${vo.writedate }</td>
-				<td>${vo.answer_result eq 'Y' ? '답변완료' : '진행중' }</td>
 			</tr>
 			<tr class="content_view${vo.id}" style="display: none; cursor: pointer;" onclick="content_close(${vo.id})">
 				<td>답변</td>

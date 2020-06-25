@@ -13,17 +13,18 @@
 		}
 		body{
 		background-color: #f56437fa;
+		overflow-y: hidden !imortant; 
 		}
 		.container{
 		position: relative;
 		z-index:1;
-			width: 550px;
-			margin: 130px auto;
-			border-radius: 40px;
-			background-color: #00000099;
-			color: black;
-			padding: 18px;
-			    box-shadow: 0 0 20px 0 rgba(5, 5, 5, 0.56), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+		width: 550px;
+		margin: 130px auto;
+		border-radius: 40px;
+		background-color: #00000099;
+		color: black;
+		padding: 18px;
+    box-shadow: 0 0 20px 0 rgba(5, 5, 5, 0.56), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 		}
 		.container1{
 			background: #fffffffc;

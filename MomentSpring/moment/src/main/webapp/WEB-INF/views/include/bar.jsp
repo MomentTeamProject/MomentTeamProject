@@ -73,7 +73,7 @@
 			<li><a href="map.moment" class="${category eq 'ma' ? 'active' : '' }">MAP</a></li>
 			<li><a href='room' class="${category eq 'ch' ? 'active' : '' }">CHAT</a></li>
 			<c:if test="${login_info.u_admin eq 'M' }">
-			<li><a href='push'>PushService</a></li>
+			<li><a href='push' class="${category eq 'al' ? 'active' : '' }">PushService</a></li>
 			</c:if>
 		</ul>
 	</div>

@@ -24,7 +24,7 @@ function detail(picNo, userid) {
 		success: function(data){
 			$('.detitle').html(data.b_title);
 			$('.board_no').val(picNo);
-			$('.board_userid').val(userid);
+			$('.board_userid').val(data.b_userid);
 			if(userid==data.b_userid) {
 				$('#modify_open').css('display','block');
 				console.log("클릭한사용자id : " + userid + "/ 게시자 id : " + data.b_userid);
@@ -45,12 +45,13 @@ function detail(picNo, userid) {
 						
 						tag +='<div class="denick">'+ data.b_nick
 								+ '<div class="decntBox">'
-								+ '<img class="like" src="icons/like.png" onclick="ddabong(' + data.b_no + ',\'' + userid + '\',\'' + data.f_ddabong + '\',\'' + data.f_favorites + '\')"/>&nbsp;'+ data.b_ddabong + '&nbsp;&nbsp;&nbsp;&nbsp;'           
-								+ '<img class="cnt" src="icons/cnt.png" />&nbsp;'+ data.b_readcnt 
-								+ '</div></div>';  		//닉네임+조회수+추천수
+								+ '<img class="like" title="추천" src="icons/like.png" onclick="ddabong(' + data.b_no + ',\'' + userid + '\',\'' + data.f_ddabong + '\',\'' + data.f_favorites + '\')"/>&nbsp;'+ data.b_ddabong + '&nbsp;&nbsp;&nbsp;&nbsp;'           
+								+ '<img class="cnt" title="조회수" src="icons/cnt.png" />&nbsp;'+ data.b_readcnt  + '&nbsp;&nbsp;' 
+								+ '<img class="bookmark_empty" title="즐겨찾기" src="icons/bookmark_empty.png" onclick="fav(' + data.b_no + ',\'' + userid + '\',\'' + data.f_ddabong + '\',\'' + data.f_favorites + '\')"/>'
+								+ '<img class="bookmark_full" title="즐겨찾기" src="icons/bookmark_empty.png" />'
+								+ '</div></div>';  		//닉네임+조회수+추천수+즐겨찾기
 						tag +='<div class="delocation" onclick="go_map('+ data.b_local +')">'+ data.b_local +'</div>';	//게시물 위치정보
 						tag +='<div class="decoment">'+ data.b_coment +'</div>';
-							
 						tag +='<div class="test" style="height: 500px;"></div>';
 						tag += '<input type="hidden" value="'+data.b_userid+'" name="userhidden"/>';
 					tag +='</div>';
@@ -87,7 +88,10 @@ function modify_close() {
 }
 //수정아이콘 클릭시 이벤트
 function modify_board() {
-	
+	var go_modi = confirm("게시글 수정 페이지로 이동하시겠습니까?");
+	if(go_modi) {
+		$('#modify_submit').submit();
+	}
 }
 //삭제아이콘 클릭시 이벤트
 function delete_board() {
@@ -95,6 +99,12 @@ function delete_board() {
 	var no = $('.board_no').val();
 	var userid = $('.board_userid').val();
 	if(really) {
+		
+		$('#scrolldown').show(500).animate({right:'20px'});
+		$('#detail, #detail-background').css('display', 'none');
+		$('body').css('overflow-y','scroll');
+		$('.modify').css('display','none');
+		$('#modify_open').css('right', '10px');
 		
 		$.ajax({
 			url: 'delete.bo',
@@ -104,11 +114,6 @@ function delete_board() {
 				if(data.redirect) {
 					alert('삭제가 완료되었습니다.');
 					window.location.href = data.redirect;
-//					$('#scrolldown').show(500).animate({right:'20px'});
-//					$('#detail, #detail-background').css('display', 'none');
-//					$('body').css('overflow-y','scroll');
-//					$('.modify').css('display','none');
-//					$('#modify_open').css('right', '10px');
 				} else {
 					return false;
 				}
@@ -122,13 +127,64 @@ function delete_board() {
 	}
 }
 
+//즐겨찾기아이콘 클릭시 즐찾추가/제거 이벤트
+function fav(no, userid, ddabong, fav) {
+	console.log("userid 오브젝트 : ");
+	console.log("사용자의 즐찾상태"+fav);
+	
+	//비로그인 사용자가 즐찾아이콘 클릭시
+	if(userid == '') {
+		var noLogin = confirm("로그인이 필요한 기능입니다. \n로그인화면으로 이동하시겠습니까?");
+		if(noLogin) {
+			location.href='loginuser';
+		} else {
+			return;
+		}
+	//로그인한 사용자가 추천아이콘 클릭시
+	} else if(userid != '') {
+		//클릭한 사용자가 이전에 추천한 이력이 없다면
+		if(fav == 'N') {
+			var favTrue = confirm('즐겨찾기에 추가하시겠습니까?');
+			if(favTrue) {
+				var fav2 = 'Y';
+				$.ajax({
+					url: 'fav.bo',
+					type: 'post',
+					data: { 'no' : no , 'userid' : userid , 'ddabong' : ddabong , 'fav' : fav2 },
+					success: function() {
+						alert('즐겨찾기에 추가하셨습니다.');
+						$('#detail, #detail-background').css('display', 'none');
+						$('body').css('overflow-y','scroll');
+					}, error: function(req, text){
+						alert(text+":"+req.status);
+					}
+				});
+			}
+		} else if(fav == 'Y') {
+			var favFalse = confirm('즐겨찾기를 취소하시겠습니까?');
+			if(favFalse) {
+				var fav2 = 'N';
+				$.ajax({
+					url: 'fav.bo',
+					type: 'post',
+					data: { 'no' : no , 'userid' : userid , 'ddabong' : ddabong , 'fav' : fav2 },
+					success: function() {
+						alert('즐겨찾기를 취소하셨습니다.');
+						$('#detail, #detail-background').css('display', 'none');
+						$('body').css('overflow-y','scroll');
+					}, error: function(req, text){
+						alert(text+":"+req.status);
+					}
+				});
+			}
+		}
+	}
+}
 
-
-//추천아이콘 클릭시 추천 이벤트
+//추천아이콘 클릭시 추천/취소 이벤트
 function ddabong(no, userid, ddabong, fav) {
 	console.log("userid 오브젝트 : ");
 	console.log("사용자의 추천상태"+ddabong);
-	console.log("사용자의 즐찾상태"+fav);
 	
 	//비로그인사용자가 추천아이콘 클릭시
 	if(userid == '') {

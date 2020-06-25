@@ -40,6 +40,28 @@ public class WebBoardController {
 	private String key = "AIzaSyDrfll4QoaTNLPA3Zhpd0P_72bmSVjqNYk";	
 	private String map_url = "https://maps.googleapis.com/maps/api/geocode/json?address=";
 	
+	//게시글 수정요청
+	@RequestMapping(value="/update.bo", produces="text/html; charset=utf-8")
+	public String update(WebBoardVO vo) {
+		System.out.println("======== 게시글 수정 요청 ========");
+		double lat =  (Double)vo.getB_latitude();
+		double lon =  (Double)vo.getB_longitude();
+		
+		vo.setB_latitude(lat);
+		vo.setB_longitude(lon);
+		
+		service.board_update(vo);
+		return "redirect:list.bo";
+	}
+	
+	//글 수정화면 요청
+	@RequestMapping("/modify.bo")
+	public String modify(Model model, int no, String userid) {
+		WebBoardVO vo = service.board_detail(no, userid);
+		model.addAttribute("vo", vo);
+		
+		return "pictures/modify";
+	}
 	
 	//글삭제 요청
 	@RequestMapping("/delete.bo")
@@ -66,7 +88,27 @@ public class WebBoardController {
 		
 		return "redirect:list.bo";
 	}
-
+	
+	//디테일에서 사용자가 즐겨찾기 아이콘 클릭시
+	@ResponseBody @RequestMapping("/fav.bo")
+	public void fav(int no, String userid, String ddabong, String fav) {
+		if(fav.equals("N")) {
+			System.out.println(no + " 번 글 즐겨찾기 요청 / 추천한 사용자 ID : " + userid);
+		} else {
+			System.out.println(no + " 번 글 즐겨찾기 취소 요청 / 추천한 사용자 ID : " + userid);
+		}
+		
+		//쿼리문 처리에 사용할 fVo 객체생성
+		WebFavoriteVO fVo = new WebFavoriteVO();
+		fVo.setF_bno(no);
+		fVo.setF_userid(userid);
+		fVo.setF_ddabong(ddabong);
+		fVo.setF_favorites(fav);
+		service.boardDdabong(fVo);
+		service.boardDdabongUpdate(fVo);
+		
+		System.out.println("변경된 추천정보 : " + fVo.getF_ddabong());
+	}
 	
 	//디테일에서 로그인한 사용자가 추천버튼 클릭시
 	@ResponseBody @RequestMapping("/ddabong.bo")

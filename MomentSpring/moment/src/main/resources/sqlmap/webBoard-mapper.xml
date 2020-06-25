@@ -39,7 +39,7 @@ AND b.b_no = #{no}
 </select>
 
 <select id="total" resultType="integer">
-	select count(*) from m_board <include refid="search_where" />
+	select count(*) from m_board <include refid="search_where" /> 
 </select>
 
 <!-- 기본 default 출력 리스트 / 최신순 목록출력 -->
@@ -49,7 +49,6 @@ AND b.b_no = #{no}
 		  from (select * from m_board <include refid="search_where" /> <include refid="lateOrRank"/>) b 
 		  order by no desc) b
 	where no between #{beginList} and #{endList}
-	and b_pano = 'N'
 </select>
 
 
@@ -58,10 +57,10 @@ AND b.b_no = #{no}
 <sql id="search_where">
 	<!-- 제목이나 내용 검색 -->
 	<if test="search=='title' or search=='coment'">
-		where b_${search} like '%' || #{keyword} || '%'
+		where b_${search} like '%' || #{keyword} || '%' and b_pano = 'N'
 	</if>
 	<if test="search=='writer'">
-		where <include refid="search_writer"/>
+		where <include refid="search_writer"/> and b_pano = 'N'
 	</if>
 	<!-- 전체 검색 -->
 	<if test="search=='all'">
@@ -72,7 +71,7 @@ AND b.b_no = #{no}
 </sql>
 <!-- 글쓴이 검색조건-->
 <sql id="search_writer">
-	b_userid in (select u_userid from m_user where u_nick like '%' || #{keyword} || '%')
+	b_userid in (select u_userid from m_user where u_nick like '%' || #{keyword} || '%') 
 </sql>
 <!-- 최신글, 추천순 목록조회 분기 -->
 <sql id="lateOrRank">
@@ -95,7 +94,12 @@ AND b.b_no = #{no}
 	DELETE FROM m_board
 	WHERE b_no = #{id}
 </delete>
-
+<!-- 글 수정 -->
+<update id="boardUpdate">
+	UPDATE m_board
+	SET b_title = #{b_title},	b_coment = #{b_coment}, b_local = #{b_local}, b_latitude = #{b_latitude}, b_longitude = #{b_longitude}
+	WHERE b_no = #{b_no}
+</update>
 
 
 </mapper>

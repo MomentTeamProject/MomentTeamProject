@@ -135,7 +135,6 @@ ul { list-style: none; padding: 0; }
 
 
 #btn { height: 280px;}
-.btn-fill { color: white; background-color: black; font-family: 'Gamja Flower', cursive; margin-left: 3px; font-weight: bold; font-size: 1.8em; }
 
 select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flower', cursive; padding: 0 0 0 3px; font-weight: bold; }
 
@@ -361,11 +360,7 @@ select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flowe
 					<img src="background/${list.b_imgpath}" class="pictures" alt="sample30"/>
 					<h5 style="font-family: 'Gamja Flower', cursive;">${list.b_title}</h5>
 					<figcaption>
-			    <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-			      <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-			      <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-			    </div>
-			  </figcaption>
+					</figcaption>
 				</figure>
 			</div>
 			</c:forEach>
@@ -384,11 +379,14 @@ select { font-size: 1.2em; width: 100px; height: 50px; font-family: 'Gamja Flowe
 		
 		
 		<div class="modiMenu">
-			<input type="hidden" value="" class="board_no"/>
-			<input type="hidden" value="" class="board_userid"/>
-			<div id="modiBox" class="menuIconBox" onclick="modify_board()">
-				<img src="icons/modify.png" class="modicon"/>
-			</div>
+			<form action="modify.bo" method="post" id="modify_submit">
+				<input type="hidden" value="" class="board_no" name="no"/>
+				<input type="hidden" value="" class="board_userid" name="userid"/>
+				
+				<div id="modiBox" class="menuIconBox" onclick="modify_board()">
+					<img src="icons/modify.png" class="modicon"/>
+				</div>
+			</form>
 			<div id="trashBox" class="menuIconBox" onclick="delete_board()">
 				<img src="icons/trash.png" class="trashicon"/>
 			</div>

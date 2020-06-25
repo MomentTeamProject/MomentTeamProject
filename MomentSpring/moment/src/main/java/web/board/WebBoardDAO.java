@@ -64,8 +64,7 @@ public class WebBoardDAO implements WebBoardService {
 
 	@Override
 	public int board_update(WebBoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sql.update("webBoard.mapper.boardUpdate", vo);
 	}
 
 	@Override

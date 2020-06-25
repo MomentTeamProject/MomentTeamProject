@@ -12,6 +12,7 @@ public class Common {
 	public static final String IMAGE_FILE_PATH = "http://192.168.0.128:80/moment/img/background/";
 	public static final String PROFILE_IMG_SAVE_PATH = "D:\\Study_Android\\androidServlet\\moment\\WebContent\\images\\profileimg";
 	public static final String PROFILE_IMG_PATH = "http://192.168.0.128:80/moment/img/profileimg/";
+	public static final String IMAGE_PATH_BACKGROUND_128 = "C:\\Users\\SEC\\Desktop\\TeamProject\\MomentTeamProject\\MomentSpring\\moment\\src\\main\\webapp\\resources\\image\\background\\";
 	
 	
 	//쿼리조회 후 list 반환값을 jsonArray로 파싱

@@ -19,14 +19,8 @@ public class WebBoardDAO implements WebBoardService {
 
 	@Override
 	public WebBoardPage board_list(WebBoardPage page) {
-		String type = page.getViewType();
-		if(type.equals("lately")) {
-			page.setTotalList( sql.selectOne("webBoard.mapper.total", page) );
-			page.setList( sql.selectList("webBoard.mapper.list", page));
-		} else if(type.equals("ddabong")) {
-			page.setTotalList( sql.selectOne("webBoard.mapper.total", page) );
-			page.setList( sql.selectList("webBoard.mapper.rankList", page));
-		}
+		page.setTotalList( sql.selectOne("webBoard.mapper.total", page) );
+		page.setList( sql.selectList("webBoard.mapper.list", page));
 		return page;
 	}
 
@@ -70,14 +64,12 @@ public class WebBoardDAO implements WebBoardService {
 
 	@Override
 	public int board_update(WebBoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sql.update("webBoard.mapper.boardUpdate", vo);
 	}
 
 	@Override
 	public int board_delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sql.delete("webBoard.mapper.boardDelete", id);
 	}
 
 	@Override
@@ -89,5 +81,6 @@ public class WebBoardDAO implements WebBoardService {
 	public void boardDdabongUpdate(WebFavoriteVO fvo) {
 		sql.update("board.mapper.boardDdabongUpdate", fvo);
 	}
+
 
 }

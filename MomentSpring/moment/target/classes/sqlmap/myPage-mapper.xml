@@ -6,17 +6,17 @@
 
 	<sql id="search_where">
 		<if test="search=='content' ">
-			b_coment like '%' || #{keyword} || '%'
+			 b_coment like '%' || #{keyword} || '%'
 		</if>
 		<if test="search=='title' ">
-			b_title like '%' || #{keyword} || '%'
+			 b_title like '%' || #{keyword} || '%'
 		</if>
-		<if test="search=='writer'">	
-			u_nick like '%' || #{keyword} ||'%'
+<!-- 		<if test="search=='writer'">	
+			 u_nick like '%' || #{keyword} ||'%'
 		
-		</if>
+		</if> -->
 		<if test="search=='all'">
-			b_title like '%' || #{keyword} || '%'
+			 b_title like '%' || #{keyword} || '%'
 			or b_coment like '%' || #{keyword} || '%'		
 		</if>
 	</sql>
@@ -55,18 +55,14 @@
 
 	<select id="myddabong" resultType="web.myPage.MyPageVO">
 		select * 
-		from ( select * 
+		from ( select DISTINCT m.* 
 		       from (select rownum no, f.* , b.*
 		             from ( select * from m_favorite where f_userid =#{userid}  and f_ddabong ='Y') F,  m_board B 
 		             where F.f_bno = b.b_no) M, m_user U
-		       where m.b_userid = u.u_userid <if test="keyword != null "><include refid="search_where"/></if> ) 
+		       where m.b_userid = u.u_userid <if test="keyword != null ">and<include refid="search_where"/></if> ) 
 		where no between #{beginList} and #{endList} order by b_no desc
 	</select>
 	
-
-
-
-
 
 	<select id="myfavoritetotal" resultType="Integer">
 		select count(*) 
@@ -76,11 +72,11 @@
 
 	<select id="myfavorite" resultType="web.myPage.MyPageVO">
 		select * 
-		from ( select * 
+		from ( select DISTINCT m.* 
 		         from   (select rownum no, f.* , b.*
-		                        from ( select * from m_favorite where f_userid =#{userid}  and f_favorites ='Y') F,  m_board B 
-		                        where F.f_bno = b.b_no) M, m_user U
-		            where m.b_userid = u.u_userid <if test="keyword != null "><include refid="search_where"/></if>) 
+		                 from ( select * from m_favorite where f_userid =#{userid}  and f_favorites ='Y') F,  m_board B 
+		                 where F.f_bno = b.b_no) M, m_user U
+		            where m.b_userid = u.u_userid <if test="keyword != null ">and<include refid="search_where"/></if>) 
 		where no between #{beginList} and #{endList} order by b_no desc
 	</select>
 

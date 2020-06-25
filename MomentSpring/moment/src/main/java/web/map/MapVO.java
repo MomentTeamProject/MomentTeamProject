@@ -3,8 +3,8 @@ package web.map;
 public class MapVO {
 
 	double b_latitude, b_longitude;
-	String b_imgpath,b_title ;
-	int b_no, b_ddabong;
+	String b_imgpath,b_title, b_userid ;
+	int b_no, b_ddabong,b_readcnt;
 	
 	
 	
@@ -12,6 +12,12 @@ public class MapVO {
 	
 	
 	
+	public int getB_readcnt() {
+		return b_readcnt;
+	}
+	public void setB_readcnt(int b_readcnt) {
+		this.b_readcnt = b_readcnt;
+	}
 	public int getB_ddabong() {
 		return b_ddabong;
 	}

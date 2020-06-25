@@ -170,7 +170,7 @@ public class CommonService {
 //		String upload = resources + "/image";
 //		String folder = upload + "/" + category;
 		
-		String folder = Common.IMAGE_FILE_PATH;
+		String folder = Common.IMAGE_PATH_BACKGROUND_128;
 		
 		File f = new File(folder);
 		if (!f.exists())

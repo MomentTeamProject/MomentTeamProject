@@ -21,7 +21,7 @@ table {
   background: #FFFFFF;
   max-width: 650px;
   width:100%;
-  margin: 6% auto ;
+  margin: 4% auto ;
   color: black;
   padding: 10px;
   text-align: center;
@@ -109,6 +109,7 @@ table {
 
 body{
 background: #f56437fa;
+overflow-y: hidden;
 }
 </style>
 </head>

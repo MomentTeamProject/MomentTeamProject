@@ -149,8 +149,14 @@ body {
 <div id="title"><h2> PANORAMA 360 VIEW</h2></div>
 <div id="loading-img">
 	<img src="img/loading.gif" style="">
-</div>
+</div>	
+	<c:if test="${ !empty login_info }">		
+		<div style="width:80%; height: 20px; margin:0 auto; margin-bottom:40px; ">
+			<a class="btn-fill newBtn" style="float:right; margin-bottom: 10px; " href="new.pa">글작성</a>
+		</div>		
+	</c:if>
 	<div id="panorama-image" style="position: relative;">
+	
 	<div id="floating-bars">
 		<div class="floating-icon"><img src="img/floating-icon.png"></div>
 		<div class="floating-title floating"><img src="img/floating-title.png"></div>
@@ -192,8 +198,8 @@ $( document ).ready(function() {
 	img.src = 'img/loading.gif';
 
 	//로딩중일때 스크롤바 제거
-	$('body').css('overflow-y','hidden');
-	$('body').css('overflow-x','hidden');
+	$('.contentBody').css('overflow-y','hidden');
+	$('.contentBody').css('overflow-x','hidden');
 	
 });
 

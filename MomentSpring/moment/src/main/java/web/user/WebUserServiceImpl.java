@@ -33,8 +33,7 @@ public class WebUserServiceImpl implements WebUserService {
 
 	@Override
 	public boolean user_update(WebUserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.user_update(vo);
 	}
 
 	@Override

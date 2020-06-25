@@ -43,8 +43,7 @@ public class WebUserDAO implements WebUserService {
 
 	@Override
 	public boolean user_update(WebUserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		return (Integer)sql.update("web.user.mapper.update",vo) == 0 ? false : true;
 	}
 
 	@Override

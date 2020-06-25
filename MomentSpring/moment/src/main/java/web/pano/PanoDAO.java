@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import android.board.BoardVO;
 import android.common.Common;
+import web.board.WebBoardVO;
 
 @Repository
 public class PanoDAO implements PanoService {
@@ -52,6 +53,11 @@ public class PanoDAO implements PanoService {
 		List<BoardVO> list = sql.selectList("pano.mapper.android_list");
 		JSONArray datas = Common.boardListParser(list);
 		return datas;
+	}
+		
+	public int pano_insert(WebBoardVO vo) {
+		// TODO Auto-generated method stub
+		return sql.insert("pano.mapper.insert",vo);
 	}
 
 }

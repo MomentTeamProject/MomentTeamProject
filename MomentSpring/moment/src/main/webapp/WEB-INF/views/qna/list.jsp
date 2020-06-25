@@ -14,14 +14,15 @@
 .menu-box{ width: 80%; height: 50px; margin: 10px auto; text-align: center; }
 .menu ul{ margin: 0 auto; }
 .menu li{ float: none; margin: 0 10px;}
-#content { margin-top: 100px; }
-#title { width: 100%; height: auto; font-family: 'Suez One', serif; color: white; font-size: 2em; }
+#content { margin: 100px auto; width:1130px; border-radius:35px;  box-shadow: 0 0 20px 0 rgba(12, 12, 12, 0.65), 0 5px 5px 0 rgba(0, 0, 0, 0.44);
+ position: relative; z-index: 1; padding-bottom: 50px; padding-top:20px; background-color:white;}
+#title { width: 100%; height: auto; font-family: 'Suez One', serif; color: black; font-size: 2em; }
 #qna-body { margin: 0 auto; text-align: center; background-color: #f56437fa; }
 input[type=radio], input[type=checkbox]{ width: 18px; margin: 0 5px 3px; vertical-align: middle; }
 
 .menu-box { height: inherit; }
 select { height: 32px; font-size: 1em; font-family: 'Sriracha', cursive; padding: 0 0 1px 3px; borr: 1px solid white; border-radius: 5px; }
-#keyBox { border: 1px solid white; border-radius: 5px; }
+#keyBox { border: 1px solid black; border-radius: 5px; }
 
 /* 테이블 스타일 */
 #qna-table th {
@@ -43,14 +44,20 @@ select { height: 32px; font-size: 1em; font-family: 'Sriracha', cursive; padding
 #qna-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #4CAF50;
+  background-color: black;
   font-size: 1.3em;
   font-weight: normal;
 }
+#question_write {
+	border: 1px solid: black;
+	color: black;
+		font-family: 'Jua', sans-serif;
+	
+}
 
-.qa { background-color: #32bf37 !important; }
+.qa { background-color: #ff980091  !important; }
 .qa:hover { background-color: #fc7703 !important; }
-.an { background-color: #4CAF50 !important; }
+.an { background-color: #FF9800  !important; }
 .an:hover { background-color: #fc7703 !important;  }
 
 table { width: 80%; margin: 0 auto; border: 1px solid; border-collapse: collapse; }
@@ -97,19 +104,15 @@ textarea { width: 100%; height: 200px; resize: none; }
 	<div class="faq_list" style="overflow: hidden;">
 	<table id="qna-table">
 		<tr>
-			<th class="w-px60">번호</th>
-			<th>제목</th>
+			<th class="w-px60" >번호</th>
+			<th >제목</th>
 			<th class="w-px100">작성자</th>
-			<th class="w-px100">작성일자</th>
-			<th class="w-px100">질문 현황</th>
 		</tr>
 		<c:forEach items="${page.list}" var="vo">
 			<tr>
 				<td>${vo.no }</td>
 				<td class="left"><a class="content_btn${vo.id }" onclick="content_view(${vo.id})">${vo.title }</a></td>
 				<td>${vo.name }</td>
-				<td>${vo.writedate }</td>
-				<td>${vo.answer_result eq 'Y' ? '답변완료' : '진행중' }</td>
 			</tr>
 			<tr class="content_view${vo.id}" style="display: none; cursor: pointer;" onclick="content_close(${vo.id})">
 				<td>답변</td>
@@ -127,7 +130,7 @@ textarea { width: 100%; height: 200px; resize: none; }
 </div>
 
 <!-- 글작성 -->
-<div id="question_write" style="display: none;">
+<div id="question_write" style="display: none; ">
 	<form action="insert.qn" method="post">
 	<table>
 		<tr>
@@ -140,7 +143,7 @@ textarea { width: 100%; height: 200px; resize: none; }
 		</tr>
 	</table>
 	<div class="btnSet">
-		<a class="btn-fill" onclick="if( necessary() ){ $('form').submit() }" >저장</a>
+		<a class="btn-fill" style="font-family: 'Jua', sans-serif" onclick="if( necessary() ){ $('form').submit() }" >저장</a>
 	</div>
 	</form>
 </div>
@@ -358,12 +361,6 @@ function search_list(){
 					  +'<td>답변</td><td colspan="5" class="left">'+(value.answer_content == null ? '아직 등록된 답변이 없습니다.' : value.answer_content.replace(/\n/g, '<br/>'))+'</td></tr>'
 			console.log(value);
 			});
-			tag += '<tr><td>2</td><td class="left">사진이 안올라가면 어떻게 해야할까요?</td><td>동카이</td><td>2020-06-18</td><td>답변완료</td></tr>';
-			tag += '<tr><td>3</td><td class="left">회원가입에 실패했어요.</td><td>도후니</td><td>2020-06-18</td><td>답변완료</td></tr>';
-			tag += '<tr><td>4</td><td class="left">채팅방이 안들어가져요.</td><td>정민생</td><td>2020-06-18</td><td>진행중</td></tr>';
-			tag += '<tr><td>5</td><td class="left">구글맵이 로드가 안됩니다.</td><td>치현갓</td><td>2020-06-18</td><td>답변완료</td></tr>';
-			tag += '<tr><td>6</td><td class="left">추천이 눌리지 않습니다.</td><td>치현갓</td><td>2020-06-18</td><td>진행중</td></tr>';
-			tag += '<tr><td>7</td><td class="left">지도검색이 되지않아요!</td><td>승철문</td><td>2020-06-18</td><td>답변포기</td></tr>';
 			tag += '</table>';
 			$('#append').html(tag);
 		}, error: function(req, text){

@@ -26,14 +26,12 @@ public class WebBoardServiceImpl implements WebBoardService {
 
 	@Override
 	public int board_update(WebBoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.board_update(vo);
 	}
 
 	@Override
 	public int board_delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.board_delete(id);
 	}
 
 	@Override

@@ -49,25 +49,26 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width:99%}
 <body>
 <div class="content">
 
-<div style="height: 50px; padding-bottom: 10px; "> <p>WRITE</p> </div>
+<div style="height: 50px; padding-bottom: 10px; "> <p>게시글 수정</p> </div>
 
-<form method="post" action="insert.bo" enctype="multipart/form-data">
+<form method="post" action="update.bo" enctype="multipart/form-data">
+	<input type="hidden" value="${vo.b_no}" name="b_no"/>
 	<table>
 		<tr><th>제목</th>
-			<td><input type='text' name='b_title' class='need' title='제목'/></td>
+			<td><input type='text' name='b_title' class='need' title='제목' value="${vo.b_title}"/></td>
 		</tr>
 		<tr><th>작성자</th><td class="left">${login_info.u_nick}</td>
 		</tr>
 		<tr id="coment"><th>내용</th>
-			<td><textarea name='b_coment' class='need' title='내용' style="width: 100%; height: 200px; resize:none;"></textarea></td>
+			<td><textarea name='b_coment' class='need' title='내용' style="width: 100%; height: 200px; resize:none;">${vo.b_coment}</textarea></td>
 		</tr>
 		
 		<tr ><th>위치검색</th>
 			<td id="search" style="padding-bottom: 10px;">
 				<div style="padding: 0 0 10px 0; float:left;">	
 				
-				<input type= "text" id="location" placeholder="지역을 검색하세요" style="width:400px; " class='need' title='위치'>				 
-	    			<input type= "hidden" id="b_latitude" name="b_latitude" > 
+					<input type= "text" id="location" value="${vo.b_local}" style="width:400px; " class='need' title='위치' name="b_local">				 
+    			<input type= "hidden" id="b_latitude" name="b_latitude" > 
 					<input type= "hidden" id="b_longitude" name="b_longitude" >
 					<input type= "hidden" id="b_local" name="b_local" >
 				  	<a class="btn-fill" onclick="where()"> SEARCH </a>
@@ -78,18 +79,6 @@ input { height:22px; /*  padding:3px 5px; */ font-size:15px; width:99%}
 				<div id="address" name="b_local" ></div> <!-- 주소표시 부분 -->
 			</td>
 		</tr>
-		<tr><th>사진</th>
-			<td class='td-img left'>
-				<label><input type="file" name='file' id='attach-file' class='pic' title='사진'/>
-					   <img src='img/icons/select.png' class='file-img'/>
-				</label>
-				<img id='board_preview' style="width:650px; height:300px; display:none; border: 1px solid gray;" src="#" >  <!-- 파일 미리보기  -->
-				<div>
-				<span id='delete-file' style="width: 10px; float: right; padding-right: 10px;"><i class="far fa-trash-alt" style="color:black;"></i></span> <!-- 파일삭제  -->
-				<span id='file-name' style="font-size: 80%; float: right; padding-right: 10px;"></span> <!-- 파일이름  -->
-				</div>
-			</td>
-		</tr>	
 	</table>		
 </form>
 <div class='btnSet' style="padding-top:20px; margin: 0px;">
@@ -205,10 +194,8 @@ function content_check() {
 		function getLocation() {
 			if (navigator.geolocation) { // GPS를 지원하면
 				navigator.geolocation.getCurrentPosition(function(position) {
-					var lat = parseFloat(position.coords.latitude);
-					var lng = parseFloat(position.coords.longitude);
-					var address = '현재위치';
-					initMap(lat, lng, address);			
+					var address = '게시글 저장위치';
+					initMap(${vo.b_latitude}, ${vo.b_longitude}, address);			
 
 					
 				}, function(error) {
@@ -371,33 +358,8 @@ function content_check() {
 
 		});
 	} 
- 
 	 
 
-	//스크롤해서 내려서 로딩된 이미지 끝에 다달았을때 다음페이지의 이미지 출력하는 스크립트
-	window.onscroll = function() {
-		//		console.log('js 흐름탐');
-
-		var scroll = window.scrollY + $(window).height();
-		var endY = document.body.scrollHeight;
-
-		console.log(scroll);
-		console.log(endY);
-
-		//content 영역의 최상위 위치 값
-		var scrollTop = $(this).scrollTop();
-		//content 영역의 (패딩영역합산한) content의 높이
-		var innerHeight = $(this).innerHeight();
-
-		//스크롤이 컨텐트아래 50 hegiht 를 넘어서면 이벤트 시작
-		if (scroll > endY) {
-			$("#confirm").css('color', 'white');
-			$("#footer-wrap").slideDown();
-		} else {
-			$("#confirm").css('color', 'gray');
-			$("#footer-wrap").slideUp();
-		}
-	}; 
 </script>
 </body>
 </html>

@@ -6,6 +6,7 @@
 	SELECT b.*, u_nick b_nick, u_profileimg b_profileimg
 	FROM m_board b, m_user u
 	WHERE b.b_userid = u.u_userid
+	AND b_pano = 'N'
 	ORDER BY b.b_no DESC
 </select>
 
@@ -13,6 +14,7 @@
 	SELECT b.*, u_nick b_nick, u_profileimg b_profileimg
 	FROM m_board b, m_user u
 	WHERE b.b_userid = u.u_userid 
+	AND b_pano = 'N'
 	ORDER BY b.b_ddabong DESC  
 </select>
 
